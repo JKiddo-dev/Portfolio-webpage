@@ -1,0 +1,300 @@
+@import "tailwindcss";
+
+:root {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --primary: #10b981;
+  --secondary: #3b82f6;
+  --accent: #8b5cf6;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Subtle tech grid background with radial fade */
+.bg-grid-tech {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-radial-fade {
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+}
+
+/* Glow spotlight utilities */
+.glow-card {
+  position: relative;
+  background: rgba(18, 18, 23, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.glow-card:hover {
+  border-color: rgba(52, 211, 153, 0.35);
+  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.15);
+}
+
+/* Keyframes for subtle animations */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+/* Custom sleek code scrollbar */
+.custom-code-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(63, 63, 70, 0.7) rgba(24, 24, 27, 0.3);
+}
+
+.custom-code-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-code-scroll::-webkit-scrollbar-track {
+  background: rgba(24, 24, 27, 0.5);
+  border-radius: 9999px;
+}
+
+.custom-code-scroll::-webkit-scrollbar-thumb {
+  background: rgba(63, 63, 70, 0.7);
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+.custom-code-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.8);
+}
+
+
+/* ================= LIGHT THEME DESIGN SYSTEM ================= */
+html.light,
+[data-theme="light"],
+.theme-light {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  color-scheme: light;
+}
+
+html.light,
+html.light body,
+.theme-light,
+.theme-light body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Light Tech Grid with subtle contrast */
+html.light .bg-grid-tech,
+.theme-light .bg-grid-tech {
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px) !important;
+}
+
+/* Atmospheric lights attenuated in light mode */
+html.light .animate-pulse-glow,
+.theme-light .animate-pulse-glow {
+  opacity: 0.18 !important;
+}
+
+/* Root background containers */
+html.light .bg-zinc-950,
+.theme-light .bg-zinc-950 {
+  background-color: #f8fafc !important;
+}
+
+/* Card surfaces */
+html.light .bg-zinc-900,
+.theme-light .bg-zinc-900 {
+  background-color: #ffffff !important;
+}
+
+html.light .bg-zinc-900\/40,
+html.light .bg-zinc-900\/50,
+html.light .bg-zinc-900\/60,
+html.light .bg-zinc-900\/70,
+html.light .bg-zinc-900\/80,
+html.light .bg-zinc-900\/90,
+html.light .bg-zinc-900\/95,
+.theme-light .bg-zinc-900\/40,
+.theme-light .bg-zinc-900\/50,
+.theme-light .bg-zinc-900\/60,
+.theme-light .bg-zinc-900\/70,
+.theme-light .bg-zinc-900\/80,
+.theme-light .bg-zinc-900\/90,
+.theme-light .bg-zinc-900\/95 {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+}
+
+html.light .bg-zinc-950\/60,
+html.light .bg-zinc-950\/70,
+html.light .bg-zinc-950\/80,
+html.light .bg-zinc-950\/90,
+html.light .bg-zinc-950\/95,
+.theme-light .bg-zinc-950\/60,
+.theme-light .bg-zinc-950\/70,
+.theme-light .bg-zinc-950\/80,
+.theme-light .bg-zinc-950\/90,
+.theme-light .bg-zinc-950\/95 {
+  background-color: #ffffff !important;
+}
+
+/* Subtle secondary surfaces & pill tags */
+html.light .bg-zinc-800,
+html.light .bg-zinc-800\/60,
+html.light .bg-zinc-800\/80,
+html.light .bg-zinc-800\/90,
+.theme-light .bg-zinc-800,
+.theme-light .bg-zinc-800\/60,
+.theme-light .bg-zinc-800\/80,
+.theme-light .bg-zinc-800\/90 {
+  background-color: #f1f5f9 !important;
+}
+
+/* Card Borders */
+html.light .border-zinc-800,
+html.light .border-zinc-800\/60,
+html.light .border-zinc-800\/80,
+html.light .border-zinc-800\/90,
+html.light .border-zinc-900,
+html.light .border-zinc-900\/80,
+.theme-light .border-zinc-800,
+.theme-light .border-zinc-800\/60,
+.theme-light .border-zinc-800\/80,
+.theme-light .border-zinc-800\/90,
+.theme-light .border-zinc-900,
+.theme-light .border-zinc-900\/80 {
+  border-color: #e2e8f0 !important;
+}
+
+html.light .border-zinc-700,
+html.light .border-zinc-700\/60,
+.theme-light .border-zinc-700,
+.theme-light .border-zinc-700\/60 {
+  border-color: #cbd5e1 !important;
+}
+
+/* High-contrast Typography */
+html.light .text-white,
+.theme-light .text-white {
+  color: #0f172a !important;
+}
+
+html.light .text-zinc-100,
+html.light .text-zinc-200,
+.theme-light .text-zinc-100,
+.theme-light .text-zinc-200 {
+  color: #1e293b !important;
+}
+
+html.light .text-zinc-300,
+.theme-light .text-zinc-300 {
+  color: #334155 !important;
+}
+
+html.light .text-zinc-400,
+.theme-light .text-zinc-400 {
+  color: #475569 !important;
+}
+
+html.light .text-zinc-500,
+.theme-light .text-zinc-500 {
+  color: #64748b !important;
+}
+
+/* Glow Cards & Spotlight in Light Mode */
+html.light .glow-card,
+.theme-light .glow-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 0 1px 1px rgba(15, 23, 42, 0.03) !important;
+}
+
+html.light .glow-card:hover,
+.theme-light .glow-card:hover {
+  border-color: rgba(16, 185, 129, 0.5) !important;
+  box-shadow: 0 12px 30px -4px rgba(16, 185, 129, 0.12), 0 0 1px 1px rgba(16, 185, 129, 0.2) !important;
+}
+
+/* Keep Code & Terminal Windows in High-Contrast Dark Slate */
+html.light pre,
+html.light .terminal-window,
+html.light .custom-code-scroll,
+.theme-light pre,
+.theme-light .terminal-window,
+.theme-light .custom-code-scroll {
+  background-color: #0b1120 !important;
+  color: #e2e8f0 !important;
+}
+
+html.light pre .text-zinc-200,
+.theme-light pre .text-zinc-200 {
+  color: #e2e8f0 !important;
+}
+
+html.light .custom-code-scroll .text-zinc-600,
+.theme-light .custom-code-scroll .text-zinc-600 {
+  color: #64748b !important;
+}
+
+/* Light Mode Navigation */
+html.light nav,
+.theme-light nav {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06) !important;
+}
+
+html.light nav a,
+.theme-light nav a {
+  color: #475569 !important;
+}
+
+html.light nav a:hover,
+.theme-light nav a:hover {
+  color: #0f172a !important;
+}
+
+/* Form Inputs in Light Mode */
+html.light input,
+html.light textarea,
+.theme-light input,
+.theme-light textarea {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+html.light input:focus,
+html.light textarea:focus,
+.theme-light input:focus,
+.theme-light textarea:focus {
+  background-color: #ffffff !important;
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+
+/* Floating Action Button in Light Mode */
+html.light .fixed.bottom-6.right-6,
+.theme-light .fixed.bottom-6.right-6 {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-color: rgba(16, 185, 129, 0.5) !important;
+  color: #0f172a !important;
+  box-shadow: 0 12px 30px -5px rgba(15, 23, 42, 0.12), 0 0 15px rgba(16, 185, 129, 0.15) !important;
+}
