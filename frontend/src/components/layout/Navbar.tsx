@@ -30,11 +30,10 @@ export default function Navbar() {
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-300">
       <nav
-        className={`w-full max-w-5xl flex items-center justify-between px-5 md:px-6 py-3 rounded-2xl transition-all duration-300 ${
-          scrolled
+        className={`w-full max-w-5xl flex items-center justify-between px-5 md:px-6 py-3 rounded-2xl transition-all duration-300 ${scrolled
             ? "bg-zinc-950/90 backdrop-blur-xl border border-zinc-800 shadow-2xl shadow-black/70"
             : "bg-zinc-900/60 backdrop-blur-md border border-zinc-800/80"
-        }`}
+          }`}
       >
         <a href="#hero" className="flex items-center gap-2.5 group">
           <div className="w-8 h-8 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center group-hover:border-emerald-400/80 transition-colors">
@@ -42,7 +41,7 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col text-left">
             <span className="font-mono text-xs font-black tracking-wider text-white group-hover:text-emerald-300 transition-colors">
-              matias.dev
+              jkiddo-dev
             </span>
             <span className="text-[10px] font-mono text-emerald-400/90 font-medium">
               Full-Stack Software Engineer
@@ -124,7 +123,7 @@ export default function Navbar() {
           >
             {language.toUpperCase()}
           </button>
-          
+
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-lg text-zinc-400 hover:text-white bg-zinc-800/60"
