@@ -52,9 +52,59 @@ body {
   50% { opacity: 0.7; transform: scale(1.05); }
 }
 
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes laserScan {
+  0% { top: 0%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+@keyframes floatReverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(12px) rotate(-1deg); }
+}
+
+@keyframes shimmerBeam {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+
 .animate-pulse-glow {
   animation: pulseGlow 6s ease-in-out infinite;
 }
+
+.animate-gradient-flow {
+  background-size: 200% 200%;
+  animation: gradientFlow 6s ease infinite;
+}
+
+.animate-float-slow {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 10s ease-in-out infinite;
+}
+
+.animate-laser-scan {
+  animation: laserScan 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-shimmer-beam {
+  animation: shimmerBeam 2.8s infinite;
+}
+
 /* Custom sleek code scrollbar */
 .custom-code-scroll {
   scrollbar-width: thin;
