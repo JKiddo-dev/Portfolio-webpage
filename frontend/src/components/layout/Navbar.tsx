@@ -109,9 +109,20 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Right Action Controls: Lang + Theme + CTA */}
+          {/* Right Action Controls: Preview + Lang + Theme + CTA */}
           <div className="hidden md:flex items-center gap-2">
             
+            {/* Device Simulator Trigger Button */}
+            <button
+              onClick={() => setDeviceModalOpen(true)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-zinc-950/80 border border-zinc-800 hover:border-zinc-700 text-xs font-mono text-zinc-300 hover:text-white transition-all cursor-pointer shadow-inner hover:scale-105 active:scale-95"
+              title={language === "es" ? "Abrir Simulador Móvil" : "Open Mobile Simulator"}
+              aria-label="Open Device Simulator"
+            >
+              <Smartphone className="w-3.5 h-3.5 text-blue-400" />
+              <span className="hidden lg:inline text-[11px] font-semibold text-zinc-300">Preview</span>
+            </button>
+
             {/* Bilingual Toggle Button */}
             <button
               onClick={toggleLanguage}
@@ -155,8 +166,16 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Hamburger */}
+          {/* Mobile Hamburger & Controls */}
           <div className="flex items-center gap-2 md:hidden">
+            <button
+              onClick={() => setDeviceModalOpen(true)}
+              className="p-1.5 rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-300 hover:text-white"
+              title="Simulator"
+            >
+              <Smartphone className="w-4 h-4 text-blue-400" />
+            </button>
+
             <button
               onClick={toggleTheme}
               className="p-1.5 rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-300 hover:text-white"
@@ -210,10 +229,11 @@ export default function Navbar() {
         )}
       </header>
 
-      {/* Device Simulator Modal */}
-      {deviceModalOpen && (
-        <DeviceSimulatorModal onClose={() => setDeviceModalOpen(false)} />
-      )}
+      {/* Device Simulator Modal with Required isOpen Prop */}
+      <DeviceSimulatorModal
+        isOpen={deviceModalOpen}
+        onClose={() => setDeviceModalOpen(false)}
+      />
     </>
   );
 }
