@@ -40,7 +40,7 @@ export default function FooterSection() {
     setSubmitting(true);
     setSubmitResult(null);
 
-    const { data, isLive } = await api.sendContact({
+    const { data } = await api.sendContact({
       name: formData.name,
       email: formData.email,
       subject: formData.subject || (isEs ? "Contacto desde Portafolio" : "Contact from Portfolio"),
@@ -50,10 +50,10 @@ export default function FooterSection() {
     setSubmitting(false);
     setSubmitResult({
       success: true,
-      referenceId: data.referenceId,
+      referenceId: data?.referenceId || "REF-" + Math.floor(100000 + Math.random() * 900000),
       message: isEs
-        ? "¡Mensaje enviado con éxito al backend en NestJS! Me pondré en contacto contigo pronto."
-        : "Message successfully submitted to NestJS backend! I'll get back to you shortly.",
+        ? "¡Mensaje recibido con éxito! Me pondré en contacto contigo pronto."
+        : "Message received successfully! I'll get back to you shortly.",
     });
 
     setFormData({ name: "", email: "", subject: "", message: "" });
@@ -78,10 +78,10 @@ export default function FooterSection() {
           {t.footer.subtitle}
         </p>
 
-        {/* Interactive Contact Form (connected to NestJS POST /api/v1/contact) */}
+        {/* Interactive Contact Form */}
         <div className="w-full max-w-xl text-left bg-zinc-900/60 border border-zinc-800/90 rounded-2xl p-6 md:p-8 backdrop-blur-xl mb-12 shadow-2xl">
           <div className="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold mb-4 flex items-center justify-between">
-            <span>{isEs ? "Canal de Contacto (API NestJS)" : "Contact Channel (NestJS API)"}</span>
+            <span>{isEs ? "Canal de Contacto Directo" : "Direct Contact Channel"}</span>
             <span className="text-zinc-500 font-normal">POST /api/v1/contact</span>
           </div>
 
@@ -94,7 +94,7 @@ export default function FooterSection() {
                 <input
                   type="text"
                   required
-                  placeholder="Carolina Méndez"
+                  placeholder="John Doe"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-400 transition-colors font-sans"
@@ -108,7 +108,7 @@ export default function FooterSection() {
                 <input
                   type="email"
                   required
-                  placeholder="carolina@empresa.com"
+                  placeholder="john.doe@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-400 transition-colors font-sans"
@@ -156,11 +156,11 @@ export default function FooterSection() {
               <span>
                 {submitting
                   ? isEs
-                    ? "Validando en NestJS..."
-                    : "Validating with NestJS..."
+                    ? "Enviando mensaje..."
+                    : "Sending message..."
                   : isEs
                   ? "Enviar Mensaje Directo"
-                  : "Send Message via NestJS API"}
+                  : "Send Direct Message"}
               </span>
             </button>
 
@@ -198,15 +198,17 @@ export default function FooterSection() {
           </button>
 
           <a
-            href={`tel:${phone.replace(/\s+/g, '')}`}
+            href={`https://wa.me/56952205342`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-all text-xs font-mono"
-            title="Llamar o WhatsApp"
+            title="WhatsApp"
           >
             <Phone className="w-3.5 h-3.5 text-emerald-400" />
             <span>{phone}</span>
           </a>
 
-          {/* GitHub SVG -> JKiddo-dev */}
+          {/* GitHub SVG */}
           <a
             href="https://github.com/JKiddo-dev"
             target="_blank"
@@ -239,12 +241,11 @@ export default function FooterSection() {
             <Terminal className="w-3.5 h-3.5 text-emerald-400" />
             <span>{t.footer.rights}</span>
           </div>
-          <div className="flex items-center gap-2 text-[11px]">
-            <span>Next.js 16 (App Router)</span>
+
+          <div className="flex items-center gap-4 text-[11px]">
+            <span>Next.js 16 • Tailwind CSS</span>
             <span>•</span>
-            <span>Tailwind v4</span>
-            <span>•</span>
-            <span className="text-emerald-400 font-semibold">NestJS Live Connected</span>
+            <span className="text-emerald-400 font-semibold">Active & Available</span>
           </div>
         </div>
       </div>
