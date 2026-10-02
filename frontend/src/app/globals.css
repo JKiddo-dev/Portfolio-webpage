@@ -303,6 +303,44 @@ html.light .custom-code-scroll .text-zinc-600,
   color: #64748b !important;
 }
 
+/* Ensure text and backgrounds inside terminal windows stay high-contrast in light mode */
+html.light .terminal-window .text-white,
+.theme-light .terminal-window .text-white {
+  color: #f8fafc !important;
+}
+html.light .terminal-window .text-zinc-100,
+html.light .terminal-window .text-zinc-200,
+html.light .terminal-window .text-zinc-300,
+.theme-light .terminal-window .text-zinc-100,
+.theme-light .terminal-window .text-zinc-200,
+.theme-light .terminal-window .text-zinc-300 {
+  color: #cbd5e1 !important;
+}
+html.light .terminal-window .text-zinc-400,
+.theme-light .terminal-window .text-zinc-400 {
+  color: #94a3b8 !important;
+}
+html.light .terminal-window .text-zinc-500,
+.theme-light .terminal-window .text-zinc-500 {
+  color: #64748b !important;
+}
+html.light .terminal-window .bg-zinc-900,
+html.light .terminal-window .bg-zinc-900\/80,
+html.light .terminal-window .bg-zinc-900\/70,
+.theme-light .terminal-window .bg-zinc-900,
+.theme-light .terminal-window .bg-zinc-900\/80,
+.theme-light .terminal-window .bg-zinc-900\/70 {
+  background-color: #0f172a !important;
+}
+html.light .terminal-window .bg-zinc-950,
+.theme-light .terminal-window .bg-zinc-950 {
+  background-color: #020617 !important;
+}
+html.light .terminal-window .border-zinc-800,
+.theme-light .terminal-window .border-zinc-800 {
+  border-color: #1e293b !important;
+}
+
 /* Light Mode Navigation */
 html.light nav,
 .theme-light nav {
