@@ -1,40 +1,46 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { usePortfolio } from "@/hooks/usePortfolio";
-import { Terminal, Menu, X, ArrowUpRight, Globe, Smartphone, Sun, Moon } from "lucide-react";
+import { Terminal, Menu, X, ArrowUpRight, Globe, Smartphone, Sun, Moon, Sparkles } from "lucide-react";
 import DeviceSimulatorModal from "@/components/ui/DeviceSimulatorModal";
 
 export default function Navbar() {
   const { t, language, toggleLanguage, theme, toggleTheme, isDark } = usePortfolio();
+  const pathname = usePathname();
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("hero");
   const [deviceModalOpen, setDeviceModalOpen] = useState(false);
 
+  const isEs = language === "es";
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // Calculate total reading scroll progress
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       if (totalScroll > 0) {
         setScrollProgress((window.scrollY / totalScroll) * 100);
       }
 
-      // Detect active section
-      const sections = ["hero", "projects", "backend-architecture", "experience", "skills", "education", "contact"];
-      const scrollPos = window.scrollY + 200;
+      if (pathname === "/") {
+        const sections = ["hero", "projects", "backend-preview", "experience", "skills", "education", "contact"];
+        const scrollPos = window.scrollY + 200;
 
-      for (const sectionId of sections) {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(sectionId);
-            break;
+        for (const sectionId of sections) {
+          const el = document.getElementById(sectionId);
+          if (el) {
+            const top = el.offsetTop;
+            const height = el.offsetHeight;
+            if (scrollPos >= top && scrollPos < top + height) {
+              setActiveSection(sectionId);
+              break;
+            }
           }
         }
       }
@@ -42,14 +48,46 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   const navLinks = [
-    { name: t.nav.projects, href: "#projects", id: "projects" },
-    { name: t.nav.architecture || (language === "es" ? "Backend & API" : "Backend & API"), href: "#backend-architecture", id: "backend-architecture" },
-    { name: t.nav.experience, href: "#experience", id: "experience" },
-    { name: t.nav.skills, href: "#skills", id: "skills" },
-    { name: t.nav.education, href: "#education", id: "education" },
+    {
+      name: isEs ? "Inicio" : "Home",
+      href: "/",
+      isRoute: true,
+      active: pathname === "/" && activeSection === "hero",
+    },
+    {
+      name: t.nav.projects,
+      href: pathname === "/" ? "#projects" : "/#projects",
+      isRoute: pathname !== "/",
+      active: pathname === "/" && activeSection === "projects",
+    },
+    {
+      name: isEs ? "Backend & APIs" : "Backend & APIs",
+      href: "/backend-apis",
+      isRoute: true,
+      badge: "Itaú BFF",
+      active: pathname === "/backend-apis",
+    },
+    {
+      name: t.nav.experience,
+      href: pathname === "/" ? "#experience" : "/#experience",
+      isRoute: pathname !== "/",
+      active: pathname === "/" && activeSection === "experience",
+    },
+    {
+      name: t.nav.skills,
+      href: pathname === "/" ? "#skills" : "/#skills",
+      isRoute: pathname !== "/",
+      active: pathname === "/" && activeSection === "skills",
+    },
+    {
+      name: t.nav.contact,
+      href: "/contacto",
+      isRoute: true,
+      active: pathname === "/contacto",
+    },
   ];
 
   return (
@@ -62,16 +100,16 @@ export default function Navbar() {
         />
       </div>
 
-      <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-300">
+      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4 sm:pt-5 pointer-events-none transition-all duration-300">
         <nav
-          className={`w-full max-w-5xl flex items-center justify-between px-5 md:px-6 py-2.5 rounded-2xl transition-all duration-300 ${
+          className={`pointer-events-auto flex items-center justify-between gap-4 px-4 sm:px-6 py-2.5 rounded-2xl border transition-all duration-300 backdrop-blur-xl max-w-6xl w-full ${
             scrolled
-              ? "bg-zinc-950/90 backdrop-blur-xl border border-zinc-800/90 shadow-2xl shadow-black/80 scale-[0.99]"
-              : "bg-zinc-900/70 backdrop-blur-md border border-zinc-800/80 shadow-lg"
+              ? "bg-zinc-950/85 border-zinc-800 shadow-2xl shadow-black/40 scale-[0.99]"
+              : "bg-zinc-950/60 border-zinc-800/80 shadow-lg"
           }`}
         >
           {/* Logo */}
-          <a href="#hero" className="flex items-center gap-2.5 group">
+          <Link href="/" className="flex items-center gap-2.5 group">
             <div className="w-8 h-8 rounded-lg bg-zinc-800/90 border border-zinc-700 flex items-center justify-center group-hover:border-emerald-400/80 group-hover:bg-zinc-800 transition-all duration-300">
               <Terminal className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
             </div>
@@ -83,27 +121,38 @@ export default function Navbar() {
                 Full-Stack Software Engineer
               </span>
             </div>
-          </a>
+          </Link>
 
-          {/* Desktop Navigation Links with Active Sliding Pill */}
-          <div className="hidden md:flex items-center gap-1.5 p-1 rounded-xl bg-zinc-950/40 border border-zinc-800/50">
+          {/* Desktop Navigation Links */}
+          <div className="hidden md:flex items-center gap-1 p-1 rounded-xl bg-zinc-950/40 border border-zinc-800/50">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
-
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className={`relative px-3 py-1.5 rounded-lg text-xs font-mono uppercase tracking-wider transition-all duration-300 ${
-                    isActive
-                      ? "text-emerald-300 font-bold bg-zinc-800/90 shadow-sm"
-                      : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
-                  }`}
-                >
-                  {isActive && (
+              const linkContent = (
+                <span className="flex items-center gap-1.5">
+                  <span>{link.name}</span>
+                  {link.badge && (
+                    <span className="text-[9px] px-1.5 py-0.2 rounded-full font-mono bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                      {link.badge}
+                    </span>
+                  )}
+                  {link.active && (
                     <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-emerald-400 rounded-full shadow-[0_0_6px_#10b981]" />
                   )}
-                  <span>{link.name}</span>
+                </span>
+              );
+
+              const className = `relative px-3 py-1.5 rounded-lg text-xs font-mono uppercase tracking-wider transition-all duration-300 ${
+                link.active
+                  ? "text-emerald-300 font-bold bg-zinc-800/90 shadow-sm"
+                  : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
+              }`;
+
+              return link.isRoute ? (
+                <Link key={link.name} href={link.href} className={className}>
+                  {linkContent}
+                </Link>
+              ) : (
+                <a key={link.name} href={link.href} className={className}>
+                  {linkContent}
                 </a>
               );
             })}
@@ -111,12 +160,11 @@ export default function Navbar() {
 
           {/* Right Action Controls: Preview + Lang + Theme + CTA */}
           <div className="hidden md:flex items-center gap-2">
-            
             {/* Device Simulator Trigger Button */}
             <button
               onClick={() => setDeviceModalOpen(true)}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-zinc-950/80 border border-zinc-800 hover:border-zinc-700 text-xs font-mono text-zinc-300 hover:text-white transition-all cursor-pointer shadow-inner hover:scale-105 active:scale-95"
-              title={language === "es" ? "Abrir Simulador Móvil" : "Open Mobile Simulator"}
+              title={isEs ? "Abrir Simulador Móvil" : "Open Mobile Simulator"}
               aria-label="Open Device Simulator"
             >
               <Smartphone className="w-3.5 h-3.5 text-blue-400" />
@@ -127,7 +175,7 @@ export default function Navbar() {
             <button
               onClick={toggleLanguage}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-zinc-950/80 border border-zinc-800 hover:border-zinc-700 text-xs font-mono text-zinc-300 hover:text-white transition-all cursor-pointer shadow-inner hover:scale-105 active:scale-95"
-              title={language === "es" ? "Switch to English" : "Cambiar a Español"}
+              title={isEs ? "Switch to English" : "Cambiar a Español"}
               aria-label="Toggle language"
             >
               <Globe className="w-3.5 h-3.5 text-emerald-400" />
@@ -140,7 +188,7 @@ export default function Navbar() {
             <button
               onClick={toggleTheme}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-zinc-950/80 border border-zinc-800 hover:border-zinc-700 text-xs font-mono text-zinc-300 hover:text-white transition-all cursor-pointer shadow-inner hover:scale-105 active:scale-95"
-              title={theme === "dark" ? (language === "es" ? "Cambiar a modo claro" : "Switch to light mode") : (language === "es" ? "Cambiar a modo oscuro" : "Switch to dark mode")}
+              title={theme === "dark" ? (isEs ? "Cambiar a modo claro" : "Switch to light mode") : (isEs ? "Cambiar a modo oscuro" : "Switch to dark mode")}
               aria-label="Toggle color theme"
             >
               {isDark ? (
@@ -157,13 +205,13 @@ export default function Navbar() {
             </button>
 
             {/* Contact CTA */}
-            <a
-              href="#contact"
+            <Link
+              href="/contacto"
               className="group relative flex items-center gap-1.5 px-4 py-2 text-xs font-mono font-bold rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 text-zinc-950 hover:brightness-110 hover:scale-102 active:scale-98 transition-all shadow-md shadow-emerald-500/20"
             >
               <span>{t.nav.talk}</span>
               <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Hamburger & Controls */}
@@ -198,14 +246,34 @@ export default function Navbar() {
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-16 left-4 right-4 bg-zinc-950/95 border border-zinc-800 rounded-2xl p-5 shadow-2xl backdrop-blur-2xl flex flex-col gap-3 animate-fadeIn">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-sm font-mono uppercase tracking-wider text-zinc-300 hover:text-emerald-400 py-2 border-b border-zinc-900"
-              >
-                {link.name}
-              </a>
+              link.isRoute ? (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`text-sm font-mono uppercase tracking-wider py-2 border-b border-zinc-900 flex items-center justify-between ${
+                    link.active ? "text-emerald-400 font-bold" : "text-zinc-300 hover:text-emerald-400"
+                  }`}
+                >
+                  <span>{link.name}</span>
+                  {link.badge && (
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      {link.badge}
+                    </span>
+                  )}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`text-sm font-mono uppercase tracking-wider py-2 border-b border-zinc-900 ${
+                    link.active ? "text-emerald-400 font-bold" : "text-zinc-300 hover:text-emerald-400"
+                  }`}
+                >
+                  {link.name}
+                </a>
+              )
             ))}
 
             <div className="flex items-center justify-between pt-3">
@@ -217,19 +285,19 @@ export default function Navbar() {
                 <span>{language === "es" ? "Español (ES)" : "English (EN)"}</span>
               </button>
 
-              <a
-                href="#contact"
+              <Link
+                href="/contacto"
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-4 py-2 text-xs font-mono font-bold rounded-lg bg-emerald-500 text-zinc-950"
               >
                 {t.nav.talk}
-              </a>
+              </Link>
             </div>
           </div>
         )}
       </header>
 
-      {/* Device Simulator Modal with Required isOpen Prop */}
+      {/* Device Simulator Modal */}
       <DeviceSimulatorModal
         isOpen={deviceModalOpen}
         onClose={() => setDeviceModalOpen(false)}

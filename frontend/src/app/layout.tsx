@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import AppProviders from "@/components/providers/AppProviders";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Matías Aguilar | Full-Stack Developer & Cloud / IoT",
+  title: "Matías Aguilar | Full-Stack Software Engineer & Cloud Architecture",
   description:
-    "Portafolio profesional especializado en arquitecturas de microservicios con NestJS, plataformas IoT (Mesh LoRa, MQTT) y aplicaciones web modernas.",
+    "Portafolio profesional especializado en arquitectura de microservicios con NestJS (IBM / Banco Itaú), patrones BFF, pruebas con Jest y plataformas IoT LoRa Mesh.",
 };
 
 export default function RootLayout({
@@ -30,10 +31,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="min-h-full flex flex-col bg-zinc-950 text-zinc-100 selection:bg-emerald-500/30 selection:text-emerald-300 antialiased"
+        className="min-h-full flex flex-col bg-zinc-950 text-zinc-100 selection:bg-emerald-500/30 selection:text-emerald-300 antialiased transition-colors duration-300"
         suppressHydrationWarning
       >
-        {children}
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );
