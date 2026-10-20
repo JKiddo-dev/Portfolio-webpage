@@ -20,7 +20,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Subtle tech grid background with radial fade */
 .bg-grid-tech {
   background-size: 32px 32px;
   background-image: 
@@ -33,7 +32,6 @@ body {
   -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
 }
 
-/* Glow spotlight utilities */
 .glow-card {
   position: relative;
   background: rgba(18, 18, 23, 0.7);
@@ -46,7 +44,6 @@ body {
   box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.15);
 }
 
-/* Keyframes for subtle animations */
 @keyframes pulseGlow {
   0%, 100% { opacity: 0.4; transform: scale(1); }
   50% { opacity: 0.7; transform: scale(1.05); }
@@ -105,7 +102,6 @@ body {
   animation: shimmerBeam 2.8s infinite;
 }
 
-/* Custom sleek code scrollbar */
 .custom-code-scroll {
   scrollbar-width: thin;
   scrollbar-color: rgba(63, 63, 70, 0.7) rgba(24, 24, 27, 0.3);
@@ -131,8 +127,6 @@ body {
   background: rgba(16, 185, 129, 0.8);
 }
 
-
-/* ================= LIGHT THEME DESIGN SYSTEM ================= */
 html.light,
 [data-theme="light"],
 .theme-light {
@@ -149,7 +143,6 @@ html.light body,
   color: #0f172a !important;
 }
 
-/* Light Tech Grid with subtle contrast */
 html.light .bg-grid-tech,
 .theme-light .bg-grid-tech {
   background-image: 
@@ -157,19 +150,16 @@ html.light .bg-grid-tech,
     linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px) !important;
 }
 
-/* Atmospheric lights attenuated in light mode */
 html.light .animate-pulse-glow,
 .theme-light .animate-pulse-glow {
   opacity: 0.18 !important;
 }
 
-/* Root background containers */
 html.light .bg-zinc-950,
 .theme-light .bg-zinc-950 {
   background-color: #f8fafc !important;
 }
 
-/* Card surfaces */
 html.light .bg-zinc-900,
 .theme-light .bg-zinc-900 {
   background-color: #ffffff !important;
@@ -189,7 +179,7 @@ html.light .bg-zinc-900\/95,
 .theme-light .bg-zinc-900\/80,
 .theme-light .bg-zinc-900\/90,
 .theme-light .bg-zinc-900\/95 {
-  background-color: rgba(255, 255, 255, 0.92) !important;
+  background-color: rgba(255, 255, 255, 0.94) !important;
 }
 
 html.light .bg-zinc-950\/60,
@@ -205,7 +195,6 @@ html.light .bg-zinc-950\/95,
   background-color: #ffffff !important;
 }
 
-/* Subtle secondary surfaces & pill tags */
 html.light .bg-zinc-800,
 html.light .bg-zinc-800\/60,
 html.light .bg-zinc-800\/80,
@@ -217,7 +206,6 @@ html.light .bg-zinc-800\/90,
   background-color: #f1f5f9 !important;
 }
 
-/* Card Borders */
 html.light .border-zinc-800,
 html.light .border-zinc-800\/60,
 html.light .border-zinc-800\/80,
@@ -240,7 +228,6 @@ html.light .border-zinc-700\/60,
   border-color: #cbd5e1 !important;
 }
 
-/* High-contrast Typography */
 html.light .text-white,
 .theme-light .text-white {
   color: #0f172a !important;
@@ -268,7 +255,43 @@ html.light .text-zinc-500,
   color: #64748b !important;
 }
 
-/* Glow Cards & Spotlight in Light Mode */
+html.light .text-emerald-200\/90,
+html.light .text-emerald-300,
+html.light .text-emerald-400,
+.theme-light .text-emerald-200\/90,
+.theme-light .text-emerald-300,
+.theme-light .text-emerald-400 {
+  color: #047857 !important;
+}
+
+html.light .text-teal-300,
+html.light .text-teal-400,
+.theme-light .text-teal-300,
+.theme-light .text-teal-400 {
+  color: #0f766e !important;
+}
+
+html.light .text-cyan-300,
+html.light .text-cyan-400,
+.theme-light .text-cyan-300,
+.theme-light .text-cyan-400 {
+  color: #0e7490 !important;
+}
+
+html.light .text-amber-300,
+html.light .text-amber-400,
+.theme-light .text-amber-300,
+.theme-light .text-amber-400 {
+  color: #b45309 !important;
+}
+
+html.light .text-blue-300,
+html.light .text-blue-400,
+.theme-light .text-blue-300,
+.theme-light .text-blue-400 {
+  color: #1d4ed8 !important;
+}
+
 html.light .glow-card,
 .theme-light .glow-card {
   background: #ffffff !important;
@@ -282,7 +305,6 @@ html.light .glow-card:hover,
   box-shadow: 0 12px 30px -4px rgba(16, 185, 129, 0.12), 0 0 1px 1px rgba(16, 185, 129, 0.2) !important;
 }
 
-/* Keep Code & Terminal Windows in High-Contrast Dark Slate */
 html.light pre,
 html.light .terminal-window,
 html.light .custom-code-scroll,
@@ -303,7 +325,6 @@ html.light .custom-code-scroll .text-zinc-600,
   color: #64748b !important;
 }
 
-/* Ensure text and backgrounds inside terminal windows stay high-contrast in light mode */
 html.light .terminal-window .text-white,
 .theme-light .terminal-window .text-white {
   color: #f8fafc !important;
@@ -324,6 +345,24 @@ html.light .terminal-window .text-zinc-500,
 .theme-light .terminal-window .text-zinc-500 {
   color: #64748b !important;
 }
+html.light .terminal-window .text-emerald-300,
+html.light .terminal-window .text-emerald-400,
+.theme-light .terminal-window .text-emerald-300,
+.theme-light .terminal-window .text-emerald-400 {
+  color: #34d399 !important;
+}
+html.light .terminal-window .text-teal-300,
+html.light .terminal-window .text-teal-400,
+.theme-light .terminal-window .text-teal-300,
+.theme-light .terminal-window .text-teal-400 {
+  color: #2dd4bf !important;
+}
+html.light .terminal-window .text-cyan-300,
+html.light .terminal-window .text-cyan-400,
+.theme-light .terminal-window .text-cyan-300,
+.theme-light .terminal-window .text-cyan-400 {
+  color: #22d3ee !important;
+}
 html.light .terminal-window .bg-zinc-900,
 html.light .terminal-window .bg-zinc-900\/80,
 html.light .terminal-window .bg-zinc-900\/70,
@@ -341,10 +380,9 @@ html.light .terminal-window .border-zinc-800,
   border-color: #1e293b !important;
 }
 
-/* Light Mode Navigation */
 html.light nav,
 .theme-light nav {
-  background-color: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.92) !important;
   border-color: #e2e8f0 !important;
   box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06) !important;
 }
@@ -359,7 +397,6 @@ html.light nav a:hover,
   color: #0f172a !important;
 }
 
-/* Form Inputs in Light Mode */
 html.light input,
 html.light textarea,
 .theme-light input,
@@ -378,7 +415,6 @@ html.light textarea:focus,
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
 }
 
-/* Floating Action Button in Light Mode */
 html.light .fixed.bottom-6.right-6,
 .theme-light .fixed.bottom-6.right-6 {
   background-color: rgba(255, 255, 255, 0.96) !important;

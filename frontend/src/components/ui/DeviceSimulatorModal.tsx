@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { usePortfolio } from "@/hooks/usePortfolio";
 import {
   X,
@@ -10,10 +11,7 @@ import {
   RefreshCw,
   Wifi,
   CheckCircle2,
-  Sliders,
-  Sparkles,
   Info,
-  Maximize2,
 } from "lucide-react";
 
 interface DeviceSimulatorModalProps {
@@ -80,13 +78,13 @@ export default function DeviceSimulatorModal({
   onClose,
 }: DeviceSimulatorModalProps) {
   const { language } = usePortfolio();
+  const pathname = usePathname();
   const isEs = language === "es";
 
   const [selectedDevice, setSelectedDevice] = useState<DeviceType>("iphone");
   const [isLandscape, setIsLandscape] = useState(false);
   const [iframeKey, setIframeKey] = useState(0);
 
-  // Close on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -107,19 +105,14 @@ export default function DeviceSimulatorModal({
   const frameWidth = isLandscape ? currentDevice.height : currentDevice.width;
   const frameHeight = isLandscape ? currentDevice.width : currentDevice.height;
   const activeScale = isLandscape ? currentDevice.landscapeScale : currentDevice.scale;
+  const targetSrc = pathname || "/";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6 bg-black/90 backdrop-blur-2xl animate-in fade-in duration-200">
-      {/* Background click to dismiss */}
       <div className="absolute inset-0" onClick={onClose} />
 
-      {/* Main Modal Shell: Left Device Canvas + Right Sidebar */}
       <div className="relative z-10 w-full max-w-6xl h-[92vh] max-h-[920px] bg-zinc-950 border border-zinc-800 rounded-3xl shadow-2xl flex flex-col md:flex-row overflow-hidden pointer-events-auto">
-        
-        {/* ================= LEFT: DEVICE CANVAS ================= */}
         <div className="flex-1 h-full bg-zinc-950/80 flex flex-col items-center justify-center p-4 overflow-hidden relative">
-          
-          {/* Subtle Canvas Watermark & Size Badge */}
           <div className="absolute top-4 left-6 flex items-center gap-2 text-xs font-mono text-zinc-500 z-10">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-zinc-300 font-bold">{currentDevice.name}</span>
@@ -131,7 +124,6 @@ export default function DeviceSimulatorModal({
             </span>
           </div>
 
-          {/* Centered Device Mockup */}
           <div className="w-full flex-1 flex items-center justify-center overflow-hidden">
             <div
               style={{
@@ -142,11 +134,9 @@ export default function DeviceSimulatorModal({
               }}
               className={`relative bg-zinc-950 border-[10px] border-zinc-800 ${currentDevice.frameRadius} shadow-[0_0_80px_-20px_rgba(16,185,129,0.3)] ring-1 ring-zinc-700/60 overflow-hidden flex flex-col shrink-0 transition-all duration-300`}
             >
-              {/* Device Status Bar */}
               <div className="relative z-30 w-full h-11 bg-zinc-950/95 backdrop-blur-md px-6 flex items-center justify-between text-[11px] font-mono font-bold text-zinc-300 shrink-0 select-none border-b border-zinc-900/40">
                 <span>09:41</span>
 
-                {/* Dynamic Island for iPhone in Portrait */}
                 {currentDevice.hasDynamicIsland && !isLandscape && (
                   <div className="absolute left-1/2 -translate-x-1/2 top-2.5 w-24 h-6 bg-black rounded-full flex items-center justify-between px-3 shadow-md border border-zinc-800/80">
                     <div className="w-2.5 h-2.5 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center">
@@ -165,15 +155,13 @@ export default function DeviceSimulatorModal({
                 </div>
               </div>
 
-              {/* Live Interactive Iframe */}
               <iframe
-                key={iframeKey}
-                src="/"
+                key={`${iframeKey}-${targetSrc}`}
+                src={targetSrc}
                 title="Responsive Mobile View"
                 className={`w-full flex-1 border-0 ${currentDevice.screenRadius} bg-zinc-950`}
               />
 
-              {/* Bottom Home Indicator Bar */}
               <div className="w-full h-6 bg-zinc-950 flex items-center justify-center shrink-0 select-none">
                 <div className="w-32 h-1 bg-zinc-600/80 rounded-full" />
               </div>
@@ -181,11 +169,8 @@ export default function DeviceSimulatorModal({
           </div>
         </div>
 
-        {/* ================= RIGHT: CONTROL SIDEBAR ================= */}
         <div className="w-full md:w-84 lg:w-92 h-full bg-zinc-900/90 border-t md:border-t-0 md:border-l border-zinc-800/80 p-6 flex flex-col justify-between overflow-y-auto custom-code-scroll shrink-0">
-          
           <div className="space-y-6">
-            {/* Sidebar Top: Title + Close Button */}
             <div className="flex items-start justify-between gap-3 pb-4 border-b border-zinc-800/80">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
@@ -210,7 +195,6 @@ export default function DeviceSimulatorModal({
               </button>
             </div>
 
-            {/* Device Switcher Section */}
             <div>
               <div className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 font-bold mb-3 flex items-center justify-between">
                 <span>{isEs ? "Dispositivo" : "Device Preset"}</span>
@@ -265,7 +249,6 @@ export default function DeviceSimulatorModal({
               </div>
             </div>
 
-            {/* Quick Actions (Rotate & Refresh) */}
             <div>
               <div className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 font-bold mb-2.5">
                 {isEs ? "Controles & Vista" : "Controls & View"}
@@ -292,7 +275,6 @@ export default function DeviceSimulatorModal({
               </div>
             </div>
 
-            {/* Tech Specs Box */}
             <div className="p-3.5 rounded-xl bg-zinc-950/70 border border-zinc-800/80 space-y-2 text-[11px] font-mono">
               <div className="text-zinc-400 uppercase tracking-wider font-bold flex items-center gap-1.5 text-[10px]">
                 <Info className="w-3 h-3 text-emerald-400" />
@@ -309,23 +291,21 @@ export default function DeviceSimulatorModal({
                 </strong>
               </div>
               <div className="flex items-center justify-between text-zinc-400">
-                <span>Navegación:</span>
-                <strong className="text-zinc-200">{isEs ? "Menú Hamburguesa" : "Burger Menu"}</strong>
+                <span>Ruta activa:</span>
+                <strong className="text-zinc-200 truncate max-w-[140px]">{targetSrc}</strong>
               </div>
             </div>
 
-            {/* Testing Guide Tip */}
             <div className="p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/20 text-[11px] font-mono text-zinc-300 leading-relaxed">
               <span className="text-emerald-400 font-bold block mb-1">
                 {isEs ? "💡 Qué probar:" : "💡 What to test:"}
               </span>
               {isEs
-                ? "Abre el menú hamburguesa móvil, interactúa con el simulador LoRa y prueba enviar un mensaje desde el formulario táctil."
-                : "Open the mobile hamburger menu, interact with the LoRa simulator, and test sending a message from the touch form."}
+                ? "Audita el perfil en Tech Radar, alterna entre modo Dark/Light y verifica que las grillas y gráficos se adapten sin desbordes."
+                : "Audit the profile in Tech Radar, toggle between Dark/Light mode, and verify grids and charts adapt with zero overflow."}
             </div>
           </div>
 
-          {/* Bottom Close Action */}
           <div className="pt-4 border-t border-zinc-800/80 mt-4">
             <button
               onClick={onClose}
@@ -335,7 +315,6 @@ export default function DeviceSimulatorModal({
             </button>
           </div>
         </div>
-
       </div>
     </div>
   );
