@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import BackendPreviewBanner from "@/components/sections/BackendPreviewBanner";
+import TechRadarPreviewBanner from "@/components/sections/TechRadarPreviewBanner";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import EducationSection from "@/components/sections/EducationSection";
@@ -14,6 +15,7 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <ProjectsSection />
+        <TechRadarPreviewBanner />
         <BackendPreviewBanner />
         <ExperienceSection />
         <SkillsSection />

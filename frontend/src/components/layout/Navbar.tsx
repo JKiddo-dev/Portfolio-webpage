@@ -71,6 +71,13 @@ export default function Navbar() {
       active: pathname === "/backend-apis",
     },
     {
+      name: "Tech Radar",
+      href: "/labs/tech-radar",
+      isRoute: true,
+      badge: "AI + ETL",
+      active: pathname === "/labs/tech-radar",
+    },
+    {
       name: t.nav.experience,
       href: pathname === "/" ? "#experience" : "/#experience",
       isRoute: pathname !== "/",
