@@ -83,7 +83,7 @@ export default function Navbar() {
       active: pathname === "/" && activeSection === "projects",
     },
     {
-      name: isEs ? "Backend & APIs" : "Backend & APIs",
+      name: "Backend",
       href: "/backend-apis",
       isRoute: true,
       badge: "Itaú BFF",
@@ -127,7 +127,7 @@ export default function Navbar() {
 
       <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-3 sm:px-4 pt-3 sm:pt-4 pointer-events-none transition-all duration-300">
         <nav
-          className={`pointer-events-auto flex items-center justify-between gap-2 lg:gap-3 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-2xl border transition-all duration-300 backdrop-blur-xl max-w-7xl w-full ${
+          className={`pointer-events-auto flex items-center justify-between gap-2 lg:gap-4 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl border transition-all duration-300 backdrop-blur-xl max-w-6xl xl:max-w-7xl w-full ${
             isDark
               ? scrolled
                 ? "bg-zinc-950/90 border-zinc-800 shadow-2xl shadow-black/50"
@@ -162,7 +162,7 @@ export default function Navbar() {
                 jkiddo-dev
               </span>
               <span
-                className={`text-[10px] font-mono font-medium hidden min-[400px]:inline ${
+                className={`text-[10px] font-mono font-medium hidden 2xl:inline ${
                   isDark ? "text-emerald-400/90" : "text-emerald-700"
                 }`}
               >
@@ -199,7 +199,7 @@ export default function Navbar() {
                 </span>
               );
 
-              const className = `relative px-2.5 py-1.5 rounded-lg text-[11px] font-mono uppercase tracking-wider transition-all duration-200 ${
+              const className = `relative px-2.5 py-1 rounded-lg text-[11px] font-mono uppercase tracking-wider transition-all duration-200 ${
                 link.active
                   ? isDark
                     ? "text-emerald-300 font-bold bg-zinc-800/90 shadow-xs"
@@ -225,7 +225,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setDeviceModalOpen(true)}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-mono transition-all cursor-pointer hover:scale-102 active:scale-98 ${
+              className={`p-2 rounded-xl border text-xs font-mono transition-all cursor-pointer hover:scale-105 active:scale-95 ${
                 isDark
                   ? "bg-zinc-900/90 border-zinc-800 hover:border-zinc-700 text-zinc-200 hover:text-white"
                   : "bg-slate-100 border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-950"
@@ -238,15 +238,12 @@ export default function Navbar() {
                   isDark ? "text-cyan-400" : "text-cyan-700"
                 }`}
               />
-              <span className="hidden lg:inline text-[11px] font-semibold">
-                Preview
-              </span>
             </button>
 
             <button
               type="button"
               onClick={toggleLanguage}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-mono transition-all cursor-pointer hover:scale-102 active:scale-98 ${
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-mono transition-all cursor-pointer hover:scale-105 active:scale-95 ${
                 isDark
                   ? "bg-zinc-900/90 border-zinc-800 hover:border-zinc-700 text-zinc-200"
                   : "bg-slate-100 border-slate-200 hover:border-slate-300 text-slate-700"
@@ -293,7 +290,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={toggleTheme}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-mono transition-all cursor-pointer hover:scale-102 active:scale-98 ${
+              className={`p-2 rounded-xl border text-xs font-mono transition-all cursor-pointer hover:scale-105 active:scale-95 ${
                 isDark
                   ? "bg-zinc-900/90 border-zinc-800 hover:border-zinc-700 text-zinc-200"
                   : "bg-slate-100 border-slate-200 hover:border-slate-300 text-slate-800"
@@ -310,21 +307,15 @@ export default function Navbar() {
               aria-label="Toggle color theme"
             >
               {isDark ? (
-                <>
-                  <Moon className="w-3.5 h-3.5 text-amber-300" />
-                  <span className="text-[11px] font-bold">Dark</span>
-                </>
+                <Moon className="w-3.5 h-3.5 text-amber-300" />
               ) : (
-                <>
-                  <Sun className="w-3.5 h-3.5 text-amber-600" />
-                  <span className="text-[11px] font-bold">Light</span>
-                </>
+                <Sun className="w-3.5 h-3.5 text-amber-600" />
               )}
             </button>
 
             <Link
               href="/contacto"
-              className="group relative flex items-center gap-1.5 px-3.5 py-2 text-xs font-mono font-bold rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 text-zinc-950 hover:brightness-105 hover:scale-102 active:scale-98 transition-all shadow-md shadow-emerald-500/20 shrink-0"
+              className="group relative flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs font-mono font-bold rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 text-zinc-950 hover:brightness-105 hover:scale-102 active:scale-98 transition-all shadow-md shadow-emerald-500/20 shrink-0"
             >
               <span>{t.nav.talk}</span>
               <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -406,7 +397,7 @@ export default function Navbar() {
 
         {mobileMenuOpen && (
           <div
-            className={`xl:hidden pointer-events-auto absolute top-16 left-3 right-3 sm:left-4 sm:right-4 rounded-2xl p-4 sm:p-5 shadow-2xl backdrop-blur-2xl border flex flex-col gap-2.5 max-w-7xl mx-auto ${
+            className={`xl:hidden pointer-events-auto absolute top-16 left-3 right-3 sm:left-4 sm:right-4 rounded-2xl p-4 sm:p-5 shadow-2xl backdrop-blur-2xl border flex flex-col gap-2.5 max-w-6xl xl:max-w-7xl mx-auto ${
               isDark
                 ? "bg-zinc-950/95 border-zinc-800 text-zinc-100"
                 : "bg-white/95 border-slate-200 text-slate-900"
