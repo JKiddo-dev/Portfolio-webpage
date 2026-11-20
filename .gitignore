@@ -35,5 +35,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Agentic worktrees
+# Agentic worktrees & large third-party installed skills (tracked via skills-lock.json)
 .worktrees/
+.agents/skills/design-taste-frontend/
