@@ -4,15 +4,10 @@ import React, { useState } from "react";
 import { usePortfolio } from "@/hooks/usePortfolio";
 import SpotlightCard from "@/components/ui/SpotlightCard";
 import {
-  Code2,
   Copy,
   Check,
-  Layers,
   FileCode,
   ShieldCheck,
-  GitBranch,
-  Boxes,
-  Cpu,
   CheckCircle2,
   Maximize2,
   Minimize2,
@@ -51,7 +46,8 @@ const PRINCIPLES: PrincipleItem[] = [
       es: "Modificar la API de transporte (ej. migrar a gRPC o WebSockets) no altera la validación ni las reglas de dominio.",
       en: "Changing the transport protocol (e.g. migrating to gRPC or WebSockets) does not affect validation or domain rules.",
     },
-    filePath: "src/modules/telemetry/dto/lora-packet.dto.ts & telemetry.controller.ts",
+    filePath:
+      "src/modules/telemetry/dto/lora-packet.dto.ts & telemetry.controller.ts",
     code: `// lora-packet.dto.ts
 export class LoRaPacketDto {
   @ApiProperty({ example: 'ESP32-Node-03' })
@@ -132,7 +128,7 @@ export class SoilMoistureDecoder implements SensorPayloadDecoder {
   readonly sensorType = 'SOIL_CAPACITIVE';
 
   decode(rawPayload: string) {
-    const match = rawPayload.match(/moist:(\d+(\.\d+)?)/);
+    const match = rawPayload.match(/moist:(\\d+(\\.\\d+)?)/);
     return { moistureVwc: match ? parseFloat(match[1]) : 0 };
   }
 }
@@ -398,23 +394,20 @@ export default function SolidArchitectureExplorer() {
   };
 
   return (
-    <div className="mt-16 pt-16 border-t border-zinc-900">
+    <div className="mt-12 pt-12 border-t border-zinc-800/80">
       {/* Section Header */}
       <div className="mb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-400 mb-3">
-          <Layers className="w-3.5 h-3.5" />
-          <span>
-            {isEs
-              ? "Principios de Diseño & Código Limpio"
-              : "Design Principles & Clean Code"}
-          </span>
+        <div className="section-eyebrow mb-3">
+          {isEs
+            ? "PRINCIPIOS DE DISEÑO & CÓDIGO LIMPIO"
+            : "DESIGN PRINCIPLES & CLEAN CODE"}
         </div>
-        <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+        <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
           {isEs
             ? "Patrones de Arquitectura en Práctica"
             : "Architecture Patterns in Practice"}
         </h3>
-        <p className="text-zinc-400 mt-2 max-w-2xl text-xs sm:text-sm">
+        <p className="text-zinc-400 mt-2 max-w-2xl text-xs sm:text-sm leading-relaxed">
           {isEs
             ? "Implementación real de principios SOLID y arquitectura por capas en TypeScript y NestJS. Estructurado para alta cohesión, bajo acoplamiento y testeabilidad exhaustiva."
             : "Concrete implementation of SOLID principles and layered architecture in TypeScript and NestJS. Engineered for high cohesion, loose coupling, and thorough testability."}
@@ -422,45 +415,51 @@ export default function SolidArchitectureExplorer() {
       </div>
 
       {/* Principle Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-6">
+      <div
+        role="tablist"
+        aria-label={isEs ? "Principios SOLID" : "SOLID principles"}
+        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-6"
+      >
         {PRINCIPLES.map((principle) => {
           const isSelected = activePrincipleId === principle.id;
           return (
             <button
               key={principle.id}
+              type="button"
+              role="tab"
+              aria-selected={isSelected}
               onClick={() => setActivePrincipleId(principle.id)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-mono transition-all shrink-0 cursor-pointer ${
+              className={`flex items-center gap-2 px-3 py-2.5 rounded-md border text-xs font-mono transition-colors min-w-0 cursor-pointer ${
                 isSelected
-                  ? "bg-zinc-800 border-emerald-400/80 text-white shadow-lg shadow-emerald-500/10"
+                  ? "bg-zinc-900 border-emerald-500 text-white"
                   : "bg-zinc-950/70 border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:border-zinc-700"
               }`}
             >
               <span
-                className={`w-5 h-5 rounded-md flex items-center justify-center text-[10px] font-black ${
+                className={`w-5 h-5 rounded-sm flex items-center justify-center text-[10px] font-bold shrink-0 ${
                   isSelected
-                    ? "bg-emerald-400 text-zinc-950"
+                    ? "bg-[var(--btn-primary-bg)] text-[var(--btn-primary-fg)]"
                     : "bg-zinc-800 text-zinc-400"
                 }`}
               >
                 {principle.letter}
               </span>
-              <span className="font-semibold">{principle.shortName}</span>
+              <span className="font-semibold truncate">
+                {principle.shortName}
+              </span>
             </button>
           );
         })}
       </div>
 
-      {/* Principle Detail Spotlight Card */}
-      <SpotlightCard
-        spotlightColor="rgba(59, 130, 246, 0.12)"
-        className="p-6 sm:p-8 border-zinc-800/80 bg-zinc-950/90"
-      >
+      {/* Principle Detail Card */}
+      <SpotlightCard className="p-6 sm:p-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Conceptual Overview & Impact */}
-          <div className="lg:col-span-5 space-y-6 flex flex-col justify-between h-full">
+          <div className="lg:col-span-5 space-y-6 flex flex-col justify-between h-full min-w-0">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-[11px] font-mono text-emerald-400 mb-3">
-                <CheckCircle2 className="w-3 h-3" />
+              <div className="badge-accent inline-flex items-center gap-1.5 mb-3">
+                <CheckCircle2 className="w-3 h-3 shrink-0" />
                 <span>
                   {isEs
                     ? activePrinciple.contextTag.es
@@ -481,11 +480,13 @@ export default function SolidArchitectureExplorer() {
               </p>
             </div>
 
-            {/* Impact / Technical Benefit Box */}
-            <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800/80 space-y-1.5">
-              <div className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-bold flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                <span>{isEs ? "Beneficio en Producción" : "Production Benefit"}</span>
+            {/* Production Benefit Box */}
+            <div className="p-4 rounded-md bg-zinc-950/70 border border-zinc-800 space-y-1.5">
+              <div className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-semibold flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
+                <span>
+                  {isEs ? "Beneficio en Producción" : "Production Benefit"}
+                </span>
               </div>
               <p className="text-xs text-zinc-300 leading-relaxed">
                 {isEs
@@ -495,68 +496,82 @@ export default function SolidArchitectureExplorer() {
             </div>
           </div>
 
-          {/* Right Column: Code Viewer */}
-          <div className="lg:col-span-7 rounded-2xl bg-zinc-950 border border-zinc-800 overflow-hidden shadow-2xl flex flex-col">
+          {/* Right Column: Flat Terminal Code Viewer */}
+          <div className="lg:col-span-7 terminal-window rounded-lg bg-zinc-950 border border-zinc-800 overflow-hidden flex flex-col min-w-0">
             {/* Code Window Header */}
-            <div className="px-4 py-3 bg-zinc-900/80 border-b border-zinc-800 flex items-center justify-between gap-4">
-              <div className="flex items-center gap-2 font-mono text-xs text-zinc-300 truncate">
+            <div className="px-4 py-2.5 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2 font-mono text-xs text-zinc-300 min-w-0 flex-1">
                 <FileCode className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span className="truncate font-medium">
                   {activePrinciple.filePath}
                 </span>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 shrink-0">
                 <button
+                  type="button"
                   onClick={() => setIsExpanded(!isExpanded)}
-                  className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-xs font-mono transition-colors shrink-0 cursor-pointer"
-                  title={isExpanded ? (isEs ? "Contraer" : "Collapse") : (isEs ? "Ver completo" : "Expand")}
+                  className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 text-xs font-mono transition-colors cursor-pointer"
+                  title={
+                    isExpanded
+                      ? isEs
+                        ? "Contraer"
+                        : "Collapse"
+                      : isEs
+                      ? "Ver completo"
+                      : "Expand"
+                  }
                 >
                   {isExpanded ? (
                     <>
-                      <Minimize2 className="w-3.5 h-3.5 text-blue-400" />
-                      <span className="hidden sm:inline">{isEs ? "Contraer" : "Collapse"}</span>
+                      <Minimize2 className="w-3.5 h-3.5 text-emerald-400" />
+                      <span className="hidden sm:inline">
+                        {isEs ? "Contraer" : "Collapse"}
+                      </span>
                     </>
                   ) : (
                     <>
-                      <Maximize2 className="w-3.5 h-3.5 text-blue-400" />
-                      <span className="hidden sm:inline">{isEs ? "Ver completo" : "Expand"}</span>
+                      <Maximize2 className="w-3.5 h-3.5 text-emerald-400" />
+                      <span className="hidden sm:inline">
+                        {isEs ? "Ver completo" : "Expand"}
+                      </span>
                     </>
                   )}
                 </button>
 
                 <button
+                  type="button"
                   onClick={handleCopy}
-                className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-xs font-mono transition-colors shrink-0 cursor-pointer"
-                title="Copiar código"
-              >
-                {copied ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-emerald-400" />
-                    <span className="text-emerald-400 font-bold">
-                      {isEs ? "¡Copiado!" : "Copied!"}
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>{isEs ? "Copiar" : "Copy"}</span>
-                  </>
-                )}
-              </button>
+                  className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 text-xs font-mono transition-colors cursor-pointer"
+                  title={isEs ? "Copiar código" : "Copy code"}
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <span className="text-emerald-400 font-semibold">
+                        {isEs ? "Copiado" : "Copied"}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>{isEs ? "Copiar" : "Copy"}</span>
+                    </>
+                  )}
+                </button>
               </div>
             </div>
 
-            {/* Code Content with Line Numbers & Sleek Scroll */}
+            {/* Code Content with Line Numbers */}
             <div
-              className={`p-4 sm:p-5 font-mono text-xs overflow-auto custom-code-scroll bg-zinc-950/95 leading-relaxed transition-all duration-300 ${
+              className={`p-4 sm:p-5 font-mono text-xs overflow-auto custom-code-scroll bg-zinc-950 leading-relaxed ${
                 isExpanded ? "max-h-none" : "max-h-[380px]"
               }`}
             >
               <div className="table w-full">
                 {activePrinciple.code.split("\n").map((line, idx) => (
-                  <div key={idx} className="table-row hover:bg-zinc-900/40">
-                    <span className="table-cell select-none pr-4 text-right text-[11px] text-zinc-600 font-mono w-7">
+                  <div key={idx} className="table-row hover:bg-zinc-900/60">
+                    <span className="table-cell select-none pr-4 text-right text-[11px] text-zinc-500 font-mono w-7">
                       {String(idx + 1).padStart(2, "0")}
                     </span>
                     <span className="table-cell font-mono text-zinc-200 text-[11px] sm:text-xs whitespace-pre">
@@ -567,14 +582,16 @@ export default function SolidArchitectureExplorer() {
               </div>
             </div>
 
-            {/* Scroll Hint & Quick Expand footer */}
+            {/* Expand Footer */}
             {!isExpanded && (
-              <div className="px-4 py-2 bg-gradient-to-t from-zinc-950 via-zinc-900/60 to-transparent border-t border-zinc-800/80 flex items-center justify-between text-[11px] font-mono text-zinc-400 select-none">
-                <span className="flex items-center gap-1.5 text-zinc-500">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  {isEs ? "Rueda del ratón para explorar" : "Mouse wheel to explore"}
+              <div className="px-4 py-2 bg-zinc-900 border-t border-zinc-800 flex items-center justify-between gap-2 text-[11px] font-mono text-zinc-400">
+                <span className="text-zinc-500">
+                  {isEs
+                    ? "Desplaza para explorar"
+                    : "Scroll to inspect"}
                 </span>
                 <button
+                  type="button"
                   onClick={() => setIsExpanded(true)}
                   className="text-emerald-400 hover:text-emerald-300 hover:underline cursor-pointer"
                 >
@@ -584,9 +601,9 @@ export default function SolidArchitectureExplorer() {
             )}
 
             {/* Code Window Footer */}
-            <div className="px-4 py-2 bg-zinc-900/40 border-t border-zinc-800 text-[10px] font-mono text-zinc-500 flex items-center justify-between">
+            <div className="px-4 py-2 bg-zinc-900 border-t border-zinc-800 text-[10px] font-mono text-zinc-500 flex items-center justify-between gap-2">
               <span>TypeScript 5 • NestJS 11</span>
-              <span className="text-emerald-400/80">Clean Code Standards</span>
+              <span className="text-emerald-400">Clean Code Standards</span>
             </div>
           </div>
         </div>

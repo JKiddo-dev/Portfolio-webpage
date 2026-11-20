@@ -275,11 +275,13 @@ html.light .bg-zinc-950\/95,
 html.light .bg-zinc-800,
 html.light .bg-zinc-800\/50,
 html.light .bg-zinc-800\/60,
+html.light .bg-zinc-800\/70,
 html.light .bg-zinc-800\/80,
 html.light .bg-zinc-800\/90,
 .theme-light .bg-zinc-800,
 .theme-light .bg-zinc-800\/50,
 .theme-light .bg-zinc-800\/60,
+.theme-light .bg-zinc-800\/70,
 .theme-light .bg-zinc-800\/80,
 .theme-light .bg-zinc-800\/90 {
   background-color: #f4f4f5 !important;
@@ -377,6 +379,13 @@ html.light .text-blue-400,
 .theme-light .text-blue-300,
 .theme-light .text-blue-400 {
   color: #1d4ed8 !important;
+}
+
+html.light .text-rose-300,
+html.light .text-rose-400,
+.theme-light .text-rose-300,
+.theme-light .text-rose-400 {
+  color: #be123c !important;
 }
 
 html.light .surface-card,
@@ -478,6 +487,13 @@ html.light .terminal-window .text-amber-400,
 .theme-light .terminal-window .text-amber-300,
 .theme-light .terminal-window .text-amber-400 {
   color: #fbbf24 !important;
+}
+
+html.light .terminal-window .text-rose-300,
+html.light .terminal-window .text-rose-400,
+.theme-light .terminal-window .text-rose-300,
+.theme-light .terminal-window .text-rose-400 {
+  color: #fb7185 !important;
 }
 
 html.light .terminal-window .bg-zinc-900,
