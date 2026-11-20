@@ -15,10 +15,10 @@ Use this structure when compiling a rough phone instruction into an execution-re
 - [ ] <ES/EN bilingual parity & Dark/Light theme parity (if UI)>
 - [ ] <Tests / build / lint passing>
 
-### Agent Assignments & File Ownership
-*(Include ONLY active agents for this task)*
+### Agent Assignments, Models & File Ownership
+*(Include ONLY active agents for this task; assign the leanest model tier per `AGENTS.md`)*
 
-1. **`<agent-name>`** (Skill: `.agents/skills/agent-<role>/SKILL.md`)
+1. **`<agent-name>`** — Model: **`<Model Display Name>`** (Skill: `.agents/skills/agent-<role>/SKILL.md`)
    - **Owns**: `<exact file/folder globs>`
    - **Must Not Touch**: `<disjoint files owned by others>`
    - **Tasks**:

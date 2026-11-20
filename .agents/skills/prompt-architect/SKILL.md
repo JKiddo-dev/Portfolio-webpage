@@ -27,9 +27,10 @@ prompt—that leverages Antigravity's native tools (`swarm`, `browser`, `/plan`,
    - `agent-frontend`: Include for React/Next.js components, MVVM hooks, state, data (`portfolioData.ts`), or ES/EN translations.
    - `agent-visual-verifier`: Include for any user-visible UI change.
    - `agent-pr-reviewer`: Include for any non-trivial change (2+ files or cross-layer work).
-3. **Choose Execution Mode**:
+3. **Choose Execution Mode & Per-Agent Models**:
    - **Single-agent / sequential**: When only 1 writer role is needed (cheapest in tokens).
-   - **Swarm (`workspace: "share"`)**: When 2+ writers can work in parallel on **disjoint files** (e.g., `ux-ui` + `frontend` or `backend` + `frontend`), plus `visual-verifier` / `pr-reviewer`.
+   - **Swarm (`workspace: "share"` or disjoint `inherit`)**: When 2+ writers can work in parallel on **disjoint files** (e.g., `ux-ui` + `frontend` or `backend` + `frontend`), plus `visual-verifier` / `pr-reviewer`.
+   - **Model Routing**: Apply the **Model Routing Policy** in `AGENTS.md` (e.g., `High` only for complex architecture/refactors, `Medium` for standard implementation, `Claude Sonnet 5.5 (Medium)` / `Gemini 4 Argon (Medium)` for cross-model `pr-reviewer`, and `Flash Low` / `Neon Low` for `visual-verifier` & `monitor`). Explicitly display each agent's model in the brief so the user can override it in 2 words.
 4. **Emit the Structured Coding-Agent Prompt**:
    - Follow [prompt-template.md](./references/prompt-template.md).
    - Keep formatting **mobile-scannable** (short bullets, clear headers, no walls of text).
