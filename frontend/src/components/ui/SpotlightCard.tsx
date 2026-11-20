@@ -19,6 +19,7 @@ export default function SpotlightCard({
       className={`surface-card overflow-hidden ${className}`}
       {...props}
     >
+      <span aria-hidden="true" className="glass-specular-rim" />
       {children}
     </div>
   );

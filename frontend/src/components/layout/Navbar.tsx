@@ -13,11 +13,25 @@ import {
   Smartphone,
   Sun,
   Moon,
+  Droplets,
 } from "lucide-react";
 import DeviceSimulatorModal from "@/components/ui/DeviceSimulatorModal";
 
+type ThemeOption = {
+  id: "dark" | "light" | "glass";
+  labelEs: string;
+  labelEn: string;
+  icon: React.ComponentType<{ className?: string }>;
+};
+
+const THEME_OPTIONS: ThemeOption[] = [
+  { id: "dark", labelEs: "Modo Oscuro", labelEn: "Dark Mode", icon: Moon },
+  { id: "light", labelEs: "Modo Claro", labelEn: "Light Mode", icon: Sun },
+  { id: "glass", labelEs: "Liquid Glass", labelEn: "Liquid Glass", icon: Droplets },
+];
+
 export default function Navbar() {
-  const { t, language, toggleLanguage, theme, toggleTheme, isDark } =
+  const { t, language, toggleLanguage, theme, setTheme, isDark, isGlass } =
     usePortfolio();
   const pathname = usePathname();
 
@@ -113,42 +127,97 @@ export default function Navbar() {
     },
   ];
 
-  const controlButtonClass = isDark
-    ? "border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-zinc-700 hover:text-zinc-50"
-    : "border-zinc-200 bg-white text-zinc-700 hover:border-zinc-300 hover:text-zinc-950";
+  const controlButtonClass = isGlass
+    ? "border-white/15 bg-white/[0.06] text-zinc-200 hover:border-violet-200/35 hover:bg-white/[0.11] hover:text-white"
+    : isDark
+      ? "border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-zinc-700 hover:text-zinc-50"
+      : "border-zinc-200 bg-white text-zinc-700 hover:border-zinc-300 hover:text-zinc-950";
+
+  const themeGroupClass = isGlass
+    ? "border-white/15 bg-white/[0.06]"
+    : isDark
+      ? "border-zinc-800 bg-zinc-900"
+      : "border-zinc-200 bg-white";
+
+  const renderThemeSelector = () => (
+    <div
+      role="group"
+      aria-label={isEs ? "Selector de tema" : "Color theme selector"}
+      className={`h-9 p-0.5 rounded-md border flex items-center gap-0.5 shrink-0 ${themeGroupClass}`}
+    >
+      {THEME_OPTIONS.map((option) => {
+        const Icon = option.icon;
+        const isSelected = theme === option.id;
+        const label = isEs ? option.labelEs : option.labelEn;
+
+        return (
+          <button
+            key={option.id}
+            type="button"
+            onClick={() => setTheme(option.id)}
+            aria-pressed={isSelected}
+            aria-label={label}
+            title={label}
+            className={`h-7 w-7 rounded-[4px] flex items-center justify-center transition-colors duration-150 cursor-pointer ${
+              isSelected
+                ? "bg-[var(--btn-primary-bg)] text-[var(--btn-primary-fg)]"
+                : isGlass
+                  ? "text-zinc-300 hover:text-white hover:bg-white/10"
+                  : isDark
+                    ? "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800"
+                    : "text-zinc-500 hover:text-zinc-950 hover:bg-zinc-100"
+            }`}
+          >
+            <Icon className="w-3.5 h-3.5" />
+          </button>
+        );
+      })}
+    </div>
+  );
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-200 ${
-          isDark
-            ? scrolled
-              ? "bg-zinc-950/95 border-zinc-800 backdrop-blur-md"
-              : "bg-zinc-950/85 border-zinc-800/70 backdrop-blur-sm"
-            : scrolled
-              ? "bg-[#fafaf9]/95 border-zinc-200 backdrop-blur-md"
-              : "bg-[#fafaf9]/90 border-zinc-200/80 backdrop-blur-sm"
-        }`}
+        className={
+          isGlass
+            ? "fixed top-0 left-0 right-0 z-50 px-3 sm:px-5 lg:px-8 pt-2.5 sm:pt-3 pointer-events-none"
+            : `fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-200 ${
+                isDark
+                  ? scrolled
+                    ? "bg-zinc-950/95 border-zinc-800 backdrop-blur-md"
+                    : "bg-zinc-950/85 border-zinc-800/70 backdrop-blur-sm"
+                  : scrolled
+                    ? "bg-[#fafaf9]/95 border-zinc-200 backdrop-blur-md"
+                    : "bg-[#fafaf9]/90 border-zinc-200/80 backdrop-blur-sm"
+              }`
+        }
       >
         <nav
           aria-label={isEs ? "Navegación principal" : "Primary navigation"}
-          className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4"
+          className={
+            isGlass
+              ? "glass-nav-shell pointer-events-auto relative overflow-hidden max-w-6xl mx-auto px-3.5 sm:px-5 h-14 sm:h-15 rounded-2xl flex items-center justify-between gap-2 transition-all duration-200"
+              : "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2"
+          }
         >
           {/* Brand */}
-          <Link
-            href="/"
-            className="flex items-center gap-2.5 group shrink-0"
-          >
+          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
             <span
               className={`w-8 h-8 rounded-md border flex items-center justify-center transition-colors duration-150 ${
-                isDark
-                  ? "bg-zinc-900 border-zinc-800 group-hover:border-emerald-500/60"
-                  : "bg-white border-zinc-200 group-hover:border-emerald-700/60"
+                isGlass
+                  ? "bg-white/[0.08] border-white/18 group-hover:border-violet-200/40"
+                  : isDark
+                    ? "bg-zinc-900 border-zinc-800 group-hover:border-emerald-500/60"
+                    : "bg-white border-zinc-200 group-hover:border-emerald-700/60"
               }`}
             >
               <Terminal
                 className={`w-4 h-4 ${
-                  isDark ? "text-emerald-400" : "text-emerald-700"
+                  isGlass
+                    ? "text-violet-200"
+                    : isDark
+                      ? "text-emerald-400"
+                      : "text-emerald-700"
                 }`}
               />
             </span>
@@ -164,7 +233,7 @@ export default function Navbar() {
               </span>
               <span
                 className={`text-[10px] font-mono hidden sm:inline ${
-                  isDark ? "text-zinc-500" : "text-zinc-500"
+                  isGlass ? "text-zinc-300/75" : "text-zinc-500"
                 }`}
               >
                 Full-Stack Systems
@@ -173,17 +242,19 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-0.5 min-w-0">
             {navLinks.map((link) => {
               const linkContent = (
-                <span className="flex items-center gap-1.5 whitespace-nowrap">
+                <span className="flex items-center gap-1 whitespace-nowrap">
                   <span>{link.name}</span>
                   {link.badge && (
                     <span
                       className={`text-[10px] px-1.5 py-0.25 rounded-md font-mono font-medium border ${
-                        isDark
-                          ? "bg-zinc-900 text-zinc-400 border-zinc-800"
-                          : "bg-zinc-100 text-zinc-600 border-zinc-200"
+                        isGlass
+                          ? "bg-white/[0.07] text-violet-200 border-white/14"
+                          : isDark
+                            ? "bg-zinc-900 text-zinc-400 border-zinc-800"
+                            : "bg-zinc-100 text-zinc-600 border-zinc-200"
                       }`}
                     >
                       {link.badge}
@@ -192,24 +263,29 @@ export default function Navbar() {
                 </span>
               );
 
-              const linkClass = `relative px-2.5 py-1.5 rounded-md text-xs font-mono transition-colors duration-150 ${
+              const linkClass = `relative px-2 py-1.5 rounded-md text-xs font-mono transition-colors duration-150 ${
                 link.active
-                  ? isDark
-                    ? "text-emerald-400 font-semibold"
-                    : "text-emerald-700 font-semibold"
-                  : isDark
-                    ? "text-zinc-400 hover:text-zinc-100"
-                    : "text-zinc-600 hover:text-zinc-950"
+                  ? isGlass
+                    ? "text-white font-semibold bg-white/[0.12] border border-white/18"
+                    : isDark
+                      ? "text-emerald-400 font-semibold"
+                      : "text-emerald-700 font-semibold"
+                  : isGlass
+                    ? "text-zinc-300 hover:text-white hover:bg-white/[0.07]"
+                    : isDark
+                      ? "text-zinc-400 hover:text-zinc-100"
+                      : "text-zinc-600 hover:text-zinc-950"
               }`;
 
-              const activeBar = link.active ? (
-                <span
-                  aria-hidden="true"
-                  className={`absolute left-2.5 right-2.5 -bottom-[17px] h-[2px] ${
-                    isDark ? "bg-emerald-500" : "bg-emerald-700"
-                  }`}
-                />
-              ) : null;
+              const activeBar =
+                link.active && !isGlass ? (
+                  <span
+                    aria-hidden="true"
+                    className={`absolute left-2.5 right-2.5 -bottom-[17px] h-[2px] ${
+                      isDark ? "bg-emerald-500" : "bg-emerald-700"
+                    }`}
+                  />
+                ) : null;
 
               return link.isRoute ? (
                 <Link
@@ -231,11 +307,11 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Controls */}
-          <div className="hidden md:flex items-center gap-2 shrink-0">
+          <div className="hidden md:flex items-center gap-1.5 shrink-0">
             <button
               type="button"
               onClick={() => setDeviceModalOpen(true)}
-              className={`h-9 w-9 rounded-md border flex items-center justify-center transition-colors cursor-pointer ${controlButtonClass}`}
+              className={`hidden lg:flex h-9 w-9 rounded-md border items-center justify-center transition-colors cursor-pointer ${controlButtonClass}`}
               title={isEs ? "Abrir Simulador Móvil" : "Open Mobile Simulator"}
               aria-label={
                 isEs ? "Abrir Simulador Móvil" : "Open Device Simulator"
@@ -255,9 +331,11 @@ export default function Navbar() {
               <span
                 className={
                   language === "es"
-                    ? isDark
-                      ? "font-semibold text-emerald-400"
-                      : "font-semibold text-emerald-700"
+                    ? isGlass
+                      ? "font-semibold text-violet-200"
+                      : isDark
+                        ? "font-semibold text-emerald-400"
+                        : "font-semibold text-emerald-700"
                     : "opacity-50"
                 }
               >
@@ -267,9 +345,11 @@ export default function Navbar() {
               <span
                 className={
                   language === "en"
-                    ? isDark
-                      ? "font-semibold text-emerald-400"
-                      : "font-semibold text-emerald-700"
+                    ? isGlass
+                      ? "font-semibold text-violet-200"
+                      : isDark
+                        ? "font-semibold text-emerald-400"
+                        : "font-semibold text-emerald-700"
                     : "opacity-50"
                 }
               >
@@ -277,27 +357,7 @@ export default function Navbar() {
               </span>
             </button>
 
-            <button
-              type="button"
-              onClick={toggleTheme}
-              className={`h-9 w-9 rounded-md border flex items-center justify-center transition-colors cursor-pointer ${controlButtonClass}`}
-              title={
-                theme === "dark"
-                  ? isEs
-                    ? "Cambiar a modo claro"
-                    : "Switch to light mode"
-                  : isEs
-                    ? "Cambiar a modo oscuro"
-                    : "Switch to dark mode"
-              }
-              aria-label="Toggle color theme"
-            >
-              {isDark ? (
-                <Moon className="w-4 h-4" />
-              ) : (
-                <Sun className="w-4 h-4" />
-              )}
-            </button>
+            {renderThemeSelector()}
 
             <Link
               href="/contacto"
@@ -324,77 +384,80 @@ export default function Navbar() {
 
           {/* Mobile Controls */}
           <div className="flex items-center gap-1.5 md:hidden">
-            <button
-              type="button"
-              onClick={() => setDeviceModalOpen(true)}
-              className={`h-10 w-10 rounded-md border flex items-center justify-center transition-colors cursor-pointer ${controlButtonClass}`}
-              title={isEs ? "Simulador Móvil" : "Device Simulator"}
-              aria-label="Open Device Simulator"
-            >
-              <Smartphone className="w-4 h-4" />
-            </button>
-
-            <button
-              type="button"
-              onClick={toggleTheme}
-              className={`h-10 w-10 rounded-md border flex items-center justify-center transition-colors cursor-pointer ${controlButtonClass}`}
-              title={isEs ? "Cambiar tema" : "Toggle Theme"}
-              aria-label="Toggle color theme"
-            >
-              {isDark ? (
-                <Moon className="w-4 h-4" />
-              ) : (
-                <Sun className="w-4 h-4" />
-              )}
-            </button>
+            {renderThemeSelector()}
 
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`h-10 w-10 rounded-md border flex items-center justify-center transition-colors cursor-pointer ${controlButtonClass}`}
+              className={`h-9 w-9 rounded-md border flex items-center justify-center transition-colors cursor-pointer ${controlButtonClass}`}
               aria-label="Toggle mobile menu"
               aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               ) : (
-                <Menu className="w-5 h-5" />
+                <Menu className="w-4 h-4" />
               )}
             </button>
           </div>
+
+          {/* Optical 1px scroll progress bar inside Glass pill */}
+          {isGlass && (
+            <div
+              aria-hidden="true"
+              className="absolute bottom-0 left-0 right-0 h-[1.5px] pointer-events-none"
+            >
+              <div
+                className="h-full bg-violet-200/75 transition-[width] duration-150"
+                style={{ width: `${scrollProgress}%` }}
+              />
+            </div>
+          )}
         </nav>
 
-        {/* Crisp 1px scroll progress bar */}
-        <div
-          aria-hidden="true"
-          className="absolute bottom-0 left-0 right-0 h-[1px] pointer-events-none"
-        >
+        {/* Crisp 1px scroll progress bar for Dark & Light */}
+        {!isGlass && (
           <div
-            className={`h-full transition-[width] duration-150 ${
-              isDark ? "bg-emerald-500" : "bg-emerald-700"
-            }`}
-            style={{ width: `${scrollProgress}%` }}
-          />
-        </div>
+            aria-hidden="true"
+            className="absolute bottom-0 left-0 right-0 h-[1px] pointer-events-none"
+          >
+            <div
+              className={`h-full transition-[width] duration-150 ${
+                isDark ? "bg-emerald-500" : "bg-emerald-700"
+              }`}
+              style={{ width: `${scrollProgress}%` }}
+            />
+          </div>
+        )}
 
         {/* Mobile / Tablet Dropdown */}
         {mobileMenuOpen && (
           <div
-            className={`lg:hidden border-t ${
-              isDark
-                ? "bg-zinc-950 border-zinc-800 text-zinc-100"
-                : "bg-[#fafaf9] border-zinc-200 text-zinc-950"
-            }`}
+            className={
+              isGlass
+                ? "lg:hidden glass-nav-shell pointer-events-auto max-w-6xl mx-auto mt-2 rounded-2xl text-zinc-100"
+                : `lg:hidden border-t ${
+                    isDark
+                      ? "bg-zinc-950 border-zinc-800 text-zinc-100"
+                      : "bg-[#fafaf9] border-zinc-200 text-zinc-950"
+                  }`
+            }
           >
             <div className="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex flex-col">
               {navLinks.map((link) => {
                 const rowClass = `py-3 border-b flex items-center justify-between text-xs font-mono uppercase tracking-wider transition-colors ${
-                  isDark ? "border-zinc-800/80" : "border-zinc-200"
+                  isGlass
+                    ? "border-white/10"
+                    : isDark
+                      ? "border-zinc-800/80"
+                      : "border-zinc-200"
                 } ${
                   link.active
-                    ? isDark
-                      ? "text-emerald-400 font-semibold"
-                      : "text-emerald-700 font-semibold"
+                    ? isGlass
+                      ? "text-violet-200 font-semibold"
+                      : isDark
+                        ? "text-emerald-400 font-semibold"
+                        : "text-emerald-700 font-semibold"
                     : isDark
                       ? "text-zinc-300 hover:text-white"
                       : "text-zinc-700 hover:text-zinc-950"
@@ -411,9 +474,11 @@ export default function Navbar() {
                     {link.badge && (
                       <span
                         className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono border ${
-                          isDark
-                            ? "bg-zinc-900 text-zinc-400 border-zinc-800"
-                            : "bg-white text-zinc-600 border-zinc-200"
+                          isGlass
+                            ? "bg-white/[0.07] text-violet-200 border-white/14"
+                            : isDark
+                              ? "bg-zinc-900 text-zinc-400 border-zinc-800"
+                              : "bg-white text-zinc-600 border-zinc-200"
                         }`}
                       >
                         {link.badge}

@@ -1,57 +1,97 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useSyncExternalStore,
+} from "react";
 
-type Theme = "dark" | "light";
+export type Theme = "dark" | "light" | "glass";
 
 interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
   setTheme: (theme: Theme) => void;
   isDark: boolean;
+  isGlass: boolean;
+}
+
+const STORAGE_KEY = "portfolio_theme";
+const THEME_EVENT = "portfolio-theme-change";
+
+function isValidTheme(value: string | null): value is Theme {
+  return value === "dark" || value === "light" || value === "glass";
+}
+
+function getThemeSnapshot(): Theme {
+  if (typeof window === "undefined") return "glass";
+  try {
+    const saved = window.localStorage.getItem(STORAGE_KEY);
+    return isValidTheme(saved) ? saved : "glass";
+  } catch {
+    return "glass";
+  }
+}
+
+function getServerThemeSnapshot(): Theme {
+  return "glass";
+}
+
+function subscribeTheme(onStoreChange: () => void): () => void {
+  if (typeof window === "undefined") return () => {};
+  const handler = () => onStoreChange();
+  window.addEventListener("storage", handler);
+  window.addEventListener(THEME_EVENT, handler);
+  return () => {
+    window.removeEventListener("storage", handler);
+    window.removeEventListener(THEME_EVENT, handler);
+  };
+}
+
+function applyThemeToDocument(t: Theme) {
+  const root = document.documentElement;
+  root.setAttribute("data-theme", t);
+  root.classList.remove("dark", "light", "glass");
+  root.classList.add(t);
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("dark");
-  const [mounted, setMounted] = useState(false);
+  const theme = useSyncExternalStore(
+    subscribeTheme,
+    getThemeSnapshot,
+    getServerThemeSnapshot
+  );
 
   useEffect(() => {
-    setMounted(true);
-    const savedTheme = localStorage.getItem("portfolio_theme") as Theme | null;
-    if (savedTheme === "light" || savedTheme === "dark") {
-      setThemeState(savedTheme);
-      applyTheme(savedTheme);
-    } else {
-      applyTheme("dark");
+    applyThemeToDocument(theme);
+  }, [theme]);
+
+  const setTheme = useCallback((newTheme: Theme) => {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, newTheme);
+    } catch {
+      // Ignore storage quota or private-mode errors
     }
+    applyThemeToDocument(newTheme);
+    window.dispatchEvent(new Event(THEME_EVENT));
   }, []);
 
-  const applyTheme = (t: Theme) => {
-    const root = document.documentElement;
-    root.setAttribute("data-theme", t);
-    if (t === "light") {
-      root.classList.add("light");
-      root.classList.remove("dark");
-    } else {
-      root.classList.add("dark");
-      root.classList.remove("light");
-    }
-  };
-
-  const setTheme = (newTheme: Theme) => {
-    setThemeState(newTheme);
-    try {
-      localStorage.setItem("portfolio_theme", newTheme);
-    } catch {}
-    applyTheme(newTheme);
-  };
-
-  const toggleTheme = () => {
-    const next = theme === "dark" ? "light" : "dark";
+  const toggleTheme = useCallback(() => {
+    const next: Theme =
+      theme === "dark" ? "light" : theme === "light" ? "glass" : "dark";
     setTheme(next);
-  };
+  }, [theme, setTheme]);
+
+  const wrapperClass =
+    theme === "light"
+      ? "theme-light transition-colors duration-150"
+      : theme === "glass"
+        ? "theme-glass transition-colors duration-150"
+        : "theme-dark transition-colors duration-150";
 
   return (
     <ThemeContext.Provider
@@ -59,12 +99,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         theme,
         toggleTheme,
         setTheme,
-        isDark: theme === "dark",
+        isDark: theme !== "light",
+        isGlass: theme === "glass",
       }}
     >
-      <div className={theme === "light" ? "theme-light transition-colors duration-300" : "theme-dark transition-colors duration-300"}>
-        {children}
-      </div>
+      <div className={wrapperClass}>{children}</div>
     </ThemeContext.Provider>
   );
 }
