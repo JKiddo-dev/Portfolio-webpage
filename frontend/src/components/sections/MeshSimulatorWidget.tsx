@@ -147,16 +147,16 @@ export default function MeshSimulatorWidget() {
       <div className="absolute -top-24 -right-24 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-emerald-500/15 transition-all duration-700" />
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-zinc-800/80 gap-3 relative z-10">
-        <div className="flex items-center gap-2.5">
-          <div className="relative p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-sm">
+      <div className="flex flex-wrap items-center justify-between pb-4 border-b border-zinc-800/80 gap-3 relative z-10">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <div className="relative p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-sm shrink-0">
             <Radio className="w-4 h-4" />
             {transmitting && (
               <span className="absolute inset-0 rounded-xl border border-emerald-400 animate-ping opacity-75" />
             )}
           </div>
-          <div>
-            <div className="text-sm font-bold text-white flex items-center gap-2">
+          <div className="min-w-0">
+            <div className="text-sm font-bold text-white flex flex-wrap items-center gap-2">
               {isEs ? "Simulador Telemetría Mesh" : "Live Mesh Telemetry Simulator"}
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-semibold">
                 Río Clarillo

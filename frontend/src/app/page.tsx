@@ -10,9 +10,15 @@ import FooterSection from "@/components/sections/FooterSection";
 
 export default function Home() {
   return (
-    <div className="relative bg-zinc-950 text-zinc-100 min-h-screen flex flex-col overflow-x-hidden selection:bg-emerald-500/25 selection:text-emerald-300 transition-colors duration-300">
+    <div className="relative min-h-screen flex flex-col bg-zinc-950 text-zinc-100 overflow-x-hidden selection:bg-emerald-500/20 selection:text-emerald-300 transition-colors duration-200">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:px-3 focus:py-2 focus:rounded-md focus:bg-emerald-500 focus:text-zinc-950 focus:font-mono focus:text-xs focus:font-semibold"
+      >
+        Skip to content
+      </a>
       <Navbar />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <HeroSection />
         <ProjectsSection />
         <TechRadarPreviewBanner />

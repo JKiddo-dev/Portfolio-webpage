@@ -17,7 +17,8 @@ import {
 import DeviceSimulatorModal from "@/components/ui/DeviceSimulatorModal";
 
 export default function Navbar() {
-  const { t, language, toggleLanguage, theme, toggleTheme, isDark } = usePortfolio();
+  const { t, language, toggleLanguage, theme, toggleTheme, isDark } =
+    usePortfolio();
   const pathname = usePathname();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,7 +31,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 12);
 
       const totalScroll =
         document.documentElement.scrollHeight - window.innerHeight;
@@ -86,14 +87,14 @@ export default function Navbar() {
       name: "Backend",
       href: "/backend-apis",
       isRoute: true,
-      badge: "Itaú BFF",
+      badge: "BFF",
       active: pathname === "/backend-apis",
     },
     {
       name: "Tech Radar",
       href: "/labs/tech-radar",
       isRoute: true,
-      badge: "AI + ETL",
+      badge: "ETL",
       active:
         pathname === "/labs/tech-radar" ||
         (pathname === "/" && activeSection === "tech-radar-preview"),
@@ -112,175 +113,164 @@ export default function Navbar() {
     },
   ];
 
+  const controlButtonClass = isDark
+    ? "border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-zinc-700 hover:text-zinc-50"
+    : "border-zinc-200 bg-white text-zinc-700 hover:border-zinc-300 hover:text-zinc-950";
+
   return (
     <>
-      <div
-        className={`fixed top-0 left-0 right-0 h-[2px] z-[60] pointer-events-none ${
-          isDark ? "bg-zinc-900/50" : "bg-slate-200/80"
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-200 ${
+          isDark
+            ? scrolled
+              ? "bg-zinc-950/95 border-zinc-800 backdrop-blur-md"
+              : "bg-zinc-950/85 border-zinc-800/70 backdrop-blur-sm"
+            : scrolled
+              ? "bg-[#fafaf9]/95 border-zinc-200 backdrop-blur-md"
+              : "bg-[#fafaf9]/90 border-zinc-200/80 backdrop-blur-sm"
         }`}
       >
-        <div
-          className="h-full bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500 shadow-[0_0_10px_#10b981] transition-all duration-150"
-          style={{ width: `${scrollProgress}%` }}
-        />
-      </div>
-
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-3 sm:px-4 pt-3 sm:pt-4 pointer-events-none transition-all duration-300">
         <nav
-          className={`pointer-events-auto flex items-center justify-between gap-2 lg:gap-4 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl border transition-all duration-300 backdrop-blur-xl max-w-6xl xl:max-w-7xl w-full ${
-            isDark
-              ? scrolled
-                ? "bg-zinc-950/90 border-zinc-800 shadow-2xl shadow-black/50"
-                : "bg-zinc-950/70 border-zinc-800/80 shadow-lg"
-              : scrolled
-                ? "bg-white/95 border-slate-200 shadow-xl shadow-slate-900/5"
-                : "bg-white/85 border-slate-200/90 shadow-md shadow-slate-900/5"
-          }`}
+          aria-label={isEs ? "Navegación principal" : "Primary navigation"}
+          className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4"
         >
-          <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
-            <div
-              className={`w-8 h-8 rounded-lg border flex items-center justify-center transition-all duration-300 ${
+          {/* Brand */}
+          <Link
+            href="/"
+            className="flex items-center gap-2.5 group shrink-0"
+          >
+            <span
+              className={`w-8 h-8 rounded-md border flex items-center justify-center transition-colors duration-150 ${
                 isDark
-                  ? "bg-zinc-900 border-zinc-700 group-hover:border-emerald-400/80"
-                  : "bg-slate-100 border-slate-300 group-hover:border-emerald-500"
+                  ? "bg-zinc-900 border-zinc-800 group-hover:border-emerald-500/60"
+                  : "bg-white border-zinc-200 group-hover:border-emerald-700/60"
               }`}
             >
               <Terminal
-                className={`w-4 h-4 group-hover:scale-110 transition-transform ${
-                  isDark ? "text-emerald-400" : "text-emerald-600"
+                className={`w-4 h-4 ${
+                  isDark ? "text-emerald-400" : "text-emerald-700"
                 }`}
               />
-            </div>
-            <div className="flex flex-col text-left">
+            </span>
+            <span className="flex flex-col text-left leading-tight">
               <span
-                className={`font-mono text-xs font-black tracking-wider transition-colors ${
+                className={`font-mono text-sm font-semibold tracking-tight transition-colors ${
                   isDark
-                    ? "text-white group-hover:text-emerald-300"
-                    : "text-slate-900 group-hover:text-emerald-700"
+                    ? "text-zinc-100 group-hover:text-white"
+                    : "text-zinc-950 group-hover:text-emerald-800"
                 }`}
               >
                 jkiddo-dev
               </span>
               <span
-                className={`text-[10px] font-mono font-medium hidden 2xl:inline ${
-                  isDark ? "text-emerald-400/90" : "text-emerald-700"
+                className={`text-[10px] font-mono hidden sm:inline ${
+                  isDark ? "text-zinc-500" : "text-zinc-500"
                 }`}
               >
-                Full-Stack Software Engineer
+                Full-Stack Systems
               </span>
-            </div>
+            </span>
           </Link>
 
-          <div
-            className={`hidden xl:flex items-center gap-0.5 p-1 rounded-xl border shrink-0 ${
-              isDark
-                ? "bg-zinc-950/50 border-zinc-800/60"
-                : "bg-slate-100/80 border-slate-200/80"
-            }`}
-          >
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => {
               const linkContent = (
                 <span className="flex items-center gap-1.5 whitespace-nowrap">
                   <span>{link.name}</span>
                   {link.badge && (
                     <span
-                      className={`text-[9px] px-1.5 py-0.5 rounded-full font-mono font-bold border ${
+                      className={`text-[10px] px-1.5 py-0.25 rounded-md font-mono font-medium border ${
                         isDark
-                          ? "bg-emerald-500/15 text-emerald-300 border-emerald-500/30"
-                          : "bg-emerald-500/15 text-emerald-800 border-emerald-600/30"
+                          ? "bg-zinc-900 text-zinc-400 border-zinc-800"
+                          : "bg-zinc-100 text-zinc-600 border-zinc-200"
                       }`}
                     >
                       {link.badge}
                     </span>
                   )}
-                  {link.active && (
-                    <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-emerald-500 rounded-full shadow-[0_0_6px_#10b981]" />
-                  )}
                 </span>
               );
 
-              const className = `relative px-2.5 py-1 rounded-lg text-[11px] font-mono uppercase tracking-wider transition-all duration-200 ${
+              const linkClass = `relative px-2.5 py-1.5 rounded-md text-xs font-mono transition-colors duration-150 ${
                 link.active
                   ? isDark
-                    ? "text-emerald-300 font-bold bg-zinc-800/90 shadow-xs"
-                    : "text-emerald-800 font-bold bg-white shadow-xs"
+                    ? "text-emerald-400 font-semibold"
+                    : "text-emerald-700 font-semibold"
                   : isDark
-                    ? "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
-                    : "text-slate-600 hover:text-slate-950 hover:bg-white/60"
+                    ? "text-zinc-400 hover:text-zinc-100"
+                    : "text-zinc-600 hover:text-zinc-950"
               }`;
 
+              const activeBar = link.active ? (
+                <span
+                  aria-hidden="true"
+                  className={`absolute left-2.5 right-2.5 -bottom-[17px] h-[2px] ${
+                    isDark ? "bg-emerald-500" : "bg-emerald-700"
+                  }`}
+                />
+              ) : null;
+
               return link.isRoute ? (
-                <Link key={link.name} href={link.href} className={className}>
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  aria-current={link.active ? "page" : undefined}
+                  className={linkClass}
+                >
                   {linkContent}
+                  {activeBar}
                 </Link>
               ) : (
-                <a key={link.name} href={link.href} className={className}>
+                <a key={link.name} href={link.href} className={linkClass}>
                   {linkContent}
+                  {activeBar}
                 </a>
               );
             })}
           </div>
 
-          <div className="hidden md:flex items-center gap-1.5 sm:gap-2 shrink-0">
+          {/* Desktop Controls */}
+          <div className="hidden md:flex items-center gap-2 shrink-0">
             <button
               type="button"
               onClick={() => setDeviceModalOpen(true)}
-              className={`p-2 rounded-xl border text-xs font-mono transition-all cursor-pointer hover:scale-105 active:scale-95 ${
-                isDark
-                  ? "bg-zinc-900/90 border-zinc-800 hover:border-zinc-700 text-zinc-200 hover:text-white"
-                  : "bg-slate-100 border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-950"
-              }`}
+              className={`h-9 w-9 rounded-md border flex items-center justify-center transition-colors cursor-pointer ${controlButtonClass}`}
               title={isEs ? "Abrir Simulador Móvil" : "Open Mobile Simulator"}
-              aria-label="Open Device Simulator"
+              aria-label={
+                isEs ? "Abrir Simulador Móvil" : "Open Device Simulator"
+              }
             >
-              <Smartphone
-                className={`w-3.5 h-3.5 ${
-                  isDark ? "text-cyan-400" : "text-cyan-700"
-                }`}
-              />
+              <Smartphone className="w-4 h-4" />
             </button>
 
             <button
               type="button"
               onClick={toggleLanguage}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-mono transition-all cursor-pointer hover:scale-105 active:scale-95 ${
-                isDark
-                  ? "bg-zinc-900/90 border-zinc-800 hover:border-zinc-700 text-zinc-200"
-                  : "bg-slate-100 border-slate-200 hover:border-slate-300 text-slate-700"
-              }`}
+              className={`h-9 px-2.5 rounded-md border flex items-center gap-1.5 text-xs font-mono transition-colors cursor-pointer ${controlButtonClass}`}
               title={isEs ? "Switch to English" : "Cambiar a Español"}
               aria-label="Toggle language"
             >
-              <Globe
-                className={`w-3.5 h-3.5 ${
-                  isDark ? "text-emerald-400" : "text-emerald-700"
-                }`}
-              />
+              <Globe className="w-3.5 h-3.5 opacity-75" />
               <span
                 className={
                   language === "es"
                     ? isDark
-                      ? "font-bold text-emerald-400"
-                      : "font-bold text-emerald-700"
-                    : isDark
-                      ? "text-zinc-500"
-                      : "text-slate-400"
+                      ? "font-semibold text-emerald-400"
+                      : "font-semibold text-emerald-700"
+                    : "opacity-50"
                 }
               >
                 ES
               </span>
-              <span className={isDark ? "text-zinc-600" : "text-slate-300"}>
-                /
-              </span>
+              <span className="opacity-35">/</span>
               <span
                 className={
                   language === "en"
                     ? isDark
-                      ? "font-bold text-emerald-400"
-                      : "font-bold text-emerald-700"
-                    : isDark
-                      ? "text-zinc-500"
-                      : "text-slate-400"
+                      ? "font-semibold text-emerald-400"
+                      : "font-semibold text-emerald-700"
+                    : "opacity-50"
                 }
               >
                 EN
@@ -290,11 +280,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={toggleTheme}
-              className={`p-2 rounded-xl border text-xs font-mono transition-all cursor-pointer hover:scale-105 active:scale-95 ${
-                isDark
-                  ? "bg-zinc-900/90 border-zinc-800 hover:border-zinc-700 text-zinc-200"
-                  : "bg-slate-100 border-slate-200 hover:border-slate-300 text-slate-800"
-              }`}
+              className={`h-9 w-9 rounded-md border flex items-center justify-center transition-colors cursor-pointer ${controlButtonClass}`}
               title={
                 theme === "dark"
                   ? isEs
@@ -307,87 +293,70 @@ export default function Navbar() {
               aria-label="Toggle color theme"
             >
               {isDark ? (
-                <Moon className="w-3.5 h-3.5 text-amber-300" />
+                <Moon className="w-4 h-4" />
               ) : (
-                <Sun className="w-3.5 h-3.5 text-amber-600" />
+                <Sun className="w-4 h-4" />
               )}
             </button>
 
             <Link
               href="/contacto"
-              className="group relative flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs font-mono font-bold rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 text-zinc-950 hover:brightness-105 hover:scale-102 active:scale-98 transition-all shadow-md shadow-emerald-500/20 shrink-0"
+              className="btn-primary h-9 px-3.5 text-xs font-mono shrink-0"
             >
               <span>{t.nav.talk}</span>
-              <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
 
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`xl:hidden p-2 rounded-xl border transition-colors ${
-                isDark
-                  ? "bg-zinc-900 border-zinc-800 text-zinc-200 hover:text-white"
-                  : "bg-slate-100 border-slate-200 text-slate-700 hover:text-slate-950"
-              }`}
+              className={`lg:hidden h-9 w-9 rounded-md border flex items-center justify-center transition-colors cursor-pointer ${controlButtonClass}`}
               aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
-                <X className="w-4 h-4 text-emerald-500" />
+                <X className="w-4 h-4" />
               ) : (
                 <Menu className="w-4 h-4" />
               )}
             </button>
           </div>
 
+          {/* Mobile Controls */}
           <div className="flex items-center gap-1.5 md:hidden">
             <button
               type="button"
               onClick={() => setDeviceModalOpen(true)}
-              className={`p-1.5 rounded-lg border ${
-                isDark
-                  ? "bg-zinc-900 border-zinc-800 text-zinc-200"
-                  : "bg-slate-100 border-slate-200 text-slate-700"
-              }`}
-              title="Simulator"
+              className={`h-10 w-10 rounded-md border flex items-center justify-center transition-colors cursor-pointer ${controlButtonClass}`}
+              title={isEs ? "Simulador Móvil" : "Device Simulator"}
               aria-label="Open Device Simulator"
             >
-              <Smartphone
-                className={`w-4 h-4 ${
-                  isDark ? "text-cyan-400" : "text-cyan-700"
-                }`}
-              />
+              <Smartphone className="w-4 h-4" />
             </button>
 
             <button
               type="button"
               onClick={toggleTheme}
-              className={`p-1.5 rounded-lg border ${
-                isDark
-                  ? "bg-zinc-900 border-zinc-800 text-zinc-200"
-                  : "bg-slate-100 border-slate-200 text-slate-700"
-              }`}
-              title="Toggle Theme"
+              className={`h-10 w-10 rounded-md border flex items-center justify-center transition-colors cursor-pointer ${controlButtonClass}`}
+              title={isEs ? "Cambiar tema" : "Toggle Theme"}
               aria-label="Toggle color theme"
             >
               {isDark ? (
-                <Moon className="w-4 h-4 text-amber-300" />
+                <Moon className="w-4 h-4" />
               ) : (
-                <Sun className="w-4 h-4 text-amber-600" />
+                <Sun className="w-4 h-4" />
               )}
             </button>
 
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-1.5 rounded-xl border ${
-                isDark
-                  ? "bg-zinc-900 border-zinc-800 text-zinc-200"
-                  : "bg-slate-100 border-slate-200 text-slate-700"
-              }`}
+              className={`h-10 w-10 rounded-md border flex items-center justify-center transition-colors cursor-pointer ${controlButtonClass}`}
               aria-label="Toggle mobile menu"
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
-                <X className="w-5 h-5 text-emerald-500" />
+                <X className="w-5 h-5" />
               ) : (
                 <Menu className="w-5 h-5" />
               )}
@@ -395,88 +364,95 @@ export default function Navbar() {
           </div>
         </nav>
 
+        {/* Crisp 1px scroll progress bar */}
+        <div
+          aria-hidden="true"
+          className="absolute bottom-0 left-0 right-0 h-[1px] pointer-events-none"
+        >
+          <div
+            className={`h-full transition-[width] duration-150 ${
+              isDark ? "bg-emerald-500" : "bg-emerald-700"
+            }`}
+            style={{ width: `${scrollProgress}%` }}
+          />
+        </div>
+
+        {/* Mobile / Tablet Dropdown */}
         {mobileMenuOpen && (
           <div
-            className={`xl:hidden pointer-events-auto absolute top-16 left-3 right-3 sm:left-4 sm:right-4 rounded-2xl p-4 sm:p-5 shadow-2xl backdrop-blur-2xl border flex flex-col gap-2.5 max-w-6xl xl:max-w-7xl mx-auto ${
+            className={`lg:hidden border-t ${
               isDark
-                ? "bg-zinc-950/95 border-zinc-800 text-zinc-100"
-                : "bg-white/95 border-slate-200 text-slate-900"
+                ? "bg-zinc-950 border-zinc-800 text-zinc-100"
+                : "bg-[#fafaf9] border-zinc-200 text-zinc-950"
             }`}
           >
-            {navLinks.map((link) =>
-              link.isRoute ? (
+            <div className="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex flex-col">
+              {navLinks.map((link) => {
+                const rowClass = `py-3 border-b flex items-center justify-between text-xs font-mono uppercase tracking-wider transition-colors ${
+                  isDark ? "border-zinc-800/80" : "border-zinc-200"
+                } ${
+                  link.active
+                    ? isDark
+                      ? "text-emerald-400 font-semibold"
+                      : "text-emerald-700 font-semibold"
+                    : isDark
+                      ? "text-zinc-300 hover:text-white"
+                      : "text-zinc-700 hover:text-zinc-950"
+                }`;
+
+                return link.isRoute ? (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={rowClass}
+                  >
+                    <span>{link.name}</span>
+                    {link.badge && (
+                      <span
+                        className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono border ${
+                          isDark
+                            ? "bg-zinc-900 text-zinc-400 border-zinc-800"
+                            : "bg-white text-zinc-600 border-zinc-200"
+                        }`}
+                      >
+                        {link.badge}
+                      </span>
+                    )}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={rowClass}
+                  >
+                    <span>{link.name}</span>
+                  </a>
+                );
+              })}
+
+              <div className="flex items-center justify-between gap-3 pt-4 flex-wrap">
+                <button
+                  type="button"
+                  onClick={toggleLanguage}
+                  className={`h-10 px-3 rounded-md border flex items-center gap-2 text-xs font-mono cursor-pointer ${controlButtonClass}`}
+                >
+                  <Globe className="w-3.5 h-3.5" />
+                  <span>
+                    {language === "es" ? "Español (ES)" : "English (EN)"}
+                  </span>
+                </button>
+
                 <Link
-                  key={link.name}
-                  href={link.href}
+                  href="/contacto"
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-xs sm:text-sm font-mono uppercase tracking-wider py-2 border-b flex items-center justify-between ${
-                    isDark ? "border-zinc-900" : "border-slate-100"
-                  } ${
-                    link.active
-                      ? isDark
-                        ? "text-emerald-400 font-bold"
-                        : "text-emerald-700 font-bold"
-                      : isDark
-                        ? "text-zinc-300 hover:text-emerald-400"
-                        : "text-slate-700 hover:text-emerald-700"
-                  }`}
+                  className="btn-primary h-10 px-4 text-xs font-mono"
                 >
-                  <span>{link.name}</span>
-                  {link.badge && (
-                    <span
-                      className={`text-[10px] px-2 py-0.5 rounded font-bold border ${
-                        isDark
-                          ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
-                          : "bg-emerald-500/10 text-emerald-800 border-emerald-600/25"
-                      }`}
-                    >
-                      {link.badge}
-                    </span>
-                  )}
+                  <span>{t.nav.talk}</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
-              ) : (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`text-xs sm:text-sm font-mono uppercase tracking-wider py-2 border-b ${
-                    isDark ? "border-zinc-900" : "border-slate-100"
-                  } ${
-                    link.active
-                      ? isDark
-                        ? "text-emerald-400 font-bold"
-                        : "text-emerald-700 font-bold"
-                      : isDark
-                        ? "text-zinc-300 hover:text-emerald-400"
-                        : "text-slate-700 hover:text-emerald-700"
-                  }`}
-                >
-                  {link.name}
-                </a>
-              )
-            )}
-
-            <div className="flex items-center justify-between gap-2 pt-2 flex-wrap">
-              <button
-                type="button"
-                onClick={toggleLanguage}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-mono ${
-                  isDark
-                    ? "bg-zinc-900 border-zinc-800 text-zinc-200"
-                    : "bg-slate-100 border-slate-200 text-slate-800"
-                }`}
-              >
-                <Globe className="w-3.5 h-3.5 text-emerald-500" />
-                <span>{language === "es" ? "Español (ES)" : "English (EN)"}</span>
-              </button>
-
-              <Link
-                href="/contacto"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2 text-xs font-mono font-bold rounded-lg bg-emerald-500 text-zinc-950"
-              >
-                {t.nav.talk}
-              </Link>
+              </div>
             </div>
           </div>
         )}
