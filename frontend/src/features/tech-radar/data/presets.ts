@@ -33,6 +33,8 @@ export const MATIAS_CORE_TECH: ReadonlySet<string> = new Set([
   "mongodb",
   "angular",
   "tailwindcss",
+  "java",
+  "spring-boot",
 ]);
 
 export const MATIAS_CORE_PATTERNS: ReadonlySet<string> = new Set([
@@ -51,17 +53,17 @@ export const PRESET_PROFILES: readonly PresetDefinition[] = [
     shortTitleEs: "Auditar perfil de Matías",
     shortTitleEn: "Audit Matías's Profile",
     labelEs:
-      "Auditar perfil de Matías (Full-Stack: TypeScript, NestJS, Next.js, React, Angular, MongoDB, Docker)",
+      "Auditar perfil de Matías (Full-Stack: Java 21 / Spring Boot, TypeScript, NestJS, Next.js, MariaDB, Docker)",
     labelEn:
-      "Audit Matías's Profile (Full-Stack: TypeScript, NestJS, Next.js, React, Angular, MongoDB, Docker)",
+      "Audit Matías's Profile (Full-Stack: Java 21 / Spring Boot, TypeScript, NestJS, Next.js, MariaDB, Docker)",
     summaryEs:
-      "Recomendado para HR & Hiring Managers • Evalúa mi experiencia real en banca (IBM / Itaú), sistemas cloud e inglés C1 frente al mercado actual.",
+      "Recomendado para HR & Hiring Managers • Evalúa mi rol actual en SGO (Java 21 / Spring Boot), experiencia bancaria en IBM / Itaú, título de Ingeniería Civil en Computación e inglés C1.",
     summaryEn:
-      "Recommended for HR & Hiring Managers • Evaluates my real banking experience (IBM / Itaú), cloud systems, and C1 English against live market demand.",
+      "Recommended for HR & Hiring Managers • Evaluates my current role at SGO (Java 21 / Spring Boot), banking track at IBM / Itaú, B.S. Computer Engineering degree, and C1 English.",
     badge: "Principal Preset • Zero-Token Cache ($0 Cost)",
     isPrimary: true,
     profileText:
-      "Ingeniero en Computación Full-Stack Software Engineer con experiencia en arquitectura de microservicios y BFF con NestJS (IBM Consulting / Banco Itaú), desarrollo web moderno con TypeScript, Next.js (App Router), React, Angular y Tailwind CSS. Base de datos MongoDB Atlas y PostgreSQL, contenedores Docker, pipelines CI/CD, pruebas unitarias automatizadas con Jest (TDD, principios SOLID y Clean Architecture), integración de sistemas distribuidos IoT (ESP32, LoRa, MQTT) e inglés técnico profesional.",
+      "Ingeniero Civil en Computación (Titulado, UTEM) y Full-Stack Developer en SGO construyendo plataformas empresariales de gestión de obras (Libro de Obras Digital – LOD) para MOP, EFE, Enel y Duoc UC con Java 21, Spring Boot, JSP, Thymeleaf, MariaDB, pruebas automatizadas en Groovy y Spock y metodología Scrumban. Experiencia previa en microservicios bancarios y BFF con NestJS, TypeScript, AWS (EC2, S3, IAM), Docker, Kubernetes, GitLab CI/CD y Jest en IBM Consulting / Banco Itaú; desarrollo web moderno con Next.js (App Router), React, Angular, Tailwind CSS, MongoDB Atlas y PostgreSQL; intercambio en España (UJI) e inglés técnico C1.",
   },
   {
     id: "cloud-microservices",

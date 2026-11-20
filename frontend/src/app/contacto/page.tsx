@@ -129,8 +129,8 @@ export default function ContactoPage() {
         ? "¿En qué tecnologías y stack te sientes más fuerte?"
         : "What tech stack are you most specialized in?",
       a: isEs
-        ? "En el Frontend: React, Next.js (App Router), TypeScript y TailwindCSS. En el Backend: NestJS, TypeScript, patrones BFF, testing con Jest/Vitest, MQTT para IoT, y bases de datos MongoDB / PostgreSQL."
-        : "Frontend: React, Next.js (App Router), TypeScript, and TailwindCSS. Backend: NestJS, TypeScript, BFF patterns, Jest/Vitest testing, MQTT for IoT, and MongoDB / PostgreSQL.",
+        ? "En el Backend: Java 21 / Spring Boot (SGO), NestJS y TypeScript (patrones BFF), testing automatizado con Groovy/Spock y Jest/Vitest, MQTT para IoT y bases de datos MariaDB, PostgreSQL y MongoDB. En el Frontend: React, Next.js (App Router), JSP/Thymeleaf (SSR), TypeScript y Tailwind CSS."
+        : "Backend: Java 21 / Spring Boot (SGO), NestJS and TypeScript (BFF patterns), automated testing with Groovy/Spock and Jest/Vitest, MQTT for IoT, and MariaDB, PostgreSQL, and MongoDB. Frontend: React, Next.js (App Router), JSP/Thymeleaf (SSR), TypeScript, and Tailwind CSS.",
     },
   ];
 

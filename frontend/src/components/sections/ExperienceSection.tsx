@@ -28,6 +28,7 @@ export default function ExperienceSection() {
         <div className="relative border-l border-zinc-800 ml-2 sm:ml-3 space-y-8">
           {experiences.map((exp) => {
             const isEnterprise =
+              exp.organization.includes("SGO") ||
               exp.organization.includes("IBM") ||
               exp.organization.includes("Itaú");
 
