@@ -167,6 +167,29 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
         { label: "Arquitectura", value: "Full-Stack + IoT" },
         { label: "Cliente / Caso", value: "Parque Río Clarillo" },
       ],
+      caseStudy: {
+        flowSteps: [
+          { label: "Nodos ESP32 + LoRa", detail: "Telemetría RF 868MHz multi-salto en zonas sin señal" },
+          { label: "Gateway LoRa Base", detail: "Recepción de paquetes y firma de integridad" },
+          { label: "Broker MQTT", detail: "Ingesta asíncrona desacoplada por tópicos" },
+          { label: "API NestJS + MongoDB", detail: "Validación DTO, deduplicación y persistencia" },
+          { label: "Panel Next.js", detail: "Topología en vivo y alertas para guardaparques" },
+        ],
+        tradeOff: {
+          problem:
+            "Supervisar sensores y alertas de seguridad en sectores cordilleranos del parque sin cobertura celular ni presupuesto para enlaces satelitales permanentes.",
+          decision:
+            "Red Mesh LoRa autónoma con reenvío multi-salto hacia un gateway conectado por MQTT a un backend NestJS en VPS Linux.",
+          alternativeRejected:
+            "Módems satelitales o celulares por nodo: descartados por costo operativo recurrente y cobertura nula en quebradas.",
+        },
+        securityAndQuality: [
+          "HMAC SHA-256",
+          "Validación DTO (class-validator)",
+          "Deduplicación Mesh",
+          "Clean Architecture",
+        ],
+      },
     },
     {
       id: "sgo-lod-platform",
@@ -188,6 +211,29 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
         { label: "Stack", value: "Java 21 + Spring Boot" },
         { label: "Calidad", value: "Groovy / Spock TDD" },
       ],
+      caseStudy: {
+        flowSteps: [
+          { label: "Vistas SSR", detail: "JSP y Thymeleaf para flujos contractuales complejos" },
+          { label: "Java 21 / Spring Boot", detail: "Servicios de dominio, reglas de negocio y permisos" },
+          { label: "Capa Relacional", detail: "Consultas SQL optimizadas e índices en MariaDB" },
+          { label: "Suite Groovy / Spock", detail: "Pruebas unitarias e integración por flujo crítico" },
+          { label: "Entrega Scrumban", detail: "Revisión de PRs y despliegues controlados en Bitbucket" },
+        ],
+        tradeOff: {
+          problem:
+            "Evolucionar módulos de gestión contractual y trazabilidad legal de alto volumen sin interrumpir la operación diaria de mandantes públicos y privados.",
+          decision:
+            "Mantener arquitectura Spring Boot + SSR (JSP/Thymeleaf) optimizando consultas críticas en MariaDB y blindando cambios con especificaciones en Groovy/Spock.",
+          alternativeRejected:
+            "Reescritura big-bang a microservicios + SPA: descartada por alto riesgo operacional y freno a entregas continuas de negocio.",
+        },
+        securityAndQuality: [
+          "RBAC / Permisos por Rol",
+          "Bean Validation",
+          "Groovy / Spock",
+          "Optimización SQL MariaDB",
+        ],
+      },
     },
     {
       id: "ibm-itau-microservices",
@@ -208,6 +254,29 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
         { label: "Consultora", value: "IBM Consulting" },
         { label: "Calidad", value: "Jest / TDD / CI-CD" },
       ],
+      caseStudy: {
+        flowSteps: [
+          { label: "Canales Digitales", detail: "App móvil y banca web enviando 1 petición consolidada" },
+          { label: "NestJS BFF Gateway", detail: "Validación JWT RS256 y orquestación Promise.allSettled" },
+          { label: "Circuit Breaker", detail: "Aislamiento de fallos y fallback degradado sin bloqueo" },
+          { label: "Core Microservices", detail: "Servicios de identidad, cuentas y tasas en AWS/K8s" },
+          { label: "GitLab CI/CD + Jest", detail: "Suite automatizada y despliegue contenerizado en Docker" },
+        ],
+        tradeOff: {
+          problem:
+            "Evitar múltiples llamadas encadenadas desde el cliente y prevenir que la caída de un proveedor externo degrade por completo la vista de saldos bancarios.",
+          decision:
+            "Capa BFF en NestJS que agrega llamadas en paralelo con tolerancia a fallos parciales y contratos tipados estrictos para cada canal.",
+          alternativeRejected:
+            "Consumo directo desde el frontend hacia microservicios core: descartado por alta latencia móvil, acoplamiento de esquemas y superficie de seguridad expuesta.",
+        },
+        securityAndQuality: [
+          "JWT / RS256",
+          "Circuit Breaker",
+          "Jest / TDD",
+          "GitLab CI/CD & Docker",
+        ],
+      },
     },
     {
       id: "fullstack-portfolio-app",
@@ -229,6 +298,29 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
         { label: "Costo Operativo", value: "$0 FinOps Cache" },
         { label: "Arquitectura", value: "MVVM + RAG" },
       ],
+      caseStudy: {
+        flowSteps: [
+          { label: "Vercel Cron ETL", detail: "Ingesta diaria deduplicada desde GetOnBoard API" },
+          { label: "Gemini 2.5 + Zod", detail: "Extracción tipada y normalización determinista" },
+          { label: "Embeddings 768d", detail: "Vectorización semántica con text-embedding-004" },
+          { label: "Atlas $vectorSearch", detail: "Búsqueda coseno ANN + caché Zero-Token 24h" },
+          { label: "UI MVVM Next.js 16", detail: "Simulador interactivo con cuota por IP y fallback" },
+        ],
+        tradeOff: {
+          problem:
+            "Ofrecer análisis semántico RAG real con LLMs en un portafolio público sin arriesgar cobros inesperados ni agotamiento de cuota ante tráfico alto.",
+          decision:
+            "Caché persistente de 24h en MongoDB para perfiles preconfigurados ($0 tokens) y rate limiting por hash SHA-256 de IP (5 análisis live/hora) con degradación elegante.",
+          alternativeRejected:
+            "Inferencia LLM en vivo en cada carga de página: descartada por latencia alta (>3s) y exposición directa a abuso de API.",
+        },
+        securityAndQuality: [
+          "Zod Strict Schema",
+          "SHA-256 + timingSafeEqual",
+          "Rate Limit por IP",
+          "Jest Unit Tests",
+        ],
+      },
     },
     {
       id: "eleam-abuelita-olga",
@@ -290,6 +382,29 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
         { label: "Architecture", value: "Full-Stack + IoT" },
         { label: "Deployment", value: "Río Clarillo Park" },
       ],
+      caseStudy: {
+        flowSteps: [
+          { label: "ESP32 + LoRa Nodes", detail: "Multi-hop 868MHz RF telemetry in zero-signal terrain" },
+          { label: "LoRa Base Gateway", detail: "Packet aggregation and cryptographic signature check" },
+          { label: "MQTT Broker", detail: "Decoupled asynchronous topic-based ingestion" },
+          { label: "NestJS API + MongoDB", detail: "DTO validation, deduplication, and persistence" },
+          { label: "Next.js Dashboard", detail: "Live mesh topology and ranger alert console" },
+        ],
+        tradeOff: {
+          problem:
+            "Monitor environmental telemetry and safety alerts across mountainous park zones with zero cellular coverage and no budget for per-node satellite plans.",
+          decision:
+            "Autonomous LoRa Mesh multi-hop network bridging to a single MQTT gateway feeding a NestJS backend on a Linux VPS.",
+          alternativeRejected:
+            "Cellular or satellite modems per sensor node: rejected due to recurring fees and dead-zone signal loss in canyons.",
+        },
+        securityAndQuality: [
+          "HMAC SHA-256",
+          "DTO Validation (class-validator)",
+          "Mesh Deduplication",
+          "Clean Architecture",
+        ],
+      },
     },
     {
       id: "sgo-lod-platform",
@@ -311,6 +426,29 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
         { label: "Stack", value: "Java 21 + Spring Boot" },
         { label: "Quality", value: "Groovy / Spock TDD" },
       ],
+      caseStudy: {
+        flowSteps: [
+          { label: "SSR Views", detail: "JSP & Thymeleaf for regulated contract workflows" },
+          { label: "Java 21 / Spring Boot", detail: "Domain services, business rules, and authorization" },
+          { label: "Relational Layer", detail: "Indexed, query-optimized MariaDB data access" },
+          { label: "Groovy / Spock Suite", detail: "Automated unit & integration specs per workflow" },
+          { label: "Scrumban Delivery", detail: "Peer-reviewed releases via Bitbucket pipelines" },
+        ],
+        tradeOff: {
+          problem:
+            "Evolve high-volume legal construction logbooks and contract modules without disrupting daily operations for major public and private clients.",
+          decision:
+            "Keep the Spring Boot + SSR (JSP/Thymeleaf) foundation while optimizing hot MariaDB queries and guarding regressions with Groovy/Spock specs.",
+          alternativeRejected:
+            "Big-bang rewrite into microservices + SPA: rejected due to high operational risk and stalled feature delivery.",
+        },
+        securityAndQuality: [
+          "RBAC Access Control",
+          "Bean Validation",
+          "Groovy / Spock",
+          "MariaDB Query Tuning",
+        ],
+      },
     },
     {
       id: "ibm-itau-microservices",
@@ -331,6 +469,29 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
         { label: "Firm", value: "IBM Consulting" },
         { label: "Quality", value: "Jest / TDD / CI-CD" },
       ],
+      caseStudy: {
+        flowSteps: [
+          { label: "Banking Clients", detail: "Web & mobile apps issuing 1 aggregated request" },
+          { label: "NestJS BFF Gateway", detail: "JWT RS256 validation & Promise.allSettled fan-out" },
+          { label: "Circuit Breaker", detail: "Failure isolation & stale fallback without blocking" },
+          { label: "Core Microservices", detail: "Identity, ledger, and rates on AWS / Kubernetes" },
+          { label: "GitLab CI/CD + Jest", detail: "Automated test gates & Dockerized releases" },
+        ],
+        tradeOff: {
+          problem:
+            "Eliminate chatty client-side waterfalls and prevent a single downstream provider outage from crashing the entire digital banking dashboard.",
+          decision:
+            "Dedicated NestJS BFF layer aggregating concurrent calls with graceful partial degradation and strict typed channel contracts.",
+          alternativeRejected:
+            "Direct frontend-to-core microservice calls: rejected due to mobile latency, tight schema coupling, and broader security surface.",
+        },
+        securityAndQuality: [
+          "JWT / RS256",
+          "Circuit Breaker",
+          "Jest / TDD",
+          "GitLab CI/CD & Docker",
+        ],
+      },
     },
     {
       id: "fullstack-portfolio-app",
@@ -352,6 +513,29 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
         { label: "Cloud Cost", value: "$0 FinOps Cache" },
         { label: "Architecture", value: "MVVM + RAG" },
       ],
+      caseStudy: {
+        flowSteps: [
+          { label: "Vercel Cron ETL", detail: "Daily deduplicated ingestion from GetOnBoard API" },
+          { label: "Gemini 2.5 + Zod", detail: "Typed entity extraction & deterministic normalization" },
+          { label: "768d Embeddings", detail: "Dense vectorization via text-embedding-004" },
+          { label: "Atlas $vectorSearch", detail: "ANN cosine retrieval + 24h Zero-Token cache" },
+          { label: "Next.js 16 MVVM UI", detail: "Interactive simulator with IP quota & fallback" },
+        ],
+        tradeOff: {
+          problem:
+            "Deliver live RAG semantic gap analysis on a public portfolio without exposing the app to runaway LLM token costs or quota exhaustion.",
+          decision:
+            "24-hour MongoDB preset cache ($0 token spend) paired with SHA-256 IP rate limiting (5 live analyses/hour) and deterministic fallback.",
+          alternativeRejected:
+            "Live LLM inference on every visit: rejected due to >3s cold latency and unbounded API cost risk.",
+        },
+        securityAndQuality: [
+          "Zod Strict Schema",
+          "SHA-256 + timingSafeEqual",
+          "Per-IP Rate Limit",
+          "Jest Unit Tests",
+        ],
+      },
     },
     {
       id: "eleam-abuelita-olga",
@@ -580,42 +764,42 @@ export const SKILLS_CATEGORIES: Record<Language, SkillCategory[]> = {
     {
       title: "Frontend & Experiencia de Producto",
       skills: [
-        { name: "TypeScript / JavaScript", level: "Avanzado" },
-        { name: "Next.js (App Router / SSR)", level: "Avanzado" },
-        { name: "React", level: "Avanzado" },
-        { name: "JSP & Thymeleaf (SSR)", level: "Avanzado" },
-        { name: "Angular", level: "Competente" },
-        { name: "Tailwind CSS", level: "Avanzado" },
+        { name: "TypeScript / JavaScript", level: "Avanzado", context: "IBM • IoT • Web" },
+        { name: "Next.js (App Router / SSR)", level: "Avanzado", context: "Tech Market AI" },
+        { name: "React", level: "Avanzado", context: "Prod • MVVM" },
+        { name: "JSP & Thymeleaf (SSR)", level: "Avanzado", context: "SGO • Prod" },
+        { name: "Angular", level: "Competente", context: "IBM / Itaú" },
+        { name: "Tailwind CSS", level: "Avanzado", context: "Design Systems" },
       ],
     },
     {
       title: "Backend Empresarial, IA & Microservicios",
       skills: [
-        { name: "Java 21 / Spring Boot", level: "Avanzado" },
-        { name: "NestJS (Node.js)", level: "Especializado" },
-        { name: "Arquitectura BFF & Clean Arch", level: "Avanzado" },
-        { name: "IA Aplicada (Gemini + RAG + Zod)", level: "Avanzado" },
-        { name: "MQTT & Sistemas IoT (ESP32/LoRa)", level: "Avanzado" },
-        { name: "REST APIs & WebSockets", level: "Avanzado" },
+        { name: "Java 21 / Spring Boot", level: "Avanzado", context: "SGO • Prod" },
+        { name: "NestJS (Node.js)", level: "Especializado", context: "IBM / Itaú" },
+        { name: "Arquitectura BFF & Clean Arch", level: "Avanzado", context: "IBM • UJI" },
+        { name: "IA Aplicada (Gemini + RAG + Zod)", level: "Avanzado", context: "Tech Market AI" },
+        { name: "MQTT & Sistemas IoT (ESP32/LoRa)", level: "Avanzado", context: "IoT Río Clarillo" },
+        { name: "REST APIs & WebSockets", level: "Avanzado", context: "SGO • IBM" },
       ],
     },
     {
       title: "Bases de Datos, Cloud & Calidad",
       skills: [
-        { name: "MariaDB / SQL Server / MySQL", level: "Avanzado" },
-        { name: "MongoDB Atlas & PostgreSQL", level: "Avanzado" },
-        { name: "AWS (EC2/S3/IAM) & Docker / K8s", level: "Avanzado" },
-        { name: "Groovy / Spock & Jest / Vitest", level: "Avanzado" },
-        { name: "CI/CD (GitLab / Bitbucket / GitHub)", level: "Avanzado" },
+        { name: "MariaDB / SQL Server / MySQL", level: "Avanzado", context: "SGO • Prod" },
+        { name: "MongoDB Atlas & PostgreSQL", level: "Avanzado", context: "AI • IoT" },
+        { name: "AWS (EC2/S3/IAM) & Docker / K8s", level: "Avanzado", context: "IBM / Itaú" },
+        { name: "Groovy / Spock & Jest / Vitest", level: "Avanzado", context: "SGO • IBM" },
+        { name: "CI/CD (GitLab / Bitbucket / GitHub)", level: "Avanzado", context: "SGO • IBM" },
       ],
     },
     {
       title: "Habilidades de Negocio & Liderazgo",
       skills: [
-        { name: "Agile: Scrumban (SGO) & Scrum (IBM)", level: "Avanzado" },
-        { name: "Inglés Profesional (Nivel C1)", level: "Fluido" },
-        { name: "Adaptabilidad Internacional (España UJI)", level: "Comprobada" },
-        { name: "Comunicación & Docencia Universitaria", level: "Avanzado" },
+        { name: "Agile: Scrumban (SGO) & Scrum (IBM)", level: "Avanzado", context: "SGO • IBM" },
+        { name: "Inglés Profesional (Nivel C1)", level: "Fluido", context: "Coach • UJI" },
+        { name: "Adaptabilidad Internacional (España UJI)", level: "Comprobada", context: "UJI España" },
+        { name: "Comunicación & Docencia Universitaria", level: "Avanzado", context: "UTEM • C++" },
       ],
     },
   ],
@@ -623,42 +807,42 @@ export const SKILLS_CATEGORIES: Record<Language, SkillCategory[]> = {
     {
       title: "Frontend & Product Engineering",
       skills: [
-        { name: "TypeScript / JavaScript", level: "Advanced" },
-        { name: "Next.js (App Router / SSR)", level: "Advanced" },
-        { name: "React", level: "Advanced" },
-        { name: "JSP & Thymeleaf (SSR)", level: "Advanced" },
-        { name: "Angular", level: "Proficient" },
-        { name: "Tailwind CSS", level: "Advanced" },
+        { name: "TypeScript / JavaScript", level: "Advanced", context: "IBM • IoT • Web" },
+        { name: "Next.js (App Router / SSR)", level: "Advanced", context: "Tech Market AI" },
+        { name: "React", level: "Advanced", context: "Prod • MVVM" },
+        { name: "JSP & Thymeleaf (SSR)", level: "Advanced", context: "SGO • Prod" },
+        { name: "Angular", level: "Proficient", context: "IBM / Itaú" },
+        { name: "Tailwind CSS", level: "Advanced", context: "Design Systems" },
       ],
     },
     {
       title: "Enterprise Backend, AI & Microservices",
       skills: [
-        { name: "Java 21 / Spring Boot", level: "Advanced" },
-        { name: "NestJS (Node.js)", level: "Specialized" },
-        { name: "BFF & Clean Architecture", level: "Advanced" },
-        { name: "Applied AI (Gemini + RAG + Zod)", level: "Advanced" },
-        { name: "MQTT & IoT Systems (ESP32/LoRa)", level: "Advanced" },
-        { name: "REST APIs & WebSockets", level: "Advanced" },
+        { name: "Java 21 / Spring Boot", level: "Advanced", context: "SGO • Prod" },
+        { name: "NestJS (Node.js)", level: "Specialized", context: "IBM / Itaú" },
+        { name: "BFF & Clean Architecture", level: "Advanced", context: "IBM • UJI" },
+        { name: "Applied AI (Gemini + RAG + Zod)", level: "Advanced", context: "Tech Market AI" },
+        { name: "MQTT & IoT Systems (ESP32/LoRa)", level: "Advanced", context: "IoT Río Clarillo" },
+        { name: "REST APIs & WebSockets", level: "Advanced", context: "SGO • IBM" },
       ],
     },
     {
       title: "Databases, Cloud & Quality Assurance",
       skills: [
-        { name: "MariaDB / SQL Server / MySQL", level: "Advanced" },
-        { name: "MongoDB Atlas & PostgreSQL", level: "Advanced" },
-        { name: "AWS (EC2/S3/IAM) & Docker / K8s", level: "Advanced" },
-        { name: "Groovy / Spock & Jest / Vitest", level: "Advanced" },
-        { name: "CI/CD (GitLab / Bitbucket / GitHub)", level: "Advanced" },
+        { name: "MariaDB / SQL Server / MySQL", level: "Advanced", context: "SGO • Prod" },
+        { name: "MongoDB Atlas & PostgreSQL", level: "Advanced", context: "AI • IoT" },
+        { name: "AWS (EC2/S3/IAM) & Docker / K8s", level: "Advanced", context: "IBM / Itaú" },
+        { name: "Groovy / Spock & Jest / Vitest", level: "Advanced", context: "SGO • IBM" },
+        { name: "CI/CD (GitLab / Bitbucket / GitHub)", level: "Advanced", context: "SGO • IBM" },
       ],
     },
     {
       title: "Business Readiness & Leadership",
       skills: [
-        { name: "Agile: Scrumban (SGO) & Scrum (IBM)", level: "Advanced" },
-        { name: "Professional English (C1 Level)", level: "Fluent" },
-        { name: "International Adaptability (Spain UJI)", level: "Proven" },
-        { name: "Technical Communication & Lecturing", level: "Advanced" },
+        { name: "Agile: Scrumban (SGO) & Scrum (IBM)", level: "Advanced", context: "SGO • IBM" },
+        { name: "Professional English (C1 Level)", level: "Fluent", context: "Coach • UJI" },
+        { name: "International Adaptability (Spain UJI)", level: "Proven", context: "UJI Spain" },
+        { name: "Technical Communication & Lecturing", level: "Advanced", context: "UTEM • C++" },
       ],
     },
   ],

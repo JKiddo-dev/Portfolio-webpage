@@ -5,28 +5,71 @@ import { usePortfolio } from "@/hooks/usePortfolio";
 import SpotlightCard from "@/components/ui/SpotlightCard";
 import { Server, Cloud, Layout, Database, Layers } from "lucide-react";
 
+const SYNERGY_MAP: Record<string, string[]> = {
+  "Java 21 / Spring Boot": [
+    "JSP & Thymeleaf (SSR)",
+    "MariaDB / SQL Server / MySQL",
+    "Groovy / Spock & Jest / Vitest",
+    "CI/CD (GitLab / Bitbucket / GitHub)",
+    "Agile: Scrumban (SGO) & Scrum (IBM)",
+  ],
+  "MariaDB / SQL Server / MySQL": [
+    "Java 21 / Spring Boot",
+    "JSP & Thymeleaf (SSR)",
+    "Groovy / Spock & Jest / Vitest",
+    "REST APIs & WebSockets",
+  ],
+  "Groovy / Spock & Jest / Vitest": [
+    "Java 21 / Spring Boot",
+    "NestJS (Node.js)",
+    "TypeScript / JavaScript",
+    "CI/CD (GitLab / Bitbucket / GitHub)",
+  ],
+  "NestJS (Node.js)": [
+    "TypeScript / JavaScript",
+    "MongoDB Atlas & PostgreSQL",
+    "AWS (EC2/S3/IAM) & Docker / K8s",
+    "Groovy / Spock & Jest / Vitest",
+    "Arquitectura BFF & Clean Arch",
+    "BFF & Clean Architecture",
+  ],
+  "Next.js (App Router / SSR)": [
+    "React",
+    "TypeScript / JavaScript",
+    "Tailwind CSS",
+    "NestJS (Node.js)",
+    "IA Aplicada (Gemini + RAG + Zod)",
+    "Applied AI (Gemini + RAG + Zod)",
+  ],
+  "TypeScript / JavaScript": [
+    "Next.js (App Router / SSR)",
+    "React",
+    "NestJS (Node.js)",
+    "Groovy / Spock & Jest / Vitest",
+  ],
+  "MQTT & Sistemas IoT (ESP32/LoRa)": [
+    "NestJS (Node.js)",
+    "MongoDB Atlas & PostgreSQL",
+    "REST APIs & WebSockets",
+  ],
+  "MQTT & IoT Systems (ESP32/LoRa)": [
+    "NestJS (Node.js)",
+    "MongoDB Atlas & PostgreSQL",
+    "REST APIs & WebSockets",
+  ],
+  "AWS (EC2/S3/IAM) & Docker / K8s": [
+    "NestJS (Node.js)",
+    "Java 21 / Spring Boot",
+    "CI/CD (GitLab / Bitbucket / GitHub)",
+    "MongoDB Atlas & PostgreSQL",
+  ],
+};
+
 export default function SkillsSection() {
   const { skillCategories, t } = usePortfolio();
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
-  // Synergy map: when hovering a core technology, highlight related technologies across categories
-  const synergyMap: Record<string, string[]> = {
-    NestJS: [
-      "TypeScript",
-      "Jest",
-      "Docker",
-      "MongoDB",
-      "Clean Architecture",
-      "MQTT",
-    ],
-    "Next.js": ["React", "TypeScript", "Tailwind CSS", "REST API", "NestJS"],
-    TypeScript: ["NestJS", "Next.js", "React", "Jest"],
-    ESP32: ["LoRa", "MQTT", "C++", "NestJS", "IoT Telemetry"],
-    Docker: ["NestJS", "Linux VPS", "CI/CD", "MongoDB"],
-    MongoDB: ["NestJS", "Docker", "TypeScript"],
-  };
-
-  const activeSynergies = hoveredSkill ? synergyMap[hoveredSkill] || [] : [];
+  const activeSynergies = hoveredSkill ? SYNERGY_MAP[hoveredSkill] || [] : [];
 
   const getCategoryIcon = (title: string) => {
     if (title.includes("Backend")) {
@@ -43,19 +86,6 @@ export default function SkillsSection() {
       return <Database className="w-4 h-4 text-emerald-400" />;
     }
     return <Cloud className="w-4 h-4 text-emerald-400" />;
-  };
-
-  const getSkillPercent = (level: string) => {
-    const l = level.toLowerCase();
-    if (
-      l.includes("avanzado") ||
-      l.includes("advanced") ||
-      l.includes("experto") ||
-      l.includes("expert")
-    )
-      return 92;
-    if (l.includes("intermedio") || l.includes("intermediate")) return 82;
-    return 75;
   };
 
   return (
@@ -80,7 +110,7 @@ export default function SkillsSection() {
               <div>
                 {/* Category Header */}
                 <div className="flex items-center gap-3 mb-5 pb-4 border-b border-zinc-800">
-                  <div className="p-2 rounded-md bg-zinc-950 border border-zinc-800">
+                  <div className="p-2 rounded-md bg-zinc-950 border border-zinc-800 shrink-0">
                     {getCategoryIcon(category.title)}
                   </div>
                   <h3 className="text-xs font-mono uppercase tracking-wider text-zinc-100 font-semibold">
@@ -88,53 +118,46 @@ export default function SkillsSection() {
                   </h3>
                 </div>
 
-                {/* Skills List */}
-                <ul className="space-y-2.5">
+                {/* Production-Context Skills List */}
+                <ul className="space-y-2">
                   {category.skills.map((skill) => {
                     const isHovered = hoveredSkill === skill.name;
                     const isSynergy = activeSynergies.includes(skill.name);
-                    const pct = getSkillPercent(skill.level);
+                    const contextLabel = skill.context || skill.level;
 
                     return (
                       <li
                         key={skill.name}
                         onMouseEnter={() => setHoveredSkill(skill.name)}
                         onMouseLeave={() => setHoveredSkill(null)}
-                        className={`p-2.5 rounded-md text-xs transition-colors duration-200 cursor-default flex flex-col gap-1.5 border ${
+                        className={`p-2.5 rounded-md text-xs transition-colors duration-150 cursor-default flex flex-col gap-1.5 border ${
                           isHovered
-                            ? "bg-zinc-800 border-emerald-500/60"
+                            ? "bg-[var(--surface-subtle)] border-emerald-500/60"
                             : isSynergy
-                            ? "bg-emerald-500/10 border-emerald-500/40"
-                            : "bg-zinc-950/60 border-zinc-800 hover:border-zinc-700"
+                              ? "bg-emerald-500/10 border-emerald-500/40"
+                              : "bg-zinc-950/60 border-zinc-800 hover:border-zinc-700 hover:bg-[var(--surface-subtle)]"
                         }`}
                       >
+                        <span
+                          className={`font-medium leading-snug transition-colors ${
+                            isHovered || isSynergy
+                              ? "text-emerald-400 font-semibold"
+                              : "text-zinc-200"
+                          }`}
+                        >
+                          {skill.name}
+                        </span>
+
                         <div className="flex items-center justify-between gap-2">
                           <span
-                            className={`font-medium transition-colors ${
+                            className={
                               isHovered || isSynergy
-                                ? "text-emerald-400 font-semibold"
-                                : "text-zinc-200"
-                            }`}
+                                ? "badge-accent text-[10px]"
+                                : "badge-mono text-[10px]"
+                            }
                           >
-                            {skill.name}
+                            {contextLabel}
                           </span>
-
-                          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-sm bg-zinc-900 border border-zinc-800 text-zinc-400">
-                            {isHovered ? `${pct}%` : skill.level}
-                          </span>
-                        </div>
-
-                        <div className="w-full h-1 bg-zinc-800 rounded-full overflow-hidden">
-                          <div
-                            className={`h-full rounded-full transition-all duration-300 ${
-                              isHovered || isSynergy
-                                ? "bg-emerald-500"
-                                : "bg-zinc-600"
-                            }`}
-                            style={{
-                              width: isHovered || isSynergy ? `${pct}%` : "32%",
-                            }}
-                          />
                         </div>
                       </li>
                     );

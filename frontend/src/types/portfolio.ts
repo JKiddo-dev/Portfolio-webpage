@@ -1,5 +1,15 @@
 export type Language = "es" | "en";
 
+export interface ProjectCaseStudy {
+  flowSteps: { label: string; detail: string }[];
+  tradeOff: {
+    problem: string;
+    decision: string;
+    alternativeRejected: string;
+  };
+  securityAndQuality: string[];
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -10,6 +20,7 @@ export interface Project {
   architectureHighlights: string[];
   technologies: string[];
   metrics?: { label: string; value: string }[];
+  caseStudy?: ProjectCaseStudy;
 }
 
 export interface Experience {
@@ -25,7 +36,7 @@ export interface Experience {
 
 export interface SkillCategory {
   title: string;
-  skills: { name: string; level: string }[];
+  skills: { name: string; level: string; context?: string }[];
 }
 
 export interface Education {

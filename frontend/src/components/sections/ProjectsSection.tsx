@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { usePortfolio } from "@/hooks/usePortfolio";
 import SpotlightCard from "@/components/ui/SpotlightCard";
 import MeshSimulatorWidget from "./MeshSimulatorWidget";
+import ProjectCaseStudyPanel from "./ProjectCaseStudyPanel";
 import {
   Radio,
   Globe,
@@ -148,6 +149,13 @@ export default function ProjectsSection() {
                       <MeshSimulatorWidget />
                     </div>
                   </div>
+
+                  {project.caseStudy && (
+                    <ProjectCaseStudyPanel
+                      caseStudy={project.caseStudy}
+                      language={language}
+                    />
+                  )}
                 </SpotlightCard>
               );
             }
@@ -218,6 +226,13 @@ export default function ProjectsSection() {
                     </div>
                   )}
                 </div>
+
+                {project.caseStudy && (
+                  <ProjectCaseStudyPanel
+                    caseStudy={project.caseStudy}
+                    language={language}
+                  />
+                )}
               </SpotlightCard>
             );
           })}
