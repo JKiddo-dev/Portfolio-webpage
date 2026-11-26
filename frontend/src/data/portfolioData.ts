@@ -9,64 +9,64 @@ export const UI_TRANSLATIONS = {
       skills: "Habilidades",
       education: "Educación",
       contact: "Contacto",
-      talk: "Agendar / Contacto",
+      talk: "Contacto",
     },
     hero: {
-      badge: "Ingeniero Civil en Computación (Titulado) • Full-Stack Developer @ SGO • Ex IBM / Itaú",
-      role: "Desarrollador Full-Stack @ SGO • Ex IBM / Itaú",
-      headlinePrefix: "Software confiable para negocio,",
-      headlineGradient: "plataformas empresariales, Java/Spring & NestJS",
+      badge: "Ingeniero Civil en Computación (UTEM) • Full-Stack Developer @ SGO • Ex IBM / Itaú",
+      role: "Full-Stack Developer @ SGO • Ex IBM / Itaú",
+      headlinePrefix: "Hola, soy Matías Aguilar.",
+      headlineGradient: "Ingeniero Full-Stack: sistemas empresariales, microservicios e IoT/IA.",
       summary:
-        "Ingeniero Civil en Computación (Titulado, UTEM) y Full-Stack Developer en SGO desarrollando plataformas empresariales (Libro de Obras Digital – LOD) para MOP, EFE, Enel y Duoc UC, con experiencia previa en banca (IBM Consulting / Banco Itaú) e intercambio en España (UJI). Construyo sistemas seguros y mantenibles con Java 21 / Spring Boot y TypeScript / NestJS / Next.js, respaldados por inglés avanzado (C1).",
-      exploreBtn: "Ver Proyectos e Impacto",
-      contactBtn: "Contactar / Evaluar Perfil",
-      stat1Title: "Experiencia Empresarial (SGO & IBM)",
+        "Soy Ingeniero Civil en Computación titulado de la UTEM. Hoy trabajo como Full-Stack Developer en SGO construyendo plataformas de gestión de obras (LOD) para MOP, EFE, Enel y Duoc UC con Java 21, Spring Boot y MariaDB. Antes trabajé en IBM Consulting para Banco Itaú (NestJS, BFF y AWS), cursé un intercambio en la UJI en España, soy ayudante de Algoritmos en la UTEM y me comunico con fluidez en inglés C1.",
+      exploreBtn: "Ver Proyectos",
+      contactBtn: "Hablemos",
+      stat1Title: "Trayectoria Empresarial",
       stat1Desc: "Java 21 / Spring Boot / MariaDB en SGO y BFF NestJS en Banco Itaú",
-      stat2Title: "Eficiencia & Arquitectura",
-      stat2Desc: "Clean Architecture, SOLID, Groovy/Spock, Jest TDD & FinOps $0",
-      stat3Title: "Entrega End-to-End (Web, Cloud & IoT)",
-      stat3Desc: "De plataformas empresariales y AWS/Docker a redes ESP32/LoRa",
-      stat4Title: "Adaptabilidad Global & Inglés C1",
-      stat4Desc: "Intercambio en España (UJI), ayudantía UTEM & mentoría técnica",
+      stat2Title: "Arquitectura & Código Limpio",
+      stat2Desc: "Clean Architecture, SOLID y pruebas automatizadas en Groovy/Spock y Jest",
+      stat3Title: "Sistemas End-to-End (IoT & IA)",
+      stat3Desc: "Desde nodos ESP32/LoRa en terreno hasta pipelines ETL/RAG en producción",
+      stat4Title: "Inglés C1 & Docencia",
+      stat4Desc: "Intercambio en España (UJI), ayudantía de Algoritmos UTEM y coaching",
       consoleTab1: "TelemetryGateway.ts",
       consoleTab2: "system_metrics.log",
       copy: "Copiar",
       copied: "¡Copiado!",
     },
     projects: {
-      badge: "Soluciones en Producción & Casos de Éxito",
-      title: "Proyectos de Software & Impacto de Negocio",
+      badge: "Proyectos Seleccionados",
+      title: "Sistemas & Arquitectura",
       subtitle:
-        "Desde banca digital (IBM / Itaú) y redes de telemetría nacional hasta plataformas web de alta conversión: sistemas diseñados para ofrecer disponibilidad continua, ahorro de costos operativos y código mantenible.",
+        "Algunos de los sistemas que he diseñado y mantenido: desde plataformas empresariales en SGO y microservicios bancarios en IBM/Itaú hasta redes IoT LoRa Mesh y herramientas de análisis vectorial.",
       all: "Todos",
-      featuredBadge: "★ Proyecto Insignia en Producción (Tesis de Grado)",
-      archTitle: "Impacto Técnico & Decisiones de Arquitectura:",
+      featuredBadge: "★ Proyecto de Título en Producción",
+      archTitle: "Decisiones de Arquitectura & Detalle Técnico:",
     },
     experience: {
-      badge: "Trayectoria Validada en Industria",
-      title: "Experiencia Profesional & Confiabilidad",
+      badge: "Experiencia Profesional",
+      title: "Trayectoria en Ingeniería",
       subtitle:
-        "Historial comprobado desarrollando microservicios bancarios bajo estándares de nivel mundial, liderando entregas de extremo a extremo para clientes reales y formando talento universitario.",
-      achievementsTitle: "Impacto de Negocio & Logros de Ingeniería:",
+        "Mi recorrido desarrollando plataformas empresariales, microservicios bancarios, proyectos de terreno en IoT y docencia universitaria.",
+      achievementsTitle: "Logros & Responsabilidades:",
     },
     skills: {
-      badge: "Competencias & Empleabilidad (92% Market Match)",
-      title: "Stack Tecnológico & Habilidades Clave",
+      badge: "Stack & Herramientas",
+      title: "Tecnologías que Uso en Producción",
       subtitle:
-        "Dominio práctico de las tecnologías más demandadas por el mercado actual, combinando ingeniería Full-Stack moderna, arquitectura empresarial y comunicación bilingüe.",
+        "Herramientas, frameworks y prácticas con las que trabajo día a día, junto al contexto real donde las aplico.",
       toolsCount: "competencias",
     },
     education: {
-      badge: "Respaldo Académico & Visión Global",
-      title: "Educación & Experiencia Internacional",
+      badge: "Formación Académica",
+      title: "Educación & Intercambio",
       subtitle:
-        "Formación rigurosa en ingeniería de software potenciada con movilidad estudiantil en Europa (España), adaptabilidad multicultural y excelencia técnica.",
+        "Formación en Ingeniería Civil en Computación en Chile complementada con un semestre de intercambio en España (UJI).",
     },
     footer: {
-      badge: "Disponible para Nuevos Desafíos & Contratación",
-      title: "¿Buscas un Ingeniero Full-Stack Confiable para tu Equipo?",
+      badge: "Contacto Directo",
+      title: "¿Conversamos?",
       subtitle:
-        "Ya sea que lideres Selección (HR), un equipo de Ingeniería o un proyecto de negocio: conversemos sobre cómo puedo aportar valor inmediato desde el primer sprint.",
+        "Si quieres saber más sobre mi trabajo, mi experiencia en SGO o IBM/Itaú, o simplemente conectar para hablar de ingeniería de software, escríbeme directo.",
       sendEmail: "Enviar Correo",
       copied: "¡Copiado!",
       rights: "Matías Osvaldo Aguilar Barría • Portafolio de Ingeniería de Software",
@@ -80,24 +80,24 @@ export const UI_TRANSLATIONS = {
       skills: "Skills",
       education: "Education",
       contact: "Contact",
-      talk: "Book / Contact",
+      talk: "Contact",
     },
     hero: {
-      badge: "B.S. Computer Engineering (Graduated) • Full-Stack Developer @ SGO • Ex IBM / Itaú",
+      badge: "B.S. Computer Engineering (UTEM) • Full-Stack Developer @ SGO • Ex IBM / Itaú",
       role: "Full-Stack Developer @ SGO • Ex IBM / Itaú",
-      headlinePrefix: "Business-ready software engineering,",
-      headlineGradient: "enterprise platforms, Java/Spring & NestJS",
+      headlinePrefix: "Hi, I'm Matías Aguilar.",
+      headlineGradient: "Full-Stack Engineer building enterprise platforms, microservices & IoT/AI.",
       summary:
-        "Computer Engineering graduate (UTEM) and Full-Stack Developer at SGO building enterprise construction & contract platforms (Libro de Obras Digital – LOD) for MOP, EFE, Enel, and Duoc UC, with prior banking experience at IBM Consulting (Itaú Bank) and academic exchange in Spain (UJI). I deliver reliable systems with Java 21 / Spring Boot and TypeScript / NestJS / Next.js, backed by C1 English fluency.",
-      exploreBtn: "Explore Projects & ROI",
-      contactBtn: "Contact / Evaluate Fit",
-      stat1Title: "Enterprise Track (SGO & IBM)",
+        "I'm a Computer Engineering graduate from UTEM. I currently work as a Full-Stack Developer at SGO building enterprise construction management platforms (LOD) for MOP, EFE, Enel, and Duoc UC using Java 21, Spring Boot, and MariaDB. Previously, I worked at IBM Consulting for Itaú Bank (NestJS, BFF, AWS), completed an exchange semester at UJI in Spain, teach Algorithms as a TA at UTEM, and work comfortably in C1 English.",
+      exploreBtn: "View Projects",
+      contactBtn: "Get in Touch",
+      stat1Title: "Enterprise Experience",
       stat1Desc: "Java 21 / Spring Boot / MariaDB at SGO & NestJS BFF at Itaú Bank",
-      stat2Title: "Architecture & Testing",
-      stat2Desc: "Clean Architecture, SOLID, Groovy/Spock, Jest TDD & $0 FinOps",
-      stat3Title: "End-to-End Delivery (Cloud & IoT)",
-      stat3Desc: "From enterprise platforms & AWS/Docker to live ESP32/LoRa systems",
-      stat4Title: "Global Fluency & C1 English",
+      stat2Title: "Architecture & Clean Code",
+      stat2Desc: "Clean Architecture, SOLID & automated tests in Groovy/Spock and Jest",
+      stat3Title: "End-to-End Systems (IoT & AI)",
+      stat3Desc: "From field ESP32/LoRa hardware to production ETL/RAG pipelines",
+      stat4Title: "C1 English & Teaching",
       stat4Desc: "Spain exchange (UJI), UTEM Algorithms TA & technical coaching",
       consoleTab1: "TelemetryGateway.ts",
       consoleTab2: "system_metrics.log",
@@ -105,39 +105,39 @@ export const UI_TRANSLATIONS = {
       copied: "Copied!",
     },
     projects: {
-      badge: "Production Systems & Business Case Studies",
-      title: "Software Projects & Business Impact",
+      badge: "Selected Projects",
+      title: "Systems & Architecture",
       subtitle:
-        "From enterprise digital banking (IBM / Itaú) and national telemetry networks to high-conversion web platforms: systems engineered for high availability, operating cost savings, and long-term maintainability.",
+        "A selection of systems I've built and maintained: from enterprise platforms at SGO and banking microservices at IBM/Itaú to off-grid LoRa Mesh telemetry and vector search tooling.",
       all: "All",
-      featuredBadge: "★ Flagship Production System (Capstone Thesis)",
-      archTitle: "Business Value & Architectural Decisions:",
+      featuredBadge: "★ Capstone Engineering Thesis",
+      archTitle: "Architectural Decisions & Technical Highlights:",
     },
     experience: {
-      badge: "Industry-Validated Track Record",
-      title: "Professional Experience & Reliability",
+      badge: "Experience",
+      title: "Engineering Background",
       subtitle:
-        "Proven track record building enterprise banking microservices under global consulting standards, delivering end-to-end client solutions, and mentoring university engineers.",
-      achievementsTitle: "Business Impact & Engineering Achievements:",
+        "My path building enterprise platforms, banking microservices, field IoT systems, and mentoring university students.",
+      achievementsTitle: "Key Contributions:",
     },
     skills: {
-      badge: "Core Stack & Employability (92% Market Match)",
-      title: "Technical Competencies & Core Stack",
+      badge: "Stack & Tools",
+      title: "Technologies Used in Production",
       subtitle:
-        "Hands-on mastery of today's most demanded technologies, combining modern Full-Stack engineering, enterprise architecture, and fluent bilingual communication.",
-      toolsCount: "competencies",
+        "Languages, frameworks, and engineering practices I work with day to day, paired with where I've used them.",
+      toolsCount: "skills",
     },
     education: {
-      badge: "Academic Foundation & Global Mindset",
-      title: "Education & International Exchange",
+      badge: "Education",
+      title: "Academic Background & Exchange",
       subtitle:
-        "Rigorous computer engineering foundation strengthened by European academic mobility in Spain (UJI), cross-cultural adaptability, and technical excellence.",
+        "Computer Engineering degree from UTEM in Santiago, complemented by an exchange semester in Spain (UJI).",
     },
     footer: {
-      badge: "Open to Software Engineering Roles & Consulting",
-      title: "Looking for a Reliable Full-Stack Engineer for Your Team?",
+      badge: "Direct Contact",
+      title: "Let's Connect",
       subtitle:
-        "Whether you are in Talent Acquisition (HR), leading an Engineering squad, or building a digital product: let's connect and discuss how I can deliver value from sprint one.",
+        "If you'd like to learn more about my work, my experience at SGO or IBM/Itaú, or simply connect to talk software engineering, feel free to reach out.",
       sendEmail: "Send Email",
       copied: "Copied!",
       rights: "Matías Osvaldo Aguilar Barría • Software Engineering Portfolio",
@@ -154,7 +154,7 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
       category: "Full-Stack",
       featured: true,
       description:
-        "Impacto: Permite supervisar en tiempo real la seguridad y telemetría de un parque nacional en zonas remotas sin internet ni señal móvil, reduciendo costos de conectividad satelital. Ingeniería: Plataforma Full-Stack con API REST en NestJS, ingesta asíncrona vía MQTT desde nodos de radio ESP32/LoRa, panel reactivo en Next.js/Tailwind y persistencia en MongoDB sobre servidor VPS.",
+        "Sistema de telemetría y monitoreo en tiempo real diseñado para zonas del parque nacional sin cobertura celular ni acceso a internet. Construí la API REST en NestJS con ingesta asíncrona vía MQTT desde nodos de radio ESP32/LoRa, un panel reactivo en Next.js y Tailwind CSS, y persistencia en MongoDB desplegada en un VPS Linux.",
       architectureHighlights: [
         "Continuidad operacional en zonas aisladas mediante red Mesh LoRa y nodos ESP32 autónomos",
         "Backend resiliente en NestJS bajo Clean Architecture y mensajería asíncrona MQTT",
@@ -198,7 +198,7 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
       category: "Full-Stack",
       featured: false,
       description:
-        "Impacto: Desarrollo y evolución de plataformas empresariales de gestión de obras y contratos (Libro de Obras Digital – LOD) que atienden a grandes organizaciones públicas y privadas de infraestructura en Chile (MOP, EFE, Enel, Duoc UC) bajo metodología ágil Scrumban. Ingeniería: Servicios backend en Java 21 y Spring Boot junto a vistas renderizadas en servidor (JSP, Thymeleaf), diseño y optimización de consultas relacionales en MariaDB y pruebas unitarias/integración automatizadas con Groovy y Spock.",
+        "Desarrollo y evolución de plataformas empresariales de gestión de obras y contratos (Libro de Obras Digital – LOD) que operan para organizaciones públicas y privadas de infraestructura en Chile (MOP, EFE, Enel, Duoc UC) dentro de un equipo ágil Scrumban. Trabajo en servicios backend con Java 21 y Spring Boot junto a vistas SSR en JSP y Thymeleaf, optimización de consultas en MariaDB y pruebas automatizadas en Groovy y Spock.",
       architectureHighlights: [
         "Servicios backend empresariales en Java 21 y Spring Boot integrados con vistas SSR (JSP y Thymeleaf)",
         "Diseño y optimización de consultas relacionales de alto volumen sobre MariaDB",
@@ -242,7 +242,7 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
       category: "Backend / Microservices",
       featured: false,
       description:
-        "Impacto: Optimización de la velocidad de respuesta y estabilidad de los canales digitales de Banco Itaú bajo estrictos estándares de seguridad bancaria y trabajo ágil (Scrum). Ingeniería: Desarrollo y mantenimiento de microservicios escalables con NestJS y TypeScript, aplicando el patrón Backend-for-Frontend (BFF) y pruebas automatizadas con Jest junto a equipos de DevOps, QA y Arquitectos Cloud.",
+        "Desarrollo y mantenimiento de microservicios para los canales digitales de Banco Itaú dentro de células ágiles Scrum en IBM Consulting. Trabajé en capas Backend-for-Frontend (BFF) con NestJS y TypeScript, pruebas unitarias e integración en Jest y coordinación diaria con equipos de DevOps, QA y arquitectura cloud.",
       architectureHighlights: [
         "Reducción de latencia y desacoplamiento para canales web/móvil mediante arquitectura BFF",
         "Prevención de regresiones en producción con alta cobertura de pruebas unitarias e integración (Jest / TDD)",
@@ -280,12 +280,12 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
     },
     {
       id: "fullstack-portfolio-app",
-      title: " Ecosistema de Portafolio Full-Stack + Radar de Mercado IA",
-      tagline: "Next.js 16 • NestJS API • Motor RAG Vectorial • Operación a Costo $0",
+      title: "Ecosistema de Portafolio Full-Stack + Radar de Mercado IA",
+      tagline: "Next.js 16 • NestJS API • Motor RAG Vectorial • Caché 24h",
       category: "Full-Stack",
       featured: false,
       description:
-        "Impacto: Herramienta interactiva que permite a reclutadores y líderes técnicos auditar mi compatibilidad con sus vacantes en segundos y sin costos de infraestructura ($0 FinOps). Ingeniería: Construida desde cero con arquitectura MVVM en Next.js 16 (App Router), Tailwind CSS v4, pipeline ETL con Gemini 2.5 Flash + Zod, búsqueda vectorial en MongoDB Atlas y backend complementario en NestJS.",
+        "Aplicación web construida con arquitectura MVVM en Next.js 16 (App Router) y Tailwind CSS v4, conectada a un pipeline ETL diario con Gemini 2.5 Flash + Zod, búsqueda vectorial de 768 dimensiones en MongoDB Atlas y un microservicio complementario en NestJS con Docker.",
       architectureHighlights: [
         "Mentalidad de ahorro de costos: Caché inteligente Zero-Token (24h) y control de cuotas por IP",
         "Arquitectura Frontend MVVM desacoplada con soporte bilingüe instantáneo (ES/EN)",
@@ -329,7 +329,7 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
       category: "Frontend / Web",
       featured: false,
       description:
-        "Impacto: Digitalización completa de una residencia de adultos mayores, facilitando el contacto directo de familias mediante una interfaz inclusiva, ultrarrápida y de carga instantánea en móviles. Ingeniería: Gestión integral del proyecto de principio a fin (UX/UI, desarrollo estático de alto rendimiento con Astro y Tailwind CSS, estándares de accesibilidad WCAG y despliegue automatizado en CDN).",
+        "Sitio web accesible y ligero para una residencia de adultos mayores, pensado para facilitar el contacto de familias desde dispositivos móviles. Me encargué del diseño UX/UI con criterios WCAG, el desarrollo estático con Astro y Tailwind CSS (100/100 en Lighthouse) y el despliegue continuo en Netlify.",
       architectureHighlights: [
         "Puntaje perfecto (100/100) en rendimiento y velocidad de carga para mejorar la retención de usuarios",
         "Diseño inclusivo y accesible (WCAG) pensado para adultos mayores y sus familias",
@@ -348,7 +348,7 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
       category: "Frontend / Web",
       featured: false,
       description:
-        "Impacto: Fortalecimiento de la presencia comercial y captación orgánica de clientes en buscadores para la empresa. Ingeniería: Liderazgo en el diseño e implementación del portal corporativo utilizando Next.js y Tailwind CSS, aplicando renderizado híbrido optimizado, SEO técnico estructurado y arquitectura modular escalable.",
+        "Portal corporativo desarrollado con Next.js, TypeScript y Tailwind CSS, enfocado en rendimiento de carga, estructura modular de componentes y SEO técnico para mejorar la visibilidad orgánica de la empresa.",
       architectureHighlights: [
         "Aumento de visibilidad comercial mediante estrategia de SEO técnico y Core Web Vitals",
         "Arquitectura de componentes reutilizables que reduce tiempos de mantenimiento futuro",
@@ -369,7 +369,7 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
       category: "Full-Stack",
       featured: true,
       description:
-        "Business Impact: Enables real-time safety and environmental monitoring across remote national park areas without cellular or internet coverage, eliminating expensive satellite fees. Engineering: End-to-end Full-Stack platform featuring a NestJS REST API, asynchronous MQTT ingestion from ESP32/LoRa radio nodes, a reactive Next.js/Tailwind dashboard, and MongoDB persistence on a Linux VPS.",
+        "Real-time telemetry and monitoring platform built for national park zones without cellular or internet coverage. I engineered the NestJS REST API with asynchronous MQTT ingestion from ESP32/LoRa radio nodes, a reactive Next.js and Tailwind CSS dashboard, and MongoDB persistence running on a Linux VPS.",
       architectureHighlights: [
         "Off-grid operational continuity powered by autonomous ESP32 nodes and LoRa Mesh routing",
         "Resilient NestJS backend implementing Clean Architecture and asynchronous MQTT ingestion",
@@ -413,7 +413,7 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
       category: "Full-Stack",
       featured: false,
       description:
-        "Business Impact: Developing and maintaining enterprise construction and contract management platforms (Libro de Obras Digital – LOD) serving major public and private infrastructure organizations in Chile (MOP, EFE, Enel, Duoc UC) within an Agile Scrumban team. Engineering: Building backend services with Java 21 and Spring Boot alongside server-side rendered views (JSP, Thymeleaf), optimizing relational queries in MariaDB, and ensuring reliability with automated unit and integration tests in Groovy and Spock.",
+        "Enterprise construction and contract management platforms (Libro de Obras Digital – LOD) serving major public and private infrastructure organizations in Chile (MOP, EFE, Enel, Duoc UC) within an Agile Scrumban team. I build backend services with Java 21 and Spring Boot alongside JSP and Thymeleaf SSR views, optimize MariaDB queries, and write automated unit and integration tests in Groovy and Spock.",
       architectureHighlights: [
         "Enterprise backend services built with Java 21 and Spring Boot paired with JSP and Thymeleaf SSR views",
         "Relational schema design and query optimization for high-volume contract workflows in MariaDB",
@@ -457,7 +457,7 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
       category: "Backend / Microservices",
       featured: false,
       description:
-        "Business Impact: Improved response speed and platform reliability for Itaú Bank's digital channels under strict financial security standards and Agile Scrum delivery. Engineering: Built and maintained scalable microservices with NestJS and TypeScript, implementing Backend-for-Frontend (BFF) patterns and automated Jest testing alongside DevOps, QA, and Cloud Architects.",
+        "Microservices development and maintenance for Itaú Bank's digital banking channels inside Agile Scrum squads at IBM Consulting. I worked on Backend-for-Frontend (BFF) services with NestJS and TypeScript, automated unit and integration tests in Jest, and daily delivery alongside DevOps, QA, and cloud architecture teams.",
       architectureHighlights: [
         "Reduced latency and decoupled web/mobile banking channels via NestJS BFF architecture",
         "Prevented production regressions with rigorous unit and integration test coverage (Jest / TDD)",
@@ -496,11 +496,11 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
     {
       id: "fullstack-portfolio-app",
       title: "Full-Stack Portfolio Ecosystem + AI Market Radar",
-      tagline: "Next.js 16 • NestJS API • Vector RAG Engine • $0 Operating Cost",
+      tagline: "Next.js 16 • NestJS API • Vector RAG Engine • 24h Cache",
       category: "Full-Stack",
       featured: false,
       description:
-        "Business Impact: Interactive recruitment tool enabling hiring managers and recruiters to evaluate my compatibility with their open roles in seconds at $0 cloud operating cost ($0 FinOps). Engineering: Built from scratch with an MVVM architecture in Next.js 16 (App Router), Tailwind CSS v4, an automated Gemini 2.5 Flash + Zod ETL pipeline, MongoDB Atlas vector search, and a companion NestJS backend.",
+        "Full-stack web application built with an MVVM structure in Next.js 16 (App Router) and Tailwind CSS v4, backed by a daily Gemini 2.5 Flash + Zod ETL pipeline, 768-dimensional vector search in MongoDB Atlas, and a companion NestJS microservice running in Docker.",
       architectureHighlights: [
         "Cost-aware FinOps design: 24-hour Zero-Token Cache and strict per-IP quota protection",
         "Decoupled Frontend MVVM architecture with instant bilingual switching (EN/ES)",
@@ -544,7 +544,7 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
       category: "Frontend / Web",
       featured: false,
       description:
-        "Business Impact: Complete digital transformation for a senior care residence, making it effortless for families to connect through an inclusive, instant-loading mobile and desktop experience. Engineering: End-to-end project ownership from accessible UX/UI design (WCAG) to static island architecture with Astro, Tailwind CSS, and zero-maintenance Netlify CDN deployment.",
+        "Accessible, fast-loading website for a senior care residence designed to make it easy for families to connect on mobile and desktop. I handled the WCAG-focused UX/UI design, static architecture in Astro and Tailwind CSS (100/100 Lighthouse), and automated deployment on Netlify.",
       architectureHighlights: [
         "Perfect 100/100 Lighthouse performance score maximizing visitor retention and trust",
         "Inclusive WCAG accessibility tailored for elderly users and their families",
@@ -563,7 +563,7 @@ export const PROJECTS_DATA: Record<Language, Project[]> = {
       category: "Frontend / Web",
       featured: false,
       description:
-        "Business Impact: Strengthened commercial visibility and organic client acquisition across search engines. Engineering: Led the architecture and delivery of a modern corporate portal using Next.js and Tailwind CSS, combining hybrid rendering, structured technical SEO, and clean reusable components.",
+        "Corporate web portal built with Next.js, TypeScript, and Tailwind CSS, focused on fast page loads, modular reusable components, and structured technical SEO to improve organic discoverability.",
       architectureHighlights: [
         "Boosted commercial discoverability through technical SEO and Core Web Vitals optimization",
         "Modular, reusable component system lowering long-term maintenance overhead",

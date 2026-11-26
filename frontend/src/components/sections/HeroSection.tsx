@@ -127,9 +127,7 @@ export class RioClarilloMeshService {
                 <span className="h-2 w-2 rounded-full bg-emerald-500" />
                 <span>{t.hero.role}</span>
               </span>
-              <span className="badge-accent">
-                {isEs ? "Disponible" : "Available"}
-              </span>
+              <span className="badge-accent">Santiago, CL</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-bold text-white tracking-tight leading-[1.08] mb-6">

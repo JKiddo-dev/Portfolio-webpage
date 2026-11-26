@@ -104,7 +104,7 @@ export default function ContactoPage() {
   const inquiryTypes = [
     { id: "job", label: isEs ? "Oportunidad Laboral" : "Job Opportunity" },
     { id: "interview", label: isEs ? "Entrevista Técnica" : "Tech Interview" },
-    { id: "project", label: isEs ? "Consultoría / Otro" : "Consulting / Other" },
+    { id: "project", label: isEs ? "General / Otro" : "General / Other" },
   ];
 
   const faqs = [
@@ -170,22 +170,20 @@ export default function ContactoPage() {
           <div className="mb-10">
             <div className="section-eyebrow mb-3">
               <span>
-                {isEs
-                  ? "01 / DISPONIBILIDAD & CONTACTO DIRECTO"
-                  : "01 / AVAILABILITY & DIRECT CONTACT"}
+                {isEs ? "01 / CONTACTO DIRECTO" : "01 / DIRECT CONTACT"}
               </span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4 leading-[1.08] max-w-3xl">
               {isEs
-                ? "Conversemos sobre Ingeniería & Nuevas Oportunidades"
-                : "Let's Connect & Discuss Opportunities"}
+                ? "Conversemos sobre Ingeniería de Software"
+                : "Let's Talk Software Engineering"}
             </h1>
 
             <p className="text-zinc-400 text-sm sm:text-base max-w-2xl leading-relaxed">
               {isEs
-                ? "Abierto a oportunidades como Full-Stack Software Engineer (remoto o híbrido), entrevistas técnicas y colaboraciones de arquitectura de software. Escríbeme directamente o completa el formulario."
-                : "Open to Full-Stack Software Engineering roles (remote or hybrid), technical screenings, and architectural collaborations. Feel free to reach out directly or use the form below."}
+                ? "Si quieres conocer más sobre mi trabajo actual en SGO, mi paso por IBM/Itaú, alguno de mis proyectos o simplemente conectar, puedes escribirme directo o usar el formulario."
+                : "If you'd like to learn more about my work at SGO, my time at IBM/Itaú, any of my projects, or simply connect, feel free to reach out directly or use the form below."}
             </p>
           </div>
 
@@ -480,7 +478,7 @@ export default function ContactoPage() {
                 <div className="text-xs font-mono uppercase font-semibold text-emerald-400 tracking-wider flex items-center gap-2">
                   <Briefcase className="w-4 h-4" />
                   <span>
-                    {isEs ? "Condiciones de Contratación" : "Work Preferences"}
+                    {isEs ? "Modalidad & Contexto" : "Work Preferences"}
                   </span>
                 </div>
 
@@ -488,12 +486,12 @@ export default function ContactoPage() {
                   <div className="flex items-center justify-between gap-2 p-2.5 rounded-md bg-zinc-950/70 border border-zinc-800">
                     <span className="text-zinc-400 flex items-center gap-1.5">
                       <Clock className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                      <span>{isEs ? "Disponibilidad:" : "Availability:"}</span>
+                      <span>{isEs ? "Estado actual:" : "Current Role:"}</span>
                     </span>
                     <span className="text-emerald-400 font-semibold text-right">
                       {isEs
-                        ? "Inmediata / Tiempo Completo"
-                        : "Immediate / Full-time"}
+                        ? "Full-Stack @ SGO • Abierto a conversar"
+                        : "Full-Stack @ SGO • Open to connect"}
                     </span>
                   </div>
 
@@ -536,9 +534,7 @@ export default function ContactoPage() {
                 </span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                {isEs
-                  ? "Preguntas Frecuentes para Reclutadores & Tech Leads"
-                  : "Frequently Asked Questions for Recruiters & Leads"}
+                {isEs ? "Preguntas Frecuentes" : "Frequently Asked Questions"}
               </h2>
             </div>
 

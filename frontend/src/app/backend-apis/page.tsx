@@ -373,20 +373,18 @@ export default function BackendApisPage() {
               <div className="max-w-2xl">
                 <div className="section-eyebrow mb-2">
                   <span>
-                    {isEs
-                      ? "05 / DISPONIBILIDAD TÉCNICA"
-                      : "05 / ENGINEERING AVAILABILITY"}
+                    {isEs ? "05 / CONVERSEMOS" : "05 / LET'S CONNECT"}
                   </span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2.5">
                   {isEs
-                    ? "Conversemos sobre Arquitectura o Tu Próximo Proyecto"
-                    : "Let's Discuss Architecture or Your Next System"}
+                    ? "¿Quieres profundizar en arquitectura o código?"
+                    : "Want to talk architecture or systems?"}
                 </h2>
                 <p className="text-zinc-400 text-sm leading-relaxed">
                   {isEs
-                    ? "Estoy disponible para entrevistas técnicas, revisión de arquitectura y roles Full-Stack remotos o híbridos."
-                    : "Open to technical interviews, architectural reviews, and remote or hybrid Full-Stack engineering roles."}
+                    ? "Si te interesa conversar sobre arquitectura backend, patrones BFF o revisar alguno de estos proyectos en detalle, escríbeme directo."
+                    : "If you'd like to dive deeper into backend architecture, BFF patterns, or any of these systems, feel free to reach out."}
                 </p>
               </div>
 
