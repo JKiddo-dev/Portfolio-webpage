@@ -952,26 +952,26 @@ html.glass .fixed.bottom-6.right-6,
 }
 
 /* ==========================================================================
-   Neumorphism Theme (Tactile Soft-Clay Alabaster & Recessed Depth)
+   Neumorphism Theme v2 (Braun Warm Architectural Stone & Burnt Terracotta)
    ========================================================================== */
 
 html.neumorphism,
 [data-theme="neumorphism"],
 .theme-neumorphism {
-  --background: #e6ebf2;
-  --surface: #e6ebf2;
-  --surface-subtle: #dde4ee;
-  --foreground: #111827;
-  --foreground-muted: #475569;
-  --border: rgba(163, 177, 198, 0.48);
-  --border-hover: rgba(255, 255, 255, 0.85);
-  --primary: #047857;
-  --accent: #047857;
-  --accent-ink: #047857;
-  --accent-soft: rgba(4, 120, 87, 0.10);
-  --accent-border: rgba(4, 120, 87, 0.28);
-  --btn-primary-bg: #047857;
-  --btn-primary-bg-hover: #065f46;
+  --background: #d6cfc2;
+  --surface: #d8d1c4;
+  --surface-subtle: #ccc4b5;
+  --foreground: #1c1917;
+  --foreground-muted: #57534e;
+  --border: rgba(138, 128, 112, 0.42);
+  --border-hover: rgba(255, 252, 246, 0.86);
+  --primary: #b45309;
+  --accent: #b45309;
+  --accent-ink: #9a3412;
+  --accent-soft: rgba(180, 83, 9, 0.12);
+  --accent-border: rgba(180, 83, 9, 0.30);
+  --btn-primary-bg: #b45309;
+  --btn-primary-bg-hover: #92400e;
   --btn-primary-fg: #ffffff;
   --radius-card: 1.125rem;
   --radius-control: 0.75rem;
@@ -982,30 +982,30 @@ html.neumorphism,
 html.neumorphism body,
 .theme-neumorphism,
 .theme-neumorphism body {
-  background-color: #e6ebf2 !important;
-  color: #111827 !important;
+  background-color: #d6cfc2 !important;
+  color: #1c1917 !important;
 }
 
 html.neumorphism ::selection,
 .theme-neumorphism ::selection {
-  background-color: rgba(4, 120, 87, 0.20);
-  color: #0f172a;
+  background-color: rgba(180, 83, 9, 0.22);
+  color: #1c1917;
 }
 
 html.neumorphism .bg-grid-tech,
 .theme-neumorphism .bg-grid-tech {
   background-image:
-    linear-gradient(to right, rgba(17, 24, 39, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(17, 24, 39, 0.045) 1px, transparent 1px) !important;
+    linear-gradient(to right, rgba(28, 25, 23, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(28, 25, 23, 0.05) 1px, transparent 1px) !important;
 }
 
-/* Page canvas & base dark utility remapping */
+/* Base warm stone ground */
 html.neumorphism .bg-zinc-950,
 .theme-neumorphism .bg-zinc-950 {
-  background-color: #e6ebf2 !important;
+  background-color: #d6cfc2 !important;
 }
 
-/* Recessed clay wells for nested trays, sub-cards, and filter bars */
+/* Carved concave stone wells for nested trays, sub-cards, and filter bars */
 html.neumorphism .bg-zinc-900,
 html.neumorphism .bg-zinc-900\/40,
 html.neumorphism .bg-zinc-900\/50,
@@ -1034,10 +1034,10 @@ html.neumorphism .bg-zinc-950\/95,
 .theme-neumorphism .bg-zinc-950\/80,
 .theme-neumorphism .bg-zinc-950\/90,
 .theme-neumorphism .bg-zinc-950\/95 {
-  background-color: #e6ebf2 !important;
+  background-color: #cdc5b7 !important;
   box-shadow:
-    inset 4px 4px 8px rgba(163, 177, 198, 0.48),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.85);
+    inset 5px 5px 10px rgba(138, 128, 112, 0.56),
+    inset -5px -5px 10px rgba(255, 252, 246, 0.88);
 }
 
 html.neumorphism .bg-zinc-800,
@@ -1052,10 +1052,10 @@ html.neumorphism .bg-zinc-800\/90,
 .theme-neumorphism .bg-zinc-800\/70,
 .theme-neumorphism .bg-zinc-800\/80,
 .theme-neumorphism .bg-zinc-800\/90 {
-  background-color: #dde4ee !important;
+  background-color: #c7bfb0 !important;
   box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.45),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.82);
+    inset 4px 4px 8px rgba(138, 128, 112, 0.54),
+    inset -4px -4px 8px rgba(255, 252, 246, 0.85);
 }
 
 html.neumorphism .border-zinc-800,
@@ -1072,7 +1072,7 @@ html.neumorphism .border-zinc-900\/80,
 .theme-neumorphism .border-zinc-800\/90,
 .theme-neumorphism .border-zinc-900,
 .theme-neumorphism .border-zinc-900\/80 {
-  border-color: rgba(163, 177, 198, 0.46) !important;
+  border-color: rgba(138, 128, 112, 0.38) !important;
 }
 
 html.neumorphism .border-zinc-700,
@@ -1083,13 +1083,41 @@ html.neumorphism .border-zinc-700\/90,
 .theme-neumorphism .border-zinc-700\/60,
 .theme-neumorphism .border-zinc-700\/80,
 .theme-neumorphism .border-zinc-700\/90 {
-  border-color: rgba(148, 163, 184, 0.58) !important;
+  border-color: rgba(120, 113, 108, 0.52) !important;
 }
 
-/* High-contrast WCAG AA typography overrides */
+/* Warm terracotta accent remapping outside dark terminal frames */
+html.neumorphism .bg-emerald-500,
+.theme-neumorphism .bg-emerald-500 {
+  background-color: #b45309 !important;
+}
+
+html.neumorphism .bg-emerald-500\/10,
+html.neumorphism .bg-emerald-500\/15,
+.theme-neumorphism .bg-emerald-500\/10,
+.theme-neumorphism .bg-emerald-500\/15 {
+  background-color: rgba(180, 83, 9, 0.12) !important;
+}
+
+html.neumorphism .border-emerald-500,
+html.neumorphism .border-emerald-500\/30,
+html.neumorphism .border-emerald-500\/35,
+html.neumorphism .border-emerald-500\/40,
+html.neumorphism .border-emerald-500\/60,
+html.neumorphism .border-emerald-500\/70,
+.theme-neumorphism .border-emerald-500,
+.theme-neumorphism .border-emerald-500\/30,
+.theme-neumorphism .border-emerald-500\/35,
+.theme-neumorphism .border-emerald-500\/40,
+.theme-neumorphism .border-emerald-500\/60,
+.theme-neumorphism .border-emerald-500\/70 {
+  border-color: rgba(180, 83, 9, 0.42) !important;
+}
+
+/* High-contrast WCAG AA espresso & terracotta typography overrides */
 html.neumorphism .text-white,
 .theme-neumorphism .text-white {
-  color: #111827 !important;
+  color: #1c1917 !important;
 }
 
 html.neumorphism .text-zinc-50,
@@ -1098,22 +1126,22 @@ html.neumorphism .text-zinc-200,
 .theme-neumorphism .text-zinc-50,
 .theme-neumorphism .text-zinc-100,
 .theme-neumorphism .text-zinc-200 {
-  color: #1e293b !important;
+  color: #292524 !important;
 }
 
 html.neumorphism .text-zinc-300,
 .theme-neumorphism .text-zinc-300 {
-  color: #334155 !important;
+  color: #44403c !important;
 }
 
 html.neumorphism .text-zinc-400,
 .theme-neumorphism .text-zinc-400 {
-  color: #475569 !important;
+  color: #57534e !important;
 }
 
 html.neumorphism .text-zinc-500,
 .theme-neumorphism .text-zinc-500 {
-  color: #526072 !important;
+  color: #57534e !important;
 }
 
 html.neumorphism .text-emerald-200\/90,
@@ -1122,55 +1150,55 @@ html.neumorphism .text-emerald-400,
 .theme-neumorphism .text-emerald-200\/90,
 .theme-neumorphism .text-emerald-300,
 .theme-neumorphism .text-emerald-400 {
-  color: #047857 !important;
+  color: #9a3412 !important;
 }
 
 html.neumorphism .text-teal-300,
 html.neumorphism .text-teal-400,
 .theme-neumorphism .text-teal-300,
 .theme-neumorphism .text-teal-400 {
-  color: #0f766e !important;
+  color: #115e59 !important;
 }
 
 html.neumorphism .text-cyan-300,
 html.neumorphism .text-cyan-400,
 .theme-neumorphism .text-cyan-300,
 .theme-neumorphism .text-cyan-400 {
-  color: #0e7490 !important;
+  color: #155e75 !important;
 }
 
 html.neumorphism .text-amber-300,
 html.neumorphism .text-amber-400,
 .theme-neumorphism .text-amber-300,
 .theme-neumorphism .text-amber-400 {
-  color: #b45309 !important;
+  color: #9a3412 !important;
 }
 
 html.neumorphism .text-blue-300,
 html.neumorphism .text-blue-400,
 .theme-neumorphism .text-blue-300,
 .theme-neumorphism .text-blue-400 {
-  color: #1d4ed8 !important;
+  color: #1e40af !important;
 }
 
 html.neumorphism .text-rose-300,
 html.neumorphism .text-rose-400,
 .theme-neumorphism .text-rose-300,
 .theme-neumorphism .text-rose-400 {
-  color: #be123c !important;
+  color: #9f1239 !important;
 }
 
-/* Extruded tactile surface cards (.glow-card kept aliased) */
+/* High-relief convex extruded surface cards (.glow-card kept aliased) */
 html.neumorphism .surface-card,
 html.neumorphism .glow-card,
 .theme-neumorphism .surface-card,
 .theme-neumorphism .glow-card {
-  background-color: #e6ebf2 !important;
-  border: 1px solid rgba(255, 255, 255, 0.58) !important;
+  background: linear-gradient(145deg, #dfd9cd 0%, #cdc5b7 100%) !important;
+  border: 1px solid rgba(255, 252, 246, 0.56) !important;
   border-radius: var(--radius-card);
   box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.55),
-    -8px -8px 16px rgba(255, 255, 255, 0.88) !important;
+    10px 10px 22px rgba(138, 128, 112, 0.62),
+    -10px -10px 22px rgba(255, 252, 246, 0.92) !important;
   transition:
     border-color 200ms ease,
     transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -1181,121 +1209,122 @@ html.neumorphism .surface-card:hover,
 html.neumorphism .glow-card:hover,
 .theme-neumorphism .surface-card:hover,
 .theme-neumorphism .glow-card:hover {
-  border-color: rgba(255, 255, 255, 0.84) !important;
+  border-color: rgba(255, 252, 246, 0.84) !important;
   box-shadow:
-    11px 11px 22px rgba(163, 177, 198, 0.62),
-    -11px -11px 22px rgba(255, 255, 255, 0.94) !important;
+    13px 13px 26px rgba(138, 128, 112, 0.68),
+    -13px -13px 26px rgba(255, 252, 246, 0.96) !important;
 }
 
-/* Tactile Neumorphic buttons */
+/* Tactile Braun-style buttons */
 html.neumorphism .btn-primary,
 .theme-neumorphism .btn-primary {
-  background-color: #047857 !important;
+  background-color: #b45309 !important;
   color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border: 1px solid rgba(255, 252, 246, 0.24) !important;
   border-radius: var(--radius-control);
   box-shadow:
-    5px 5px 12px rgba(163, 177, 198, 0.55),
-    -4px -4px 10px rgba(255, 255, 255, 0.82);
+    6px 6px 14px rgba(138, 128, 112, 0.58),
+    -5px -5px 12px rgba(255, 252, 246, 0.84);
 }
 
 html.neumorphism .btn-primary:hover,
 .theme-neumorphism .btn-primary:hover {
-  background-color: #065f46 !important;
+  background-color: #92400e !important;
   box-shadow:
-    7px 7px 14px rgba(163, 177, 198, 0.62),
-    -5px -5px 12px rgba(255, 255, 255, 0.88);
+    8px 8px 18px rgba(138, 128, 112, 0.66),
+    -6px -6px 14px rgba(255, 252, 246, 0.90);
 }
 
 html.neumorphism .btn-primary:active,
 .theme-neumorphism .btn-primary:active {
   box-shadow:
-    inset 3px 3px 7px rgba(2, 44, 34, 0.45),
-    inset -2px -2px 5px rgba(16, 185, 129, 0.28);
+    inset 3px 3px 8px rgba(67, 20, 7, 0.48),
+    inset -2px -2px 6px rgba(245, 158, 11, 0.28);
 }
 
 html.neumorphism .btn-secondary,
 .theme-neumorphism .btn-secondary {
-  background-color: #e6ebf2 !important;
-  color: #111827 !important;
-  border: 1px solid rgba(255, 255, 255, 0.62) !important;
+  background: linear-gradient(145deg, #dfd9cd 0%, #cdc5b7 100%) !important;
+  color: #1c1917 !important;
+  border: 1px solid rgba(255, 252, 246, 0.58) !important;
   border-radius: var(--radius-control);
   box-shadow:
-    5px 5px 10px rgba(163, 177, 198, 0.50),
-    -5px -5px 10px rgba(255, 255, 255, 0.86);
+    6px 6px 12px rgba(138, 128, 112, 0.54),
+    -6px -6px 12px rgba(255, 252, 246, 0.88);
 }
 
 html.neumorphism .btn-secondary:hover,
 .theme-neumorphism .btn-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.88) !important;
-  background-color: #eaf0f7 !important;
+  border-color: rgba(255, 252, 246, 0.88) !important;
+  background: linear-gradient(145deg, #e4dfd4 0%, #d1c9bc 100%) !important;
   box-shadow:
-    7px 7px 14px rgba(163, 177, 198, 0.58),
-    -7px -7px 14px rgba(255, 255, 255, 0.92);
+    8px 8px 16px rgba(138, 128, 112, 0.62),
+    -8px -8px 16px rgba(255, 252, 246, 0.94);
 }
 
 html.neumorphism .btn-secondary:active,
 .theme-neumorphism .btn-secondary:active {
+  background: #cdc5b7 !important;
   box-shadow:
-    inset 4px 4px 8px rgba(163, 177, 198, 0.52),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.86);
+    inset 4px 4px 8px rgba(138, 128, 112, 0.56),
+    inset -4px -4px 8px rgba(255, 252, 246, 0.88);
 }
 
-/* Soft clay badges */
+/* Warm carved stone badges */
 html.neumorphism .badge-mono,
 .theme-neumorphism .badge-mono {
-  background-color: #dde4ee !important;
-  color: #334155 !important;
-  border-color: rgba(255, 255, 255, 0.65) !important;
+  background-color: #ccc4b5 !important;
+  color: #292524 !important;
+  border-color: rgba(255, 252, 246, 0.55) !important;
   box-shadow:
-    inset 2px 2px 4px rgba(163, 177, 198, 0.36),
-    inset -2px -2px 4px rgba(255, 255, 255, 0.78);
+    inset 2px 2px 5px rgba(138, 128, 112, 0.42),
+    inset -2px -2px 5px rgba(255, 252, 246, 0.80);
 }
 
 html.neumorphism .badge-accent,
 .theme-neumorphism .badge-accent {
-  background-color: rgba(4, 120, 87, 0.10) !important;
-  color: #047857 !important;
-  border-color: rgba(4, 120, 87, 0.28) !important;
+  background-color: rgba(180, 83, 9, 0.12) !important;
+  color: #9a3412 !important;
+  border-color: rgba(180, 83, 9, 0.30) !important;
   box-shadow: none;
 }
 
-/* Dark high-contrast code & terminal consoles wrapped in a neumorphic outer frame */
+/* Warm obsidian code & terminal consoles inside an extruded warm-stone bezel */
 html.neumorphism .terminal-window,
 .theme-neumorphism .terminal-window {
-  background-color: #0f172a !important;
-  color: #e2e8f0 !important;
-  border-color: rgba(255, 255, 255, 0.58) !important;
+  background-color: #161412 !important;
+  color: #e7e5e4 !important;
+  border-color: rgba(255, 252, 246, 0.56) !important;
   border-radius: var(--radius-card);
   box-shadow:
-    8px 8px 18px rgba(163, 177, 198, 0.58),
-    -8px -8px 18px rgba(255, 255, 255, 0.90) !important;
+    10px 10px 22px rgba(138, 128, 112, 0.64),
+    -10px -10px 22px rgba(255, 252, 246, 0.92) !important;
 }
 
 html.neumorphism pre,
 html.neumorphism .custom-code-scroll,
 .theme-neumorphism pre,
 .theme-neumorphism .custom-code-scroll {
-  background-color: #0f172a !important;
-  color: #e2e8f0 !important;
+  background-color: #161412 !important;
+  color: #e7e5e4 !important;
   box-shadow: none !important;
 }
 
 html.neumorphism pre .text-zinc-200,
 .theme-neumorphism pre .text-zinc-200 {
-  color: #e2e8f0 !important;
+  color: #e7e5e4 !important;
 }
 
 html.neumorphism .custom-code-scroll .text-zinc-600,
 .theme-neumorphism .custom-code-scroll .text-zinc-600 {
-  color: #64748b !important;
+  color: #78716c !important;
 }
 
 html.neumorphism .terminal-window .text-white,
 html.neumorphism .terminal-window .text-zinc-50,
 .theme-neumorphism .terminal-window .text-white,
 .theme-neumorphism .terminal-window .text-zinc-50 {
-  color: #f8fafc !important;
+  color: #fafaf9 !important;
 }
 
 html.neumorphism .terminal-window .text-zinc-100,
@@ -1304,17 +1333,17 @@ html.neumorphism .terminal-window .text-zinc-300,
 .theme-neumorphism .terminal-window .text-zinc-100,
 .theme-neumorphism .terminal-window .text-zinc-200,
 .theme-neumorphism .terminal-window .text-zinc-300 {
-  color: #cbd5e1 !important;
+  color: #d6d3d1 !important;
 }
 
 html.neumorphism .terminal-window .text-zinc-400,
 .theme-neumorphism .terminal-window .text-zinc-400 {
-  color: #94a3b8 !important;
+  color: #a8a29e !important;
 }
 
 html.neumorphism .terminal-window .text-zinc-500,
 .theme-neumorphism .terminal-window .text-zinc-500 {
-  color: #64748b !important;
+  color: #78716c !important;
 }
 
 html.neumorphism .terminal-window .text-emerald-300,
@@ -1322,6 +1351,11 @@ html.neumorphism .terminal-window .text-emerald-400,
 .theme-neumorphism .terminal-window .text-emerald-300,
 .theme-neumorphism .terminal-window .text-emerald-400 {
   color: #34d399 !important;
+}
+
+html.neumorphism .terminal-window .bg-emerald-500,
+.theme-neumorphism .terminal-window .bg-emerald-500 {
+  background-color: #10b981 !important;
 }
 
 html.neumorphism .terminal-window .text-teal-300,
@@ -1358,7 +1392,7 @@ html.neumorphism .terminal-window .bg-zinc-950\/95,
 .theme-neumorphism .terminal-window .bg-zinc-950,
 .theme-neumorphism .terminal-window .bg-zinc-950\/90,
 .theme-neumorphism .terminal-window .bg-zinc-950\/95 {
-  background-color: #0b1120 !important;
+  background-color: #12100e !important;
   box-shadow: none !important;
 }
 
@@ -1374,7 +1408,7 @@ html.neumorphism .terminal-window .bg-zinc-900\/90,
 .theme-neumorphism .terminal-window .bg-zinc-900\/70,
 .theme-neumorphism .terminal-window .bg-zinc-900\/80,
 .theme-neumorphism .terminal-window .bg-zinc-900\/90 {
-  background-color: #162033 !important;
+  background-color: #1f1c19 !important;
   box-shadow: none !important;
 }
 
@@ -1390,13 +1424,13 @@ html.neumorphism .terminal-window .bg-zinc-800\/90,
 .theme-neumorphism .terminal-window .bg-zinc-800\/70,
 .theme-neumorphism .terminal-window .bg-zinc-800\/80,
 .theme-neumorphism .terminal-window .bg-zinc-800\/90 {
-  background-color: #273449 !important;
+  background-color: #2a2622 !important;
   box-shadow: none !important;
 }
 
 html.neumorphism .terminal-window .bg-zinc-700,
 .theme-neumorphism .terminal-window .bg-zinc-700 {
-  background-color: #334155 !important;
+  background-color: #3a342e !important;
   box-shadow: none !important;
 }
 
@@ -1410,7 +1444,7 @@ html.neumorphism .terminal-window .border-zinc-800\/90,
 .theme-neumorphism .terminal-window .border-zinc-800\/70,
 .theme-neumorphism .terminal-window .border-zinc-800\/80,
 .theme-neumorphism .terminal-window .border-zinc-800\/90 {
-  border-color: #1e293b !important;
+  border-color: #2c2824 !important;
 }
 
 html.neumorphism .terminal-window .border-zinc-700,
@@ -1421,91 +1455,92 @@ html.neumorphism .terminal-window .border-zinc-700\/90,
 .theme-neumorphism .terminal-window .border-zinc-700\/60,
 .theme-neumorphism .terminal-window .border-zinc-700\/80,
 .theme-neumorphism .terminal-window .border-zinc-700\/90 {
-  border-color: #334155 !important;
+  border-color: #3f3933 !important;
 }
 
-/* Recessed form controls */
+/* Carved concave warm-stone form controls */
 html.neumorphism input,
 html.neumorphism textarea,
 .theme-neumorphism input,
 .theme-neumorphism textarea {
-  background-color: #e6ebf2 !important;
-  border: 1px solid rgba(255, 255, 255, 0.55) !important;
-  color: #111827 !important;
+  background-color: #cdc5b7 !important;
+  border: 1px solid rgba(255, 252, 246, 0.50) !important;
+  color: #1c1917 !important;
   box-shadow:
-    inset 4px 4px 8px rgba(163, 177, 198, 0.50),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.88) !important;
+    inset 5px 5px 10px rgba(138, 128, 112, 0.56),
+    inset -5px -5px 10px rgba(255, 252, 246, 0.88) !important;
 }
 
 html.neumorphism input::placeholder,
 html.neumorphism textarea::placeholder,
 .theme-neumorphism input::placeholder,
 .theme-neumorphism textarea::placeholder {
-  color: #64748b !important;
+  color: #57534e !important;
 }
 
 html.neumorphism input:focus,
 html.neumorphism textarea:focus,
 .theme-neumorphism input:focus,
 .theme-neumorphism textarea:focus {
-  background-color: #ebf0f6 !important;
-  border-color: #047857 !important;
+  background-color: #d4cdbf !important;
+  border-color: #b45309 !important;
   box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.44),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.86),
-    0 0 0 2px rgba(4, 120, 87, 0.20) !important;
+    inset 4px 4px 8px rgba(138, 128, 112, 0.50),
+    inset -4px -4px 8px rgba(255, 252, 246, 0.88),
+    0 0 0 2px rgba(180, 83, 9, 0.22) !important;
 }
 
-/* Tactile Neumorphic Navbar & Floating Elements */
+/* Tactile Warm-Stone Navbar & Floating Controls */
 html.neumorphism .neumorphism-nav-header,
 .theme-neumorphism .neumorphism-nav-header {
-  background-color: rgba(230, 235, 242, 0.94);
+  background-color: rgba(214, 207, 194, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 6px 16px rgba(163, 177, 198, 0.45);
+  border-bottom: 1px solid rgba(255, 252, 246, 0.60);
+  box-shadow: 0 8px 18px rgba(138, 128, 112, 0.48);
 }
 
 html.neumorphism .neumorphism-control,
 .theme-neumorphism .neumorphism-control {
-  background-color: #e6ebf2;
-  border-color: rgba(255, 255, 255, 0.62);
-  color: #111827;
+  background: linear-gradient(145deg, #dfd9cd 0%, #cdc5b7 100%);
+  border-color: rgba(255, 252, 246, 0.58);
+  color: #1c1917;
   box-shadow:
-    3px 3px 6px rgba(163, 177, 198, 0.46),
-    -3px -3px 6px rgba(255, 255, 255, 0.85);
+    4px 4px 8px rgba(138, 128, 112, 0.52),
+    -4px -4px 8px rgba(255, 252, 246, 0.88);
 }
 
 html.neumorphism .neumorphism-control:hover,
 .theme-neumorphism .neumorphism-control:hover {
-  border-color: rgba(255, 255, 255, 0.88);
-  color: #047857;
+  border-color: rgba(255, 252, 246, 0.86);
+  color: #9a3412;
 }
 
 html.neumorphism .neumorphism-control:active,
 .theme-neumorphism .neumorphism-control:active {
+  background: #cdc5b7;
   box-shadow:
-    inset 2px 2px 5px rgba(163, 177, 198, 0.50),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.85);
+    inset 3px 3px 6px rgba(138, 128, 112, 0.54),
+    inset -3px -3px 6px rgba(255, 252, 246, 0.86);
 }
 
 html.neumorphism .neumorphism-tray,
 .theme-neumorphism .neumorphism-tray {
-  background-color: #e6ebf2;
-  border-color: rgba(255, 255, 255, 0.55);
+  background-color: #cdc5b7;
+  border-color: rgba(255, 252, 246, 0.52);
   box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.48),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.86);
+    inset 4px 4px 8px rgba(138, 128, 112, 0.56),
+    inset -4px -4px 8px rgba(255, 252, 246, 0.88);
 }
 
 html.neumorphism .fixed.bottom-6.right-6,
 .theme-neumorphism .fixed.bottom-6.right-6 {
-  background-color: #e6ebf2 !important;
-  border-color: rgba(255, 255, 255, 0.65) !important;
-  color: #111827 !important;
+  background: linear-gradient(145deg, #dfd9cd 0%, #cdc5b7 100%) !important;
+  border-color: rgba(255, 252, 246, 0.60) !important;
+  color: #1c1917 !important;
   box-shadow:
-    6px 6px 14px rgba(163, 177, 198, 0.55),
-    -6px -6px 14px rgba(255, 255, 255, 0.88) !important;
+    8px 8px 18px rgba(138, 128, 112, 0.58),
+    -8px -8px 18px rgba(255, 252, 246, 0.90) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

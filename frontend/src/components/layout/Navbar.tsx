@@ -188,7 +188,7 @@ export default function Navbar() {
                 : isGlass
                   ? "text-zinc-300 hover:text-white hover:bg-white/10"
                   : isNeumorphism
-                    ? "text-slate-600 hover:text-slate-950 hover:bg-white/55"
+                    ? "text-stone-700 hover:text-stone-950 hover:bg-stone-100/60"
                     : isDark
                       ? "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800"
                       : "text-zinc-500 hover:text-zinc-950 hover:bg-zinc-100"
@@ -243,9 +243,11 @@ export default function Navbar() {
                 className={`w-4 h-4 ${
                   isGlass
                     ? "text-violet-200"
-                    : isDark
-                      ? "text-emerald-400"
-                      : "text-emerald-700"
+                    : isNeumorphism
+                      ? "text-amber-800"
+                      : isDark
+                        ? "text-emerald-400"
+                        : "text-emerald-700"
                 }`}
               />
             </span>
@@ -254,7 +256,9 @@ export default function Navbar() {
                 className={`font-mono text-sm font-semibold tracking-tight transition-colors ${
                   isDark
                     ? "text-zinc-100 group-hover:text-white"
-                    : "text-zinc-950 group-hover:text-emerald-800"
+                    : isNeumorphism
+                      ? "text-stone-900 group-hover:text-amber-800"
+                      : "text-zinc-950 group-hover:text-emerald-800"
                 }`}
               >
                 jkiddo-dev
@@ -264,7 +268,7 @@ export default function Navbar() {
                   isGlass
                     ? "text-zinc-300/75"
                     : isNeumorphism
-                      ? "text-slate-600"
+                      ? "text-stone-600"
                       : "text-zinc-500"
                 }`}
               >
@@ -285,7 +289,7 @@ export default function Navbar() {
                         isGlass
                           ? "bg-white/[0.07] text-violet-200 border-white/14"
                           : isNeumorphism
-                            ? "bg-[#dde4ee] text-slate-700 border-white/65"
+                            ? "bg-[#ccc4b5] text-stone-800 border-white/55"
                             : isDark
                               ? "bg-zinc-900 text-zinc-400 border-zinc-800"
                               : "bg-zinc-100 text-zinc-600 border-zinc-200"
@@ -301,13 +305,15 @@ export default function Navbar() {
                 link.active
                   ? isGlass
                     ? "text-white font-semibold bg-white/[0.12] border border-white/18"
-                    : isDark
-                      ? "text-emerald-400 font-semibold"
-                      : "text-emerald-700 font-semibold"
+                    : isNeumorphism
+                      ? "text-amber-800 font-semibold"
+                      : isDark
+                        ? "text-emerald-400 font-semibold"
+                        : "text-emerald-700 font-semibold"
                   : isGlass
                     ? "text-zinc-300 hover:text-white hover:bg-white/[0.07]"
                     : isNeumorphism
-                      ? "text-slate-700 hover:text-slate-950"
+                      ? "text-stone-700 hover:text-stone-950"
                       : isDark
                         ? "text-zinc-400 hover:text-zinc-100"
                         : "text-zinc-600 hover:text-zinc-950"
@@ -318,7 +324,11 @@ export default function Navbar() {
                   <span
                     aria-hidden="true"
                     className={`absolute left-2 right-2 -bottom-[17px] h-[2px] ${
-                      isDark ? "bg-emerald-500" : "bg-emerald-700"
+                      isNeumorphism
+                        ? "bg-amber-700"
+                        : isDark
+                          ? "bg-emerald-500"
+                          : "bg-emerald-700"
                     }`}
                   />
                 ) : null;
@@ -369,9 +379,11 @@ export default function Navbar() {
                   language === "es"
                     ? isGlass
                       ? "font-semibold text-violet-200"
-                      : isDark
-                        ? "font-semibold text-emerald-400"
-                        : "font-semibold text-emerald-700"
+                      : isNeumorphism
+                        ? "font-semibold text-amber-800"
+                        : isDark
+                          ? "font-semibold text-emerald-400"
+                          : "font-semibold text-emerald-700"
                     : "opacity-50"
                 }
               >
@@ -383,9 +395,11 @@ export default function Navbar() {
                   language === "en"
                     ? isGlass
                       ? "font-semibold text-violet-200"
-                      : isDark
-                        ? "font-semibold text-emerald-400"
-                        : "font-semibold text-emerald-700"
+                      : isNeumorphism
+                        ? "font-semibold text-amber-800"
+                        : isDark
+                          ? "font-semibold text-emerald-400"
+                          : "font-semibold text-emerald-700"
                     : "opacity-50"
                 }
               >
@@ -459,7 +473,11 @@ export default function Navbar() {
           >
             <div
               className={`h-full transition-[width] duration-150 ${
-                isDark ? "bg-emerald-500" : "bg-emerald-700"
+                isNeumorphism
+                  ? "bg-amber-700"
+                  : isDark
+                    ? "bg-emerald-500"
+                    : "bg-emerald-700"
               }`}
               style={{ width: `${scrollProgress}%` }}
             />
@@ -473,7 +491,7 @@ export default function Navbar() {
               isGlass
                 ? "lg:hidden glass-nav-shell pointer-events-auto max-w-6xl mx-auto mt-2 rounded-2xl text-zinc-100"
                 : isNeumorphism
-                  ? "lg:hidden border-t border-white/60 bg-[#e6ebf2] text-slate-900 shadow-[0_12px_24px_rgba(163,177,198,0.48)]"
+                  ? "lg:hidden border-t border-white/55 bg-[#d6cfc2] text-stone-900 shadow-[0_14px_28px_rgba(138,128,112,0.52)]"
                   : `lg:hidden border-t ${
                       isDark
                         ? "bg-zinc-950 border-zinc-800 text-zinc-100"
@@ -487,7 +505,7 @@ export default function Navbar() {
                   isGlass
                     ? "border-white/10"
                     : isNeumorphism
-                      ? "border-slate-300/60"
+                      ? "border-stone-400/45"
                       : isDark
                         ? "border-zinc-800/80"
                         : "border-zinc-200"
@@ -495,12 +513,16 @@ export default function Navbar() {
                   link.active
                     ? isGlass
                       ? "text-violet-200 font-semibold"
-                      : isDark
-                        ? "text-emerald-400 font-semibold"
-                        : "text-emerald-700 font-semibold"
+                      : isNeumorphism
+                        ? "text-amber-800 font-semibold"
+                        : isDark
+                          ? "text-emerald-400 font-semibold"
+                          : "text-emerald-700 font-semibold"
                     : isDark
                       ? "text-zinc-300 hover:text-white"
-                      : "text-zinc-700 hover:text-zinc-950"
+                      : isNeumorphism
+                        ? "text-stone-700 hover:text-stone-950"
+                        : "text-zinc-700 hover:text-zinc-950"
                 }`;
 
                 return link.isRoute ? (
@@ -517,7 +539,7 @@ export default function Navbar() {
                           isGlass
                             ? "bg-white/[0.07] text-violet-200 border-white/14"
                             : isNeumorphism
-                              ? "bg-[#dde4ee] text-slate-700 border-white/65"
+                              ? "bg-[#ccc4b5] text-stone-800 border-white/55"
                               : isDark
                                 ? "bg-zinc-900 text-zinc-400 border-zinc-800"
                                 : "bg-white text-zinc-600 border-zinc-200"

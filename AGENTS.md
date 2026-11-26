@@ -66,3 +66,8 @@ Explicitly assign the leanest capable model per worker when spawning or switchin
 - **Avoid uncovered dark opacity hover/active backgrounds**: Use `bg-[var(--surface-subtle)]` / `hover:bg-[var(--surface-subtle)]` instead of `bg-zinc-800/40` or `hover:bg-zinc-800/70` so Light mode never flashes dark charcoal behind dark text.
 - **Dark consoles stay inside `.terminal-window`**: Code viewers, REST inspectors, and telemetry logs must use `.terminal-window` so `globals.css` preserves high-contrast dark chrome in Light mode.
 - **Equal container edges**: Use `max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 w-full` consistently across every page section.
+- **Distinct 4-Theme Material Identities**: Keep each theme's ground, surface material, and accent unmistakably distinct so themes never look like variants of each other:
+  - `dark`: Deep charcoal `#09090b` + emerald `#10b981`
+  - `light`: Crisp paper `#fafaf9` + forest emerald `#047857`
+  - `glass` *(default)*: Dusk amethyst / obsidian twilight `#0b0a14` + frosted specular glass + silver-lavender `#c4b5fd` *(restrained, never neon cyberpunk purple-pink)*
+  - `neumorphism`: Warm Architectural Stone / Braun Clay `#d6cfc2` + high-relief convex/concave dual shadows + burnt terracotta `#b45309` / `#9a3412` + warm obsidian `#161412` `.terminal-window` *(avoid pale cool-grey neumorphism that blurs into Light mode)*.
