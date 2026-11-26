@@ -178,7 +178,13 @@ export default function Navbar() {
           <button
             key={option.id}
             type="button"
-            onClick={() => setTheme(option.id)}
+            onClick={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              setTheme(option.id, {
+                x: rect.left + rect.width / 2,
+                y: rect.top + rect.height / 2,
+              });
+            }}
             aria-pressed={isSelected}
             aria-label={label}
             title={label}

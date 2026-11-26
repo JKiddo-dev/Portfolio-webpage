@@ -1543,6 +1543,41 @@ html.neumorphism .fixed.bottom-6.right-6,
     -8px -8px 18px rgba(255, 252, 246, 0.90) !important;
 }
 
+/* ==========================================================================
+   Theme View Transitions & Synchronized CSS Fallback
+   ========================================================================== */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+[data-theme-transitioning="true"] *,
+[data-theme-transitioning="true"] *::before,
+[data-theme-transitioning="true"] *::after {
+  transition: none !important;
+}
+
+.theme-fallback-transition,
+.theme-fallback-transition *,
+.theme-fallback-transition *::before,
+.theme-fallback-transition *::after {
+  transition:
+    background-color 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

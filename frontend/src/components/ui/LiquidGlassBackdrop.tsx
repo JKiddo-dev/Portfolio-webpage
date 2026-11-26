@@ -11,7 +11,7 @@ export default function LiquidGlassBackdrop() {
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 -z-10 pointer-events-none overflow-hidden select-none"
+      className="lg-backdrop-root fixed inset-0 -z-10 pointer-events-none overflow-hidden select-none"
       style={{ backgroundColor: "#0b0a14" }}
     >
       <style>{`
@@ -23,6 +23,10 @@ export default function LiquidGlassBackdrop() {
           0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
           50% { transform: translate3d(-2.2%, -1.6%, 0) scale(1.025); }
         }
+        @keyframes liquidGlassFallbackFadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
         .lg-field-a {
           animation: liquidGlassDriftA 26s ease-in-out infinite;
           will-change: transform;
@@ -31,9 +35,13 @@ export default function LiquidGlassBackdrop() {
           animation: liquidGlassDriftB 32s ease-in-out infinite;
           will-change: transform;
         }
+        html.theme-fallback-transition .lg-backdrop-root {
+          animation: liquidGlassFallbackFadeIn 260ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
         @media (prefers-reduced-motion: reduce) {
           .lg-field-a,
-          .lg-field-b {
+          .lg-field-b,
+          html.theme-fallback-transition .lg-backdrop-root {
             animation: none !important;
           }
         }
