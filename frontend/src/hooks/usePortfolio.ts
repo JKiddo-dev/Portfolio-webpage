@@ -13,7 +13,8 @@ import {
 
 export function usePortfolio() {
   const { language, setLanguage, toggleLanguage } = useLanguage();
-  const { theme, toggleTheme, setTheme, isDark, isGlass } = useTheme();
+  const { theme, toggleTheme, setTheme, isDark, isGlass, isNeumorphism } =
+    useTheme();
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
   const t = UI_TRANSLATIONS[language];
@@ -36,6 +37,7 @@ export function usePortfolio() {
     setTheme,
     isDark,
     isGlass,
+    isNeumorphism,
     t,
     projects: filteredProjects,
     allProjects,

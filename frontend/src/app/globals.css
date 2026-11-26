@@ -951,6 +951,563 @@ html.glass .fixed.bottom-6.right-6,
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26);
 }
 
+/* ==========================================================================
+   Neumorphism Theme (Tactile Soft-Clay Alabaster & Recessed Depth)
+   ========================================================================== */
+
+html.neumorphism,
+[data-theme="neumorphism"],
+.theme-neumorphism {
+  --background: #e6ebf2;
+  --surface: #e6ebf2;
+  --surface-subtle: #dde4ee;
+  --foreground: #111827;
+  --foreground-muted: #475569;
+  --border: rgba(163, 177, 198, 0.48);
+  --border-hover: rgba(255, 255, 255, 0.85);
+  --primary: #047857;
+  --accent: #047857;
+  --accent-ink: #047857;
+  --accent-soft: rgba(4, 120, 87, 0.10);
+  --accent-border: rgba(4, 120, 87, 0.28);
+  --btn-primary-bg: #047857;
+  --btn-primary-bg-hover: #065f46;
+  --btn-primary-fg: #ffffff;
+  --radius-card: 1.125rem;
+  --radius-control: 0.75rem;
+  color-scheme: light;
+}
+
+html.neumorphism,
+html.neumorphism body,
+.theme-neumorphism,
+.theme-neumorphism body {
+  background-color: #e6ebf2 !important;
+  color: #111827 !important;
+}
+
+html.neumorphism ::selection,
+.theme-neumorphism ::selection {
+  background-color: rgba(4, 120, 87, 0.20);
+  color: #0f172a;
+}
+
+html.neumorphism .bg-grid-tech,
+.theme-neumorphism .bg-grid-tech {
+  background-image:
+    linear-gradient(to right, rgba(17, 24, 39, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 24, 39, 0.045) 1px, transparent 1px) !important;
+}
+
+/* Page canvas & base dark utility remapping */
+html.neumorphism .bg-zinc-950,
+.theme-neumorphism .bg-zinc-950 {
+  background-color: #e6ebf2 !important;
+}
+
+/* Recessed clay wells for nested trays, sub-cards, and filter bars */
+html.neumorphism .bg-zinc-900,
+html.neumorphism .bg-zinc-900\/40,
+html.neumorphism .bg-zinc-900\/50,
+html.neumorphism .bg-zinc-900\/60,
+html.neumorphism .bg-zinc-900\/70,
+html.neumorphism .bg-zinc-900\/80,
+html.neumorphism .bg-zinc-900\/90,
+html.neumorphism .bg-zinc-900\/95,
+html.neumorphism .bg-zinc-950\/50,
+html.neumorphism .bg-zinc-950\/60,
+html.neumorphism .bg-zinc-950\/70,
+html.neumorphism .bg-zinc-950\/80,
+html.neumorphism .bg-zinc-950\/90,
+html.neumorphism .bg-zinc-950\/95,
+.theme-neumorphism .bg-zinc-900,
+.theme-neumorphism .bg-zinc-900\/40,
+.theme-neumorphism .bg-zinc-900\/50,
+.theme-neumorphism .bg-zinc-900\/60,
+.theme-neumorphism .bg-zinc-900\/70,
+.theme-neumorphism .bg-zinc-900\/80,
+.theme-neumorphism .bg-zinc-900\/90,
+.theme-neumorphism .bg-zinc-900\/95,
+.theme-neumorphism .bg-zinc-950\/50,
+.theme-neumorphism .bg-zinc-950\/60,
+.theme-neumorphism .bg-zinc-950\/70,
+.theme-neumorphism .bg-zinc-950\/80,
+.theme-neumorphism .bg-zinc-950\/90,
+.theme-neumorphism .bg-zinc-950\/95 {
+  background-color: #e6ebf2 !important;
+  box-shadow:
+    inset 4px 4px 8px rgba(163, 177, 198, 0.48),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.85);
+}
+
+html.neumorphism .bg-zinc-800,
+html.neumorphism .bg-zinc-800\/50,
+html.neumorphism .bg-zinc-800\/60,
+html.neumorphism .bg-zinc-800\/70,
+html.neumorphism .bg-zinc-800\/80,
+html.neumorphism .bg-zinc-800\/90,
+.theme-neumorphism .bg-zinc-800,
+.theme-neumorphism .bg-zinc-800\/50,
+.theme-neumorphism .bg-zinc-800\/60,
+.theme-neumorphism .bg-zinc-800\/70,
+.theme-neumorphism .bg-zinc-800\/80,
+.theme-neumorphism .bg-zinc-800\/90 {
+  background-color: #dde4ee !important;
+  box-shadow:
+    inset 3px 3px 6px rgba(163, 177, 198, 0.45),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.82);
+}
+
+html.neumorphism .border-zinc-800,
+html.neumorphism .border-zinc-800\/60,
+html.neumorphism .border-zinc-800\/70,
+html.neumorphism .border-zinc-800\/80,
+html.neumorphism .border-zinc-800\/90,
+html.neumorphism .border-zinc-900,
+html.neumorphism .border-zinc-900\/80,
+.theme-neumorphism .border-zinc-800,
+.theme-neumorphism .border-zinc-800\/60,
+.theme-neumorphism .border-zinc-800\/70,
+.theme-neumorphism .border-zinc-800\/80,
+.theme-neumorphism .border-zinc-800\/90,
+.theme-neumorphism .border-zinc-900,
+.theme-neumorphism .border-zinc-900\/80 {
+  border-color: rgba(163, 177, 198, 0.46) !important;
+}
+
+html.neumorphism .border-zinc-700,
+html.neumorphism .border-zinc-700\/60,
+html.neumorphism .border-zinc-700\/80,
+html.neumorphism .border-zinc-700\/90,
+.theme-neumorphism .border-zinc-700,
+.theme-neumorphism .border-zinc-700\/60,
+.theme-neumorphism .border-zinc-700\/80,
+.theme-neumorphism .border-zinc-700\/90 {
+  border-color: rgba(148, 163, 184, 0.58) !important;
+}
+
+/* High-contrast WCAG AA typography overrides */
+html.neumorphism .text-white,
+.theme-neumorphism .text-white {
+  color: #111827 !important;
+}
+
+html.neumorphism .text-zinc-50,
+html.neumorphism .text-zinc-100,
+html.neumorphism .text-zinc-200,
+.theme-neumorphism .text-zinc-50,
+.theme-neumorphism .text-zinc-100,
+.theme-neumorphism .text-zinc-200 {
+  color: #1e293b !important;
+}
+
+html.neumorphism .text-zinc-300,
+.theme-neumorphism .text-zinc-300 {
+  color: #334155 !important;
+}
+
+html.neumorphism .text-zinc-400,
+.theme-neumorphism .text-zinc-400 {
+  color: #475569 !important;
+}
+
+html.neumorphism .text-zinc-500,
+.theme-neumorphism .text-zinc-500 {
+  color: #526072 !important;
+}
+
+html.neumorphism .text-emerald-200\/90,
+html.neumorphism .text-emerald-300,
+html.neumorphism .text-emerald-400,
+.theme-neumorphism .text-emerald-200\/90,
+.theme-neumorphism .text-emerald-300,
+.theme-neumorphism .text-emerald-400 {
+  color: #047857 !important;
+}
+
+html.neumorphism .text-teal-300,
+html.neumorphism .text-teal-400,
+.theme-neumorphism .text-teal-300,
+.theme-neumorphism .text-teal-400 {
+  color: #0f766e !important;
+}
+
+html.neumorphism .text-cyan-300,
+html.neumorphism .text-cyan-400,
+.theme-neumorphism .text-cyan-300,
+.theme-neumorphism .text-cyan-400 {
+  color: #0e7490 !important;
+}
+
+html.neumorphism .text-amber-300,
+html.neumorphism .text-amber-400,
+.theme-neumorphism .text-amber-300,
+.theme-neumorphism .text-amber-400 {
+  color: #b45309 !important;
+}
+
+html.neumorphism .text-blue-300,
+html.neumorphism .text-blue-400,
+.theme-neumorphism .text-blue-300,
+.theme-neumorphism .text-blue-400 {
+  color: #1d4ed8 !important;
+}
+
+html.neumorphism .text-rose-300,
+html.neumorphism .text-rose-400,
+.theme-neumorphism .text-rose-300,
+.theme-neumorphism .text-rose-400 {
+  color: #be123c !important;
+}
+
+/* Extruded tactile surface cards (.glow-card kept aliased) */
+html.neumorphism .surface-card,
+html.neumorphism .glow-card,
+.theme-neumorphism .surface-card,
+.theme-neumorphism .glow-card {
+  background-color: #e6ebf2 !important;
+  border: 1px solid rgba(255, 255, 255, 0.58) !important;
+  border-radius: var(--radius-card);
+  box-shadow:
+    8px 8px 16px rgba(163, 177, 198, 0.55),
+    -8px -8px 16px rgba(255, 255, 255, 0.88) !important;
+  transition:
+    border-color 200ms ease,
+    transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 200ms ease;
+}
+
+html.neumorphism .surface-card:hover,
+html.neumorphism .glow-card:hover,
+.theme-neumorphism .surface-card:hover,
+.theme-neumorphism .glow-card:hover {
+  border-color: rgba(255, 255, 255, 0.84) !important;
+  box-shadow:
+    11px 11px 22px rgba(163, 177, 198, 0.62),
+    -11px -11px 22px rgba(255, 255, 255, 0.94) !important;
+}
+
+/* Tactile Neumorphic buttons */
+html.neumorphism .btn-primary,
+.theme-neumorphism .btn-primary {
+  background-color: #047857 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: var(--radius-control);
+  box-shadow:
+    5px 5px 12px rgba(163, 177, 198, 0.55),
+    -4px -4px 10px rgba(255, 255, 255, 0.82);
+}
+
+html.neumorphism .btn-primary:hover,
+.theme-neumorphism .btn-primary:hover {
+  background-color: #065f46 !important;
+  box-shadow:
+    7px 7px 14px rgba(163, 177, 198, 0.62),
+    -5px -5px 12px rgba(255, 255, 255, 0.88);
+}
+
+html.neumorphism .btn-primary:active,
+.theme-neumorphism .btn-primary:active {
+  box-shadow:
+    inset 3px 3px 7px rgba(2, 44, 34, 0.45),
+    inset -2px -2px 5px rgba(16, 185, 129, 0.28);
+}
+
+html.neumorphism .btn-secondary,
+.theme-neumorphism .btn-secondary {
+  background-color: #e6ebf2 !important;
+  color: #111827 !important;
+  border: 1px solid rgba(255, 255, 255, 0.62) !important;
+  border-radius: var(--radius-control);
+  box-shadow:
+    5px 5px 10px rgba(163, 177, 198, 0.50),
+    -5px -5px 10px rgba(255, 255, 255, 0.86);
+}
+
+html.neumorphism .btn-secondary:hover,
+.theme-neumorphism .btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.88) !important;
+  background-color: #eaf0f7 !important;
+  box-shadow:
+    7px 7px 14px rgba(163, 177, 198, 0.58),
+    -7px -7px 14px rgba(255, 255, 255, 0.92);
+}
+
+html.neumorphism .btn-secondary:active,
+.theme-neumorphism .btn-secondary:active {
+  box-shadow:
+    inset 4px 4px 8px rgba(163, 177, 198, 0.52),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.86);
+}
+
+/* Soft clay badges */
+html.neumorphism .badge-mono,
+.theme-neumorphism .badge-mono {
+  background-color: #dde4ee !important;
+  color: #334155 !important;
+  border-color: rgba(255, 255, 255, 0.65) !important;
+  box-shadow:
+    inset 2px 2px 4px rgba(163, 177, 198, 0.36),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.78);
+}
+
+html.neumorphism .badge-accent,
+.theme-neumorphism .badge-accent {
+  background-color: rgba(4, 120, 87, 0.10) !important;
+  color: #047857 !important;
+  border-color: rgba(4, 120, 87, 0.28) !important;
+  box-shadow: none;
+}
+
+/* Dark high-contrast code & terminal consoles wrapped in a neumorphic outer frame */
+html.neumorphism .terminal-window,
+.theme-neumorphism .terminal-window {
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+  border-color: rgba(255, 255, 255, 0.58) !important;
+  border-radius: var(--radius-card);
+  box-shadow:
+    8px 8px 18px rgba(163, 177, 198, 0.58),
+    -8px -8px 18px rgba(255, 255, 255, 0.90) !important;
+}
+
+html.neumorphism pre,
+html.neumorphism .custom-code-scroll,
+.theme-neumorphism pre,
+.theme-neumorphism .custom-code-scroll {
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+  box-shadow: none !important;
+}
+
+html.neumorphism pre .text-zinc-200,
+.theme-neumorphism pre .text-zinc-200 {
+  color: #e2e8f0 !important;
+}
+
+html.neumorphism .custom-code-scroll .text-zinc-600,
+.theme-neumorphism .custom-code-scroll .text-zinc-600 {
+  color: #64748b !important;
+}
+
+html.neumorphism .terminal-window .text-white,
+html.neumorphism .terminal-window .text-zinc-50,
+.theme-neumorphism .terminal-window .text-white,
+.theme-neumorphism .terminal-window .text-zinc-50 {
+  color: #f8fafc !important;
+}
+
+html.neumorphism .terminal-window .text-zinc-100,
+html.neumorphism .terminal-window .text-zinc-200,
+html.neumorphism .terminal-window .text-zinc-300,
+.theme-neumorphism .terminal-window .text-zinc-100,
+.theme-neumorphism .terminal-window .text-zinc-200,
+.theme-neumorphism .terminal-window .text-zinc-300 {
+  color: #cbd5e1 !important;
+}
+
+html.neumorphism .terminal-window .text-zinc-400,
+.theme-neumorphism .terminal-window .text-zinc-400 {
+  color: #94a3b8 !important;
+}
+
+html.neumorphism .terminal-window .text-zinc-500,
+.theme-neumorphism .terminal-window .text-zinc-500 {
+  color: #64748b !important;
+}
+
+html.neumorphism .terminal-window .text-emerald-300,
+html.neumorphism .terminal-window .text-emerald-400,
+.theme-neumorphism .terminal-window .text-emerald-300,
+.theme-neumorphism .terminal-window .text-emerald-400 {
+  color: #34d399 !important;
+}
+
+html.neumorphism .terminal-window .text-teal-300,
+html.neumorphism .terminal-window .text-teal-400,
+.theme-neumorphism .terminal-window .text-teal-300,
+.theme-neumorphism .terminal-window .text-teal-400 {
+  color: #2dd4bf !important;
+}
+
+html.neumorphism .terminal-window .text-cyan-300,
+html.neumorphism .terminal-window .text-cyan-400,
+.theme-neumorphism .terminal-window .text-cyan-300,
+.theme-neumorphism .terminal-window .text-cyan-400 {
+  color: #22d3ee !important;
+}
+
+html.neumorphism .terminal-window .text-amber-300,
+html.neumorphism .terminal-window .text-amber-400,
+.theme-neumorphism .terminal-window .text-amber-300,
+.theme-neumorphism .terminal-window .text-amber-400 {
+  color: #fbbf24 !important;
+}
+
+html.neumorphism .terminal-window .text-rose-300,
+html.neumorphism .terminal-window .text-rose-400,
+.theme-neumorphism .terminal-window .text-rose-300,
+.theme-neumorphism .terminal-window .text-rose-400 {
+  color: #fb7185 !important;
+}
+
+html.neumorphism .terminal-window .bg-zinc-950,
+html.neumorphism .terminal-window .bg-zinc-950\/90,
+html.neumorphism .terminal-window .bg-zinc-950\/95,
+.theme-neumorphism .terminal-window .bg-zinc-950,
+.theme-neumorphism .terminal-window .bg-zinc-950\/90,
+.theme-neumorphism .terminal-window .bg-zinc-950\/95 {
+  background-color: #0b1120 !important;
+  box-shadow: none !important;
+}
+
+html.neumorphism .terminal-window .bg-zinc-900,
+html.neumorphism .terminal-window .bg-zinc-900\/50,
+html.neumorphism .terminal-window .bg-zinc-900\/60,
+html.neumorphism .terminal-window .bg-zinc-900\/70,
+html.neumorphism .terminal-window .bg-zinc-900\/80,
+html.neumorphism .terminal-window .bg-zinc-900\/90,
+.theme-neumorphism .terminal-window .bg-zinc-900,
+.theme-neumorphism .terminal-window .bg-zinc-900\/50,
+.theme-neumorphism .terminal-window .bg-zinc-900\/60,
+.theme-neumorphism .terminal-window .bg-zinc-900\/70,
+.theme-neumorphism .terminal-window .bg-zinc-900\/80,
+.theme-neumorphism .terminal-window .bg-zinc-900\/90 {
+  background-color: #162033 !important;
+  box-shadow: none !important;
+}
+
+html.neumorphism .terminal-window .bg-zinc-800,
+html.neumorphism .terminal-window .bg-zinc-800\/50,
+html.neumorphism .terminal-window .bg-zinc-800\/60,
+html.neumorphism .terminal-window .bg-zinc-800\/70,
+html.neumorphism .terminal-window .bg-zinc-800\/80,
+html.neumorphism .terminal-window .bg-zinc-800\/90,
+.theme-neumorphism .terminal-window .bg-zinc-800,
+.theme-neumorphism .terminal-window .bg-zinc-800\/50,
+.theme-neumorphism .terminal-window .bg-zinc-800\/60,
+.theme-neumorphism .terminal-window .bg-zinc-800\/70,
+.theme-neumorphism .terminal-window .bg-zinc-800\/80,
+.theme-neumorphism .terminal-window .bg-zinc-800\/90 {
+  background-color: #273449 !important;
+  box-shadow: none !important;
+}
+
+html.neumorphism .terminal-window .bg-zinc-700,
+.theme-neumorphism .terminal-window .bg-zinc-700 {
+  background-color: #334155 !important;
+  box-shadow: none !important;
+}
+
+html.neumorphism .terminal-window .border-zinc-800,
+html.neumorphism .terminal-window .border-zinc-800\/60,
+html.neumorphism .terminal-window .border-zinc-800\/70,
+html.neumorphism .terminal-window .border-zinc-800\/80,
+html.neumorphism .terminal-window .border-zinc-800\/90,
+.theme-neumorphism .terminal-window .border-zinc-800,
+.theme-neumorphism .terminal-window .border-zinc-800\/60,
+.theme-neumorphism .terminal-window .border-zinc-800\/70,
+.theme-neumorphism .terminal-window .border-zinc-800\/80,
+.theme-neumorphism .terminal-window .border-zinc-800\/90 {
+  border-color: #1e293b !important;
+}
+
+html.neumorphism .terminal-window .border-zinc-700,
+html.neumorphism .terminal-window .border-zinc-700\/60,
+html.neumorphism .terminal-window .border-zinc-700\/80,
+html.neumorphism .terminal-window .border-zinc-700\/90,
+.theme-neumorphism .terminal-window .border-zinc-700,
+.theme-neumorphism .terminal-window .border-zinc-700\/60,
+.theme-neumorphism .terminal-window .border-zinc-700\/80,
+.theme-neumorphism .terminal-window .border-zinc-700\/90 {
+  border-color: #334155 !important;
+}
+
+/* Recessed form controls */
+html.neumorphism input,
+html.neumorphism textarea,
+.theme-neumorphism input,
+.theme-neumorphism textarea {
+  background-color: #e6ebf2 !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  color: #111827 !important;
+  box-shadow:
+    inset 4px 4px 8px rgba(163, 177, 198, 0.50),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.88) !important;
+}
+
+html.neumorphism input::placeholder,
+html.neumorphism textarea::placeholder,
+.theme-neumorphism input::placeholder,
+.theme-neumorphism textarea::placeholder {
+  color: #64748b !important;
+}
+
+html.neumorphism input:focus,
+html.neumorphism textarea:focus,
+.theme-neumorphism input:focus,
+.theme-neumorphism textarea:focus {
+  background-color: #ebf0f6 !important;
+  border-color: #047857 !important;
+  box-shadow:
+    inset 3px 3px 6px rgba(163, 177, 198, 0.44),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.86),
+    0 0 0 2px rgba(4, 120, 87, 0.20) !important;
+}
+
+/* Tactile Neumorphic Navbar & Floating Elements */
+html.neumorphism .neumorphism-nav-header,
+.theme-neumorphism .neumorphism-nav-header {
+  background-color: rgba(230, 235, 242, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 6px 16px rgba(163, 177, 198, 0.45);
+}
+
+html.neumorphism .neumorphism-control,
+.theme-neumorphism .neumorphism-control {
+  background-color: #e6ebf2;
+  border-color: rgba(255, 255, 255, 0.62);
+  color: #111827;
+  box-shadow:
+    3px 3px 6px rgba(163, 177, 198, 0.46),
+    -3px -3px 6px rgba(255, 255, 255, 0.85);
+}
+
+html.neumorphism .neumorphism-control:hover,
+.theme-neumorphism .neumorphism-control:hover {
+  border-color: rgba(255, 255, 255, 0.88);
+  color: #047857;
+}
+
+html.neumorphism .neumorphism-control:active,
+.theme-neumorphism .neumorphism-control:active {
+  box-shadow:
+    inset 2px 2px 5px rgba(163, 177, 198, 0.50),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.85);
+}
+
+html.neumorphism .neumorphism-tray,
+.theme-neumorphism .neumorphism-tray {
+  background-color: #e6ebf2;
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow:
+    inset 3px 3px 6px rgba(163, 177, 198, 0.48),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.86);
+}
+
+html.neumorphism .fixed.bottom-6.right-6,
+.theme-neumorphism .fixed.bottom-6.right-6 {
+  background-color: #e6ebf2 !important;
+  border-color: rgba(255, 255, 255, 0.65) !important;
+  color: #111827 !important;
+  box-shadow:
+    6px 6px 14px rgba(163, 177, 198, 0.55),
+    -6px -6px 14px rgba(255, 255, 255, 0.88) !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

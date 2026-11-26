@@ -8,7 +8,7 @@ import React, {
   useSyncExternalStore,
 } from "react";
 
-export type Theme = "dark" | "light" | "glass";
+export type Theme = "dark" | "light" | "glass" | "neumorphism";
 
 interface ThemeContextType {
   theme: Theme;
@@ -16,13 +16,19 @@ interface ThemeContextType {
   setTheme: (theme: Theme) => void;
   isDark: boolean;
   isGlass: boolean;
+  isNeumorphism: boolean;
 }
 
 const STORAGE_KEY = "portfolio_theme";
 const THEME_EVENT = "portfolio-theme-change";
 
 function isValidTheme(value: string | null): value is Theme {
-  return value === "dark" || value === "light" || value === "glass";
+  return (
+    value === "dark" ||
+    value === "light" ||
+    value === "glass" ||
+    value === "neumorphism"
+  );
 }
 
 function getThemeSnapshot(): Theme {
@@ -53,7 +59,7 @@ function subscribeTheme(onStoreChange: () => void): () => void {
 function applyThemeToDocument(t: Theme) {
   const root = document.documentElement;
   root.setAttribute("data-theme", t);
-  root.classList.remove("dark", "light", "glass");
+  root.classList.remove("dark", "light", "glass", "neumorphism");
   root.classList.add(t);
 }
 
@@ -82,7 +88,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const toggleTheme = useCallback(() => {
     const next: Theme =
-      theme === "dark" ? "light" : theme === "light" ? "glass" : "dark";
+      theme === "glass"
+        ? "dark"
+        : theme === "dark"
+          ? "light"
+          : theme === "light"
+            ? "neumorphism"
+            : "glass";
     setTheme(next);
   }, [theme, setTheme]);
 
@@ -91,7 +103,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       ? "theme-light transition-colors duration-150"
       : theme === "glass"
         ? "theme-glass transition-colors duration-150"
-        : "theme-dark transition-colors duration-150";
+        : theme === "neumorphism"
+          ? "theme-neumorphism transition-colors duration-150"
+          : "theme-dark transition-colors duration-150";
 
   return (
     <ThemeContext.Provider
@@ -99,8 +113,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         theme,
         toggleTheme,
         setTheme,
-        isDark: theme !== "light",
+        isDark: theme === "dark" || theme === "glass",
         isGlass: theme === "glass",
+        isNeumorphism: theme === "neumorphism",
       }}
     >
       <div className={wrapperClass}>{children}</div>

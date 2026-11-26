@@ -14,11 +14,12 @@ import {
   Sun,
   Moon,
   Droplets,
+  Layers,
 } from "lucide-react";
 import DeviceSimulatorModal from "@/components/ui/DeviceSimulatorModal";
 
 type ThemeOption = {
-  id: "dark" | "light" | "glass";
+  id: "dark" | "light" | "glass" | "neumorphism";
   labelEs: string;
   labelEn: string;
   icon: React.ComponentType<{ className?: string }>;
@@ -27,12 +28,31 @@ type ThemeOption = {
 const THEME_OPTIONS: ThemeOption[] = [
   { id: "dark", labelEs: "Modo Oscuro", labelEn: "Dark Mode", icon: Moon },
   { id: "light", labelEs: "Modo Claro", labelEn: "Light Mode", icon: Sun },
-  { id: "glass", labelEs: "Liquid Glass", labelEn: "Liquid Glass", icon: Droplets },
+  {
+    id: "glass",
+    labelEs: "Liquid Glass",
+    labelEn: "Liquid Glass",
+    icon: Droplets,
+  },
+  {
+    id: "neumorphism",
+    labelEs: "Neumorfismo",
+    labelEn: "Neumorphism",
+    icon: Layers,
+  },
 ];
 
 export default function Navbar() {
-  const { t, language, toggleLanguage, theme, setTheme, isDark, isGlass } =
-    usePortfolio();
+  const {
+    t,
+    language,
+    toggleLanguage,
+    theme,
+    setTheme,
+    isDark,
+    isGlass,
+    isNeumorphism,
+  } = usePortfolio();
   const pathname = usePathname();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -129,15 +149,19 @@ export default function Navbar() {
 
   const controlButtonClass = isGlass
     ? "border-white/15 bg-white/[0.06] text-zinc-200 hover:border-violet-200/35 hover:bg-white/[0.11] hover:text-white"
-    : isDark
-      ? "border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-zinc-700 hover:text-zinc-50"
-      : "border-zinc-200 bg-white text-zinc-700 hover:border-zinc-300 hover:text-zinc-950";
+    : isNeumorphism
+      ? "neumorphism-control"
+      : isDark
+        ? "border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-zinc-700 hover:text-zinc-50"
+        : "border-zinc-200 bg-white text-zinc-700 hover:border-zinc-300 hover:text-zinc-950";
 
   const themeGroupClass = isGlass
     ? "border-white/15 bg-white/[0.06]"
-    : isDark
-      ? "border-zinc-800 bg-zinc-900"
-      : "border-zinc-200 bg-white";
+    : isNeumorphism
+      ? "neumorphism-tray"
+      : isDark
+        ? "border-zinc-800 bg-zinc-900"
+        : "border-zinc-200 bg-white";
 
   const renderThemeSelector = () => (
     <div
@@ -163,9 +187,11 @@ export default function Navbar() {
                 ? "bg-[var(--btn-primary-bg)] text-[var(--btn-primary-fg)]"
                 : isGlass
                   ? "text-zinc-300 hover:text-white hover:bg-white/10"
-                  : isDark
-                    ? "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800"
-                    : "text-zinc-500 hover:text-zinc-950 hover:bg-zinc-100"
+                  : isNeumorphism
+                    ? "text-slate-600 hover:text-slate-950 hover:bg-white/55"
+                    : isDark
+                      ? "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800"
+                      : "text-zinc-500 hover:text-zinc-950 hover:bg-zinc-100"
             }`}
           >
             <Icon className="w-3.5 h-3.5" />
@@ -175,40 +201,42 @@ export default function Navbar() {
     </div>
   );
 
+  const headerClass = isGlass
+    ? "fixed top-0 left-0 right-0 z-50 px-3 sm:px-5 lg:px-8 pt-2.5 sm:pt-3 pointer-events-none"
+    : isNeumorphism
+      ? "fixed top-0 left-0 right-0 z-50 neumorphism-nav-header transition-colors duration-200"
+      : `fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-200 ${
+          isDark
+            ? scrolled
+              ? "bg-zinc-950/95 border-zinc-800 backdrop-blur-md"
+              : "bg-zinc-950/85 border-zinc-800/70 backdrop-blur-sm"
+            : scrolled
+              ? "bg-[#fafaf9]/95 border-zinc-200 backdrop-blur-md"
+              : "bg-[#fafaf9]/90 border-zinc-200/80 backdrop-blur-sm"
+        }`;
+
   return (
     <>
-      <header
-        className={
-          isGlass
-            ? "fixed top-0 left-0 right-0 z-50 px-3 sm:px-5 lg:px-8 pt-2.5 sm:pt-3 pointer-events-none"
-            : `fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-200 ${
-                isDark
-                  ? scrolled
-                    ? "bg-zinc-950/95 border-zinc-800 backdrop-blur-md"
-                    : "bg-zinc-950/85 border-zinc-800/70 backdrop-blur-sm"
-                  : scrolled
-                    ? "bg-[#fafaf9]/95 border-zinc-200 backdrop-blur-md"
-                    : "bg-[#fafaf9]/90 border-zinc-200/80 backdrop-blur-sm"
-              }`
-        }
-      >
+      <header className={headerClass}>
         <nav
           aria-label={isEs ? "Navegación principal" : "Primary navigation"}
           className={
             isGlass
-              ? "glass-nav-shell pointer-events-auto relative overflow-hidden max-w-6xl mx-auto px-3.5 sm:px-5 h-14 sm:h-15 rounded-2xl flex items-center justify-between gap-2 transition-all duration-200"
+              ? "glass-nav-shell pointer-events-auto relative overflow-hidden max-w-6xl mx-auto px-3 sm:px-5 h-14 sm:h-15 rounded-2xl flex items-center justify-between gap-2 transition-all duration-200"
               : "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2"
           }
         >
           {/* Brand */}
-          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+          <Link href="/" className="flex items-center gap-2 group shrink-0">
             <span
               className={`w-8 h-8 rounded-md border flex items-center justify-center transition-colors duration-150 ${
                 isGlass
                   ? "bg-white/[0.08] border-white/18 group-hover:border-violet-200/40"
-                  : isDark
-                    ? "bg-zinc-900 border-zinc-800 group-hover:border-emerald-500/60"
-                    : "bg-white border-zinc-200 group-hover:border-emerald-700/60"
+                  : isNeumorphism
+                    ? "neumorphism-control"
+                    : isDark
+                      ? "bg-zinc-900 border-zinc-800 group-hover:border-emerald-500/60"
+                      : "bg-white border-zinc-200 group-hover:border-emerald-700/60"
               }`}
             >
               <Terminal
@@ -232,8 +260,12 @@ export default function Navbar() {
                 jkiddo-dev
               </span>
               <span
-                className={`text-[10px] font-mono hidden sm:inline ${
-                  isGlass ? "text-zinc-300/75" : "text-zinc-500"
+                className={`text-[10px] font-mono hidden xl:inline ${
+                  isGlass
+                    ? "text-zinc-300/75"
+                    : isNeumorphism
+                      ? "text-slate-600"
+                      : "text-zinc-500"
                 }`}
               >
                 Full-Stack Systems
@@ -249,12 +281,14 @@ export default function Navbar() {
                   <span>{link.name}</span>
                   {link.badge && (
                     <span
-                      className={`text-[10px] px-1.5 py-0.25 rounded-md font-mono font-medium border ${
+                      className={`hidden xl:inline-flex text-[10px] px-1.5 py-0.25 rounded-md font-mono font-medium border ${
                         isGlass
                           ? "bg-white/[0.07] text-violet-200 border-white/14"
-                          : isDark
-                            ? "bg-zinc-900 text-zinc-400 border-zinc-800"
-                            : "bg-zinc-100 text-zinc-600 border-zinc-200"
+                          : isNeumorphism
+                            ? "bg-[#dde4ee] text-slate-700 border-white/65"
+                            : isDark
+                              ? "bg-zinc-900 text-zinc-400 border-zinc-800"
+                              : "bg-zinc-100 text-zinc-600 border-zinc-200"
                       }`}
                     >
                       {link.badge}
@@ -272,16 +306,18 @@ export default function Navbar() {
                       : "text-emerald-700 font-semibold"
                   : isGlass
                     ? "text-zinc-300 hover:text-white hover:bg-white/[0.07]"
-                    : isDark
-                      ? "text-zinc-400 hover:text-zinc-100"
-                      : "text-zinc-600 hover:text-zinc-950"
+                    : isNeumorphism
+                      ? "text-slate-700 hover:text-slate-950"
+                      : isDark
+                        ? "text-zinc-400 hover:text-zinc-100"
+                        : "text-zinc-600 hover:text-zinc-950"
               }`;
 
               const activeBar =
                 link.active && !isGlass ? (
                   <span
                     aria-hidden="true"
-                    className={`absolute left-2.5 right-2.5 -bottom-[17px] h-[2px] ${
+                    className={`absolute left-2 right-2 -bottom-[17px] h-[2px] ${
                       isDark ? "bg-emerald-500" : "bg-emerald-700"
                     }`}
                   />
@@ -311,7 +347,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setDeviceModalOpen(true)}
-              className={`hidden lg:flex h-9 w-9 rounded-md border items-center justify-center transition-colors cursor-pointer ${controlButtonClass}`}
+              className={`hidden xl:flex h-9 w-9 rounded-md border items-center justify-center transition-colors cursor-pointer ${controlButtonClass}`}
               title={isEs ? "Abrir Simulador Móvil" : "Open Mobile Simulator"}
               aria-label={
                 isEs ? "Abrir Simulador Móvil" : "Open Device Simulator"
@@ -323,7 +359,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={toggleLanguage}
-              className={`h-9 px-2.5 rounded-md border flex items-center gap-1.5 text-xs font-mono transition-colors cursor-pointer ${controlButtonClass}`}
+              className={`h-9 px-2 rounded-md border flex items-center gap-1 text-xs font-mono transition-colors cursor-pointer ${controlButtonClass}`}
               title={isEs ? "Switch to English" : "Cambiar a Español"}
               aria-label="Toggle language"
             >
@@ -361,10 +397,10 @@ export default function Navbar() {
 
             <Link
               href="/contacto"
-              className="btn-primary h-9 px-3.5 text-xs font-mono shrink-0"
+              className="btn-primary h-9 px-3 text-xs font-mono shrink-0 whitespace-nowrap"
             >
               <span>{t.nav.talk}</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
             </Link>
 
             <button
@@ -415,7 +451,7 @@ export default function Navbar() {
           )}
         </nav>
 
-        {/* Crisp 1px scroll progress bar for Dark & Light */}
+        {/* Crisp 1px scroll progress bar for Dark, Light & Neumorphism */}
         {!isGlass && (
           <div
             aria-hidden="true"
@@ -436,11 +472,13 @@ export default function Navbar() {
             className={
               isGlass
                 ? "lg:hidden glass-nav-shell pointer-events-auto max-w-6xl mx-auto mt-2 rounded-2xl text-zinc-100"
-                : `lg:hidden border-t ${
-                    isDark
-                      ? "bg-zinc-950 border-zinc-800 text-zinc-100"
-                      : "bg-[#fafaf9] border-zinc-200 text-zinc-950"
-                  }`
+                : isNeumorphism
+                  ? "lg:hidden border-t border-white/60 bg-[#e6ebf2] text-slate-900 shadow-[0_12px_24px_rgba(163,177,198,0.48)]"
+                  : `lg:hidden border-t ${
+                      isDark
+                        ? "bg-zinc-950 border-zinc-800 text-zinc-100"
+                        : "bg-[#fafaf9] border-zinc-200 text-zinc-950"
+                    }`
             }
           >
             <div className="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex flex-col">
@@ -448,9 +486,11 @@ export default function Navbar() {
                 const rowClass = `py-3 border-b flex items-center justify-between text-xs font-mono uppercase tracking-wider transition-colors ${
                   isGlass
                     ? "border-white/10"
-                    : isDark
-                      ? "border-zinc-800/80"
-                      : "border-zinc-200"
+                    : isNeumorphism
+                      ? "border-slate-300/60"
+                      : isDark
+                        ? "border-zinc-800/80"
+                        : "border-zinc-200"
                 } ${
                   link.active
                     ? isGlass
@@ -476,9 +516,11 @@ export default function Navbar() {
                         className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono border ${
                           isGlass
                             ? "bg-white/[0.07] text-violet-200 border-white/14"
-                            : isDark
-                              ? "bg-zinc-900 text-zinc-400 border-zinc-800"
-                              : "bg-white text-zinc-600 border-zinc-200"
+                            : isNeumorphism
+                              ? "bg-[#dde4ee] text-slate-700 border-white/65"
+                              : isDark
+                                ? "bg-zinc-900 text-zinc-400 border-zinc-800"
+                                : "bg-white text-zinc-600 border-zinc-200"
                         }`}
                       >
                         {link.badge}
